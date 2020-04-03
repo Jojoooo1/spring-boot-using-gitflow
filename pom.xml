@@ -40,6 +40,14 @@
     <sonar.password>admin</sonar.password>
   </properties>
 
+	<scm>
+		<connection>scm:git:git@github.com/Jojoooo1/spring-using-git-workflow.git</connection>
+		<developerConnection>scm:git:git@github.com/Jojoooo1/spring-using-git-workflow.git</developerConnection>
+		<url>https://github.com/Jojoooo1/spring-using-git-workflow</url>
+		<!-- <tag>306.0</tag> -->
+	</scm>
+
+
   <!-- Profile -->
 
   <profiles>
