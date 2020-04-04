@@ -1,8 +1,8 @@
-name: Java CI with Maven
+name: CI for feature branch
 
 on:
   pull_request:
-    branches: [feat**]
+    branches: [develop]
 
   push:
     branches: [develop]
@@ -10,9 +10,6 @@ on:
 jobs:
   feature-build:
     runs-on: ubuntu-latest
-
-    # Name of the Status checks to be setup in "Require status checks to pass before merging"
-    name: Build & Test
     steps:
       # Setup
       - uses: actions/checkout@v2
