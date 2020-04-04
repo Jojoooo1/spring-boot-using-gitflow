@@ -11,7 +11,7 @@ jobs:
   feature-build:
     runs-on: ubuntu-latest
     # Name of the Status checks to be setup in "Require status checks to pass before merging"
-    name: Test feature branch
+    name: Build & test
     steps:
       # Setup
       - uses: actions/checkout@v2
