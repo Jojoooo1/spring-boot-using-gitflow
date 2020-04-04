@@ -10,6 +10,8 @@ on:
 jobs:
   feature-build:
     runs-on: ubuntu-latest
+
+    # Name of the Status checks to be setup in "Require status checks to pass before merging"
     name: Build & Test
     steps:
       # Setup
