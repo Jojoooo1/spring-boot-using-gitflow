@@ -27,7 +27,7 @@ jobs:
 
       # Test
       - name: Build with Maven
-        run: mvn clean verify # can use sonar:sonar
+        run: mvn clean verify -P all-test # can use sonar:sonar
 
       - run: mkdir staging && cp target/*.jar staging
       - name: Upload Maven build artifact
