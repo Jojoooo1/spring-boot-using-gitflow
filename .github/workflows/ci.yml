@@ -3,11 +3,13 @@ name: CI for features
 on:
   # Triggered when create pull request of the feature branch
   pull_request:
-    branches: [feat**]
+    branches:
+      - feat**
 
   # Triggered when pull request is merged and pushed to release branch
   push:
-    branches: [release*]
+    branches:
+      - release**
 
 jobs:
   feature-build:
