@@ -1,14 +1,17 @@
 name: Java CI with Maven
 
 on:
-  push:
-    branches: [develop]
   pull_request:
     branches: [feat**]
+
+  push:
+    branches: [develop]
 
 jobs:
   feature-build:
     runs-on: ubuntu-latest
+
+    # Name of the Status checks to be setup in "Require status checks to pass before merging"
     name: Build & Test
     steps:
       # Setup
@@ -26,7 +29,7 @@ jobs:
 
       # Test
       - name: Build with Maven
-        run: mvn clean verify # can use sonar:sonar
+        run: mvn clean verify -P all-test # can use sonar:sonar
 
       - run: mkdir staging && cp target/*.jar staging
       - name: Upload Maven build artifact
