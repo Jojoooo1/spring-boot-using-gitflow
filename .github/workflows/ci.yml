@@ -1,15 +1,10 @@
-name: CI for features
+name: Java CI with Maven
 
 on:
-  # Triggered when create pull request of the feature branch
-  pull_request:
-    branches:
-      - feat**
-
-  # Triggered when pull request is merged and pushed to release branch
   push:
-    branches:
-      - develop
+    branches: [develop]
+  pull_request:
+    branches: [feat**]
 
 jobs:
   feature-build:
