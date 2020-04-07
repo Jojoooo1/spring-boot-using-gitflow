@@ -12,7 +12,7 @@
   <groupId>com.example</groupId>
   <artifactId>carros</artifactId>
   <name>${project.artifactId}</name>
-  <description>Demo project for Spring Boot</description>
+  <description>Base project for Spring Boot</description>
 
   <!-- <version>1.0.0</version> -->
   <!-- <version>${revision}${sha1}${changelist}</version> -->
@@ -22,15 +22,22 @@
     <java.version>11</java.version>
     <maven.plugins.version>3.0.0-M1</maven.plugins.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
     <!-- Lib -->
     <spring-cloud.version>Greenwich.RELEASE</spring-cloud.version>
     <jib.version>2.1.0</jib.version>
+    <jib.to.image.username>jojoooo1</jib.to.image.username>
+    <jib.to.auth.username>jojoooo1</jib.to.auth.username>
+    <jib.container.port>8080</jib.container.port>
+
     <!-- To tag the image with a simple timestamp -->
     <maven.build.timestamp.format>yyyyMMdd-HHmmssSSS</maven.build.timestamp.format>
-    <!-- Testing config -->
+
+    <!-- Test -->
     <skip.integration.test>true</skip.integration.test>
     <skip.unit.test>false</skip.unit.test>
-    <!-- Jacoco config -->
+
+    <!-- Jacoco -->
     <sonar.language>java</sonar.language>
     <sonar.java.coveragePlugin>jacoco</sonar.java.coveragePlugin>
     <jacoco.it.execution.data.file>${project.build.directory}/coverage-reports/jacoco-it.exec</jacoco.it.execution.data.file>
@@ -40,7 +47,7 @@
     <sonar.password>admin</sonar.password>
   </properties>
 
-	<!-- <scm>
+  <!-- <scm>
 		<connection>scm:git:git@github.com/Jojoooo1/spring-using-git-workflow.git</connection>
 		<developerConnection>scm:git:git@github.com/Jojoooo1/spring-using-git-workflow.git</developerConnection>
 		<url>https://github.com/Jojoooo1/spring-using-git-workflow</url>
@@ -275,32 +282,13 @@
 
     <pluginManagement>
       <plugins>
-        <!-- Code coverage platform -->
+        <!-- Code coverage -->
         <plugin>
           <groupId>org.sonarsource.scanner.maven</groupId>
           <artifactId>sonar-maven-plugin</artifactId>
           <version>3.7.0.1746</version>
         </plugin>
-        <!-- Code static analysis -->
-        <plugin>
-          <groupId>com.github.spotbugs</groupId>
-          <artifactId>spotbugs-maven-plugin</artifactId>
-          <version>4.0.0</version>
-          <configuration>
-            <effort>Max</effort>
-            <threshold>Low</threshold>
-            <failOnError>true</failOnError>
-          </configuration>
-          <executions>
-            <execution>
-              <id>scan</id>
-              <phase>verify</phase>
-              <goals>
-                <goal>check</goal>
-              </goals>
-            </execution>
-          </executions>
-        </plugin>
+
       </plugins>
     </pluginManagement>
 
@@ -326,14 +314,7 @@
         </configuration>
       </plugin>
 
-      <!-- Release plugin -->
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-release-plugin</artifactId>
-        <version>${maven.plugins.version}</version>
-      </plugin>
-
-      <!-- Unit Tests -->
+      <!-- Unit tests -->
       <plugin>
         <artifactId>maven-surefire-plugin</artifactId>
         <version>3.0.0-M4</version>
@@ -356,7 +337,7 @@
         </executions>
       </plugin>
 
-      <!-- Integration Tests -->
+      <!-- Integration tests -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-failsafe-plugin</artifactId>
@@ -380,7 +361,7 @@
         </executions>
       </plugin>
 
-      <!-- Code coverage reporting library -->
+      <!-- Code coverage -->
       <plugin>
         <groupId>org.jacoco</groupId>
         <artifactId>jacoco-maven-plugin</artifactId>
@@ -464,18 +445,81 @@
         </executions>
       </plugin>
 
-      <!-- Jib: Creates Application container -->
+      <!-- Code quality: PMD (standalone: mvn pmd:pmd) -->
+      <!-- <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-pmd-plugin</artifactId>
+        <version>3.12.0</version>
+        <configuration>
+          <targetJdk>${java.version}</targetJdk>
+          <includeTests>true</includeTests>
+          <failOnViolation>true</failOnViolation>
+          <printFailingErrors>true</printFailingErrors>
+        </configuration>
+      </plugin> -->
+
+      <!-- Code quality: Spotbugs (standalone: mvn spotbugs:check) -->
+      <!-- <plugin>
+        <groupId>com.github.spotbugs</groupId>
+        <artifactId>spotbugs-maven-plugin</artifactId>
+        <version>3.1.12</version>
+        <configuration>
+          <includeTests>true</includeTests>
+          <effort>Max</effort>
+          <threshold>Low</threshold>
+          <failOnError>false</failOnError>
+        </configuration>
+      </plugin> -->
+
+
+      <!-- Source code style checking (standalone: mvn checkstyle:checkstyle) -->
+      <!-- <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-checkstyle-plugin</artifactId>
+        <version>3.1.0</version>
+        <configuration>
+          <configLocation>checkstyle.xml</configLocation>
+          <includeTestSourceDirectory>true</includeTestSourceDirectory>
+          <excludes>module-info.java</excludes>
+          <failOnViolation>true</failOnViolation>
+          <failsOnError>true</failsOnError>
+          <consoleOutput>true</consoleOutput>
+        </configuration>
+      </plugin> -->
+
+      <!-- Jib -->
       <plugin>
         <groupId>com.google.cloud.tools</groupId>
         <artifactId>jib-maven-plugin</artifactId>
         <version>${jib.version}</version>
         <configuration>
+          <skip>${jib.skip}</skip>
+          <!-- <allowInsecureRegistries>true</allowInsecureRegistries> -->
           <from>
             <image>gcr.io/distroless/java:11</image>
           </from>
+          <to>
+            <image>docker.io/${jib.to.image.username}/${project.artifactId}</image>
+            <auth>
+              <username>${jib.to.auth.username}</username>
+            </auth>
+            <tags>
+							<tag>${project.version}</tag>
+						</tags>
+          </to>
+          <container>
+            <ports>
+              <port>${jib.container.port}</port>
+            </ports>
+            <!--  can use at runtime JAVA_TOOL_OPTIONS -->
+            <jvmFlags>
+              <jvmFlag>-Xms512m</jvmFlag>
+              <jvmFlag>-Xmx1024m</jvmFlag>
+            </jvmFlags>
+          </container>
         </configuration>
       </plugin>
-
+      <!-- mvn -e package -Dimage=docker.io/jojoooo1/api-store-mongo:latest -Djib.to.auth.username=jojoooo1 -Djib.to.auth.password=Rz2UkNims -->
     </plugins>
 
   </build>
