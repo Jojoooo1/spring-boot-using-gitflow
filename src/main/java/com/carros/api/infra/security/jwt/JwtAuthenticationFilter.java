@@ -25,7 +25,6 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 
   public JwtAuthenticationFilter(AuthenticationManager authenticationManager) {
     this.authenticationManager = authenticationManager;
-
     // api/authenticate
     setFilterProcessesUrl(AUTH_URL);
   }
@@ -56,7 +55,6 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 
     User user = (User) authentication.getPrincipal();
     String jwtToken = JwtUtil.createToken(user);
-    // String json = ServletUtil.getJson("token", jwtToken);
     String json = UserDTO.create(user, jwtToken).toJson();
     ServletUtil.write(response, HttpStatus.OK, json);
   }
