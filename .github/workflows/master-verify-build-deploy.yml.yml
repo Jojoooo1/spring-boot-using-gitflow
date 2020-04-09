@@ -7,6 +7,7 @@ on:
   push:
     branches: [master]
 
+# TODO: Hotfix workflow
 jobs:
   feature-build:
     runs-on: ubuntu-latest

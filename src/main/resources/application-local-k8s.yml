@@ -1,0 +1,18 @@
+management:
+  endpoint:
+    health:
+      enabled: true
+    info:
+      enabled: true
+
+spring:
+  cloud:
+    kubernetes:
+      reload:
+        enabled: true
+      config:
+      #   # ConfigMap default
+        name: carros
+        namespace: default
+        sources:
+          - name: configmap-test

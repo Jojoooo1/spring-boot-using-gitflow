@@ -10,7 +10,8 @@ on:
     branches: [develop]
 
 jobs:
-  feature-build:
+  feature-verify:
+    if: "! contains(toJSON(github.event.commits.*.message), '[skip-ci]')"
     runs-on: ubuntu-latest
     steps:
       # Setup project
@@ -28,4 +29,5 @@ jobs:
 
       # Test project
       - name: Build with Maven
-        run: mvn clean verify -P all-test # can use sonar:sonar
+        run: mvn clean verify -P all-test
+      # TODO: on push failure send notification
