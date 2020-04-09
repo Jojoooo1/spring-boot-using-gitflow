@@ -8,11 +8,10 @@ cd ..
 mvn clean compile jib:dockerBuild -P local-k8s
 #
 #
-kubectl apply -f k8s/stages/local/db.yaml
-kubectl apply -f k8s/stages/local/rbac.yaml
-kubectl apply -f k8s/stages/local/app.yaml
-kubectl rollout restart deployment java-demo-backend
-
+# kubectl apply -f k8s/stages/local/db.yaml
+# kubectl apply -f k8s/stages/local/rbac.yaml
+# kubectl apply -f k8s/stages/local/app.yaml
+# kubectl rollout restart deployment java-demo-backend
 # cd k8s/stages/local
 # kubectl apply -f mysql-test.yaml
 # sleep 8
