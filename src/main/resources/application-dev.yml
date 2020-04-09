@@ -1,6 +1,7 @@
 # MySQL
 spring:
   datasource:
+    # Modify Spring default database (Spring Boot configures by default the application to connect to an in-memory store)
     url: jdbc:mysql://localhost:3306/database?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
     username: jonathan
     password: password
@@ -18,6 +19,7 @@ spring:
     user:
       name: admin
       password: password
+      
 logging:
   level:
     root: info

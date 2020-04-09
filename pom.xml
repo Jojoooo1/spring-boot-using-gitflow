@@ -22,16 +22,16 @@
     <java.version>11</java.version>
     <maven.plugins.version>3.0.0-M1</maven.plugins.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <spring-cloud.version>Hoxton.SR3</spring-cloud.version>
 
-    <!-- Lib -->
-    <spring-cloud.version>Greenwich.RELEASE</spring-cloud.version>
+    <!-- Jib -->
     <jib.version>2.1.0</jib.version>
     <jib.to.image.username>jojoooo1</jib.to.image.username>
     <jib.to.auth.username>jojoooo1</jib.to.auth.username>
     <jib.container.port>8080</jib.container.port>
 
     <!-- To tag the image with a simple timestamp -->
-    <maven.build.timestamp.format>yyyyMMdd-HHmmssSSS</maven.build.timestamp.format>
+    <!-- <maven.build.timestamp.format>yyyyMMdd-HHmmssSSS</maven.build.timestamp.format> -->
 
     <!-- Test -->
     <skip.integration.test>true</skip.integration.test>
@@ -57,27 +57,23 @@
   <!-- Profile -->
 
   <profiles>
-    <!-- Integration Test -->
+    <!-- Profile: Integration Test -->
     <profile>
       <id>integration-test</id>
       <properties>
-        <build.profile.id>test</build.profile.id>
-        <spring.profile.active>test</spring.profile.active>
         <skip.integration.test>false</skip.integration.test>
         <skip.unit.test>true</skip.unit.test>
       </properties>
     </profile>
-    <!-- All Test -->
+    <!-- Profile: All Test -->
     <profile>
       <id>all-test</id>
       <properties>
-        <build.profile.id>test</build.profile.id>
-        <spring.profile.active>test</spring.profile.active>
         <skip.integration.test>false</skip.integration.test>
         <skip.unit.test>false</skip.unit.test>
       </properties>
     </profile>
-    <!-- Development/Default -->
+    <!-- Profile: Development/Default -->
     <profile>
       <id>dev</id>
       <properties>
@@ -88,9 +84,25 @@
         <activeByDefault>true</activeByDefault>
       </activation>
     </profile>
-    <!-- Production -->
+    <!-- Profile: Kubernetes Local -->
     <profile>
-      <id>prod</id>
+      <id>local-k8s</id>
+      <properties>
+        <build.profile.id>local-k8s</build.profile.id>
+        <spring.profile.active>local-k8s</spring.profile.active>
+      </properties>
+    </profile>
+    <!-- Profile: Kubernetes Staging -->
+    <profile>
+      <id>staging-k8s</id>
+      <properties>
+        <build.profile.id>staging-k8s</build.profile.id>
+        <spring.profile.active>staging-k8s</spring.profile.active>
+      </properties>
+    </profile>
+    <!-- Profile: Production -->
+    <profile>
+      <id>prod-k8s</id>
       <properties>
         <build.profile.id>prod</build.profile.id>
         <spring.profile.active>prod</spring.profile.active>
@@ -115,6 +127,20 @@
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-actuator</artifactId>
     </dependency>
+
+    <!-- Kubernetes -->
+
+    <!-- Discovery Client implementation that resolves service names to Kubernetes Services -->
+    <dependency>
+      <groupId>org.springframework.cloud</groupId>
+      <artifactId>spring-cloud-starter-kubernetes</artifactId>
+    </dependency>
+    <!-- Load application properties from Kubernetes ConfigMaps and Secrets. Reload application properties when a ConfigMap or Secret changes. -->
+    <dependency>
+      <groupId>org.springframework.cloud</groupId>
+      <artifactId>spring-cloud-starter-kubernetes-config</artifactId>
+    </dependency>
+
 
     <!-- JPA & MySQL & H2-->
 
@@ -497,6 +523,7 @@
           <!-- <allowInsecureRegistries>true</allowInsecureRegistries> -->
           <from>
             <image>gcr.io/distroless/java:11</image>
+            <!-- <image>adoptopenjdk:11-jre-hotspot</image> -->
           </from>
           <to>
             <image>docker.io/${jib.to.image.username}/${project.artifactId}</image>
@@ -504,10 +531,11 @@
               <username>${jib.to.auth.username}</username>
             </auth>
             <tags>
-							<tag>${project.version}</tag>
-						</tags>
+              <tag>${project.version}</tag>
+            </tags>
           </to>
           <container>
+            <creationTime>${maven.build.timestamp}</creationTime>
             <ports>
               <port>${jib.container.port}</port>
             </ports>

@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: mysql-test-deployment
+  namespace: default
+  labels:
+    app: java-demo-backend
+    role: database
+    stage: local
+
+spec:
+  selector:
+    matchLabels:
+      app: mysql-test
+  template:
+    metadata:
+      labels:
+        app: mysql-test
+    spec:
+      containers:
+        - name: mysql-test
+          image: mysql:latest
+          imagePullPolicy: Never # d. Always
+          env:
+            - name: MYSQL_ROOT_PASSWORD
+              value: "password"
+            - name: MYSQL_DATABASE
+              value: "database"
+            - name: MYSQL_USER
+              value: "jonathan"
+            - name: MYSQL_PASSWORD
+              value: "password"
+          livenessProbe:
+            tcpSocket:
+              port: 3306
+          ports:
+            - containerPort: 80
