@@ -2,18 +2,18 @@ apiVersion: apps/v1
 kind: Deployment
 
 metadata:
-  name: java-demo-backend
+  name: java-demo-backend-deployment
   namespace: local
 
   labels:
-    app: java-demo
+    app: java-demo-backend
     role: backend
     stage: local
 
 spec:
   selector:
     matchLabels:
-      app: java-demo
+      app: java-demo-backend
       role: backend
       stage: local
 
@@ -22,14 +22,14 @@ spec:
   template:
     metadata:
       labels:
-        app: java-demo
+        app: java-demo-backend
         role: backend
         stage: local
 
     spec:
       restartPolicy: Always # d.
       containers:
-        - name: java-demo
+        - name: java-demo-backend
           image: jojoooo1/carros
           imagePullPolicy: Never # d. Always
           # env:
@@ -56,4 +56,5 @@ spec:
           #     cpu: "250m"
           #   limits:
           #     memory: "256Mi"
-          #     cpu: "1000m"
+          #     cpu: "1000"
+      

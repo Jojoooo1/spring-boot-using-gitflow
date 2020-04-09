@@ -1,0 +1,61 @@
+apiVersion: skaffold/v2beta1
+kind: Config
+
+profiles:
+  - name: minikube
+    # automatically activate this profile when current context is "minikube"
+    activation:
+      - kubeContext: minikube
+
+    build:
+      local:
+        push: false # will not push the image
+      artifacts:
+        - image: jojoooo1/carros # name of the image that will be build locally
+          context: . # context where the image is being built
+      tagPolicy:
+        gitCommit: {} # first look at tag, then use short commit
+    # test: Container Structure Tests
+    deploy:
+      kubeContext: minikube
+      kubectl: # deploy using kubectl
+        manifests:
+          - "k8s/local/**.yaml"
+    portForward:
+    - resourceType: service
+      resourceName: java-demo-backend-deployment
+      port: 8080
+      localPort: 8080
+
+
+  - name: staging
+    build:
+      artifacts:
+        - image: jojoooo1/carros # name of the image that will be build locally
+          context: . # context where the image is being built
+
+      tagPolicy:
+        envTemplate:
+        template: "{{.IMAGE_NAME}}:{{.RELEASE_VERSION}}"
+    
+    deploy:
+      kubeContext: staging
+      # statusCheckDeadlineSeconds: 300
+      kubectl:
+        manifests:
+          - "k8s/staging/**.yaml"
+
+
+  - name: production
+    build:
+      artifacts:
+        - image: jojoooo1/carros # name of the image that will be build locally
+          context: . # context where the image is being built
+      tagPolicy:
+        gitCommit: {} # first look at tag, then use short commit
+    deploy:
+      kubeContext: production
+      kubectl:
+        manifests:
+          - - "k8s/production/**.yaml"
+        

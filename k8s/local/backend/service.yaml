@@ -3,17 +3,17 @@ kind: Service
 
 metadata:
   # dns
-  name: java-demo-backend
+  name: java-demo-backend-service
   namespace: local
 
   labels:
-    app: java-demo
+    app: java-demo-backend
     role: backend
     stage: local
 
 spec:
   selector:
-    app: java-demo
+    app: java-demo-backend
     role: backend
     stage: local
   # Open port of the VM so traffic can go in from the outside

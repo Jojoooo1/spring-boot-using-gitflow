@@ -1,3 +1,3 @@
-# prompt for release
-# validate release
+# Get last tag
+
 # create branch release-vX.X

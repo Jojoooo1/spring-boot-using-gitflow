@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 
 metadata:
-  name: mysql-test-deployment
+  name: java-demo-database-deployment
   namespace: local
 
   labels:
@@ -13,14 +13,14 @@ metadata:
 spec:
   selector:
     matchLabels:
-      app: mysql-test
+      app: java-demo-database
   template:
     metadata:
       labels:
-        app: mysql-test
+        app: java-demo-database
     spec:
       containers:
-        - name: mysql-test
+        - name: java-demo-database
           image: mysql:latest
           # imagePullPolicy: Never # d. Always
           env:
