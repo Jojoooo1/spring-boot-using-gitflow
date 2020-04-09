@@ -13,6 +13,9 @@ spring:
       config:
       #   # ConfigMap default
         name: carros
-        namespace: default
+        namespace: local
         sources:
-          - name: configmap-test
+            - name: carros
+              namespace: local
+            - name: config-test # Not working: issue opened
+              namespace: local

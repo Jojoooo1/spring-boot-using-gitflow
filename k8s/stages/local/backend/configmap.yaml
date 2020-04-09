@@ -3,7 +3,7 @@ kind: ConfigMap
 
 metadata:
   name: carros
-  namespace: default
+  namespace: local
 
 data:
   bootstrap.yml: |-
@@ -22,12 +22,7 @@ data:
             format_sql: true
         hibernate:
           ddl-auto: create
-      #Security
-      security:
-        user:
-          name: admin
-          password: password
-          
+    #               
     logging:
       level:
         root: info

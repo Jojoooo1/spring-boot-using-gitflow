@@ -2,9 +2,10 @@ apiVersion: v1
 kind: Service
 metadata:
   name: mysql-test-service # dns
-  namespace: default
+  namespace: local
+
   labels:
-    app: java-demo-backend
+    app: java-demo-database
     role: database
     stage: local
 
