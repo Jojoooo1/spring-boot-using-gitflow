@@ -3,7 +3,7 @@ kind: ConfigMap
 
 metadata:
   name: config-test
-  namespace: local
+  namespace: java-demo
 
 data:
   bootstrap.yml: |-

@@ -3,9 +3,9 @@ current_dir=$PWD
 # Sets minikube local daemon
 eval $(minikube docker-env)
 #
-cd ..
+kubectl create namespace java-demo
 # push image to minikube local daemon
-mvn clean compile jib:dockerBuild -P local-k8s
+# mvn clean compile jib:dockerBuild -P local-k8s
 #
 #
 # kubectl apply -f k8s/stages/local/db.yaml

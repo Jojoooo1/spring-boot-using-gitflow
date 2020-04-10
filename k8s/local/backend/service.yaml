@@ -4,7 +4,7 @@ kind: Service
 metadata:
   # dns
   name: java-demo-backend-service
-  namespace: local
+  namespace: java-demo
 
   labels:
     app: java-demo-backend

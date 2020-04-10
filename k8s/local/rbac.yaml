@@ -1,24 +1,27 @@
 # => allow spring boot application to read configmaps, secrets etc.
 apiVersion: rbac.authorization.k8s.io/v1
-kind: ClusterRole
+kind: Role # Role is set at a namespace level | CluserRole is set at a cluster level
 metadata:
   name: cluster-read-role
-  namespace: local
+  namespace: java-demo # only used for Role
 rules:
   - apiGroups: [""]
     resources: ["configmaps", "pods", "services", "endpoints", "secrets"]
     verbs: ["get", "list", "watch"]
 ---
 apiVersion: rbac.authorization.k8s.io/v1
-kind: ClusterRoleBinding
+kind: RoleBinding
 metadata:
   name: cluster-read-rolebinding
-  namespace: local
+  # This only grants permissions within the "java-demo" namespace.
+  namespace: java-demo # Only used for Role
+# Represent the user
 subjects:
-  - kind: ServiceAccount
-    name: default
-    namespace: local
+  - kind: ServiceAccount #  users, groups or service accounts
+    name: default # default service account
+    namespace: java-demo
+# Represent the Role
 roleRef:
-  kind: ClusterRole
+  kind: Role
   name: cluster-read-role
-  apiGroup: rbac.authorization.k8s.io
+  apiGroup: rbac.authorization.k8s.io/
