@@ -527,12 +527,12 @@
           </from>
           <to>
             <image>docker.io/${jib.to.image.username}/${project.artifactId}</image>
-            <auth>
+            <!-- <auth>
               <username>${jib.to.auth.username}</username>
             </auth>
             <tags>
               <tag>${project.version}</tag>
-            </tags>
+            </tags> -->
           </to>
           <container>
             <creationTime>${maven.build.timestamp}</creationTime>

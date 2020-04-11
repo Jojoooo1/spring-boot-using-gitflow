@@ -26,13 +26,16 @@ profiles:
       kubeContext: minikube
       kubectl: # deploy using kubectl
         manifests:
-          - "k8s/local/**.yaml"
-
-    portForward:
-      - resourceType: service
-        resourceName: java-demo-backend-deployment
-        port: 8080
-        localPort: 8080
+          - "k8s/local/*.yaml"
+          - "k8s/local/database/*.yaml"
+          - "k8s/local/backend/*.yaml"
+    # Automatically expose service using --port-forward
+    # portForward:
+    #   - resourceType: Service
+    #     resourceName: java-demo-backend-service
+    #     namespace: java-demo
+    #     port: 8080
+    #     localPort: 8080
 
   # ### Staging environment ###
   # - name: staging-profile

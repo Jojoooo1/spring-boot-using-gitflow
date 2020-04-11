@@ -2,16 +2,11 @@
 current_dir=$PWD
 # Sets minikube local daemon
 eval $(minikube docker-env)
-#
+# Creates namespace
 kubectl create namespace java-demo
-# push image to minikube local daemon
-# mvn clean compile jib:dockerBuild -P local-k8s
+# Sets kubectl namespace
+sudo kubectl config set-context minikube --namespace java-demo
 #
-#
-# kubectl apply -f k8s/stages/local/db.yaml
-# kubectl apply -f k8s/stages/local/rbac.yaml
-# kubectl apply -f k8s/stages/local/app.yaml
-# kubectl rollout restart deployment java-demo-backend
-# cd k8s/stages/local
-# kubectl apply -f mysql-test.yaml
-# sleep 8
+cd ..
+# Start skaffold
+skaffold dev -v info --port-forward --rpc-http-port 44489 --filename skaffold.yaml -p minikube

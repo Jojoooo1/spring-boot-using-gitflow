@@ -27,6 +27,7 @@ spec:
         stage: local
 
     spec:
+      serviceAccountName: default # d. if you wanna set specific RBAC to the pod
       restartPolicy: Always # d.
       containers:
         - name: java-demo-backend
@@ -47,7 +48,7 @@ spec:
           #     path: /alive
           readinessProbe:
             periodSeconds: 10 # d.
-            failureThreshold: 1 # d.
+            failureThreshold: 3 # d.
             httpGet:
               port: 8080
               path: /actuator/health
