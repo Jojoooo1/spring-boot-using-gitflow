@@ -24,22 +24,21 @@
     <!-- Log app at INFO level -->
     <Root level="info">
       <AppenderRef ref="LogToConsole" />
-      <AppenderRef ref="LogToFile" />
     </Root>
 
     <!-- Log INFO for Spring framework  -->
-    <logger name="org.springframework">
-      <level value="info" />
+    <logger name="org.springframework" level="info">
+      <AppenderRef ref="LogToConsole" />
     </logger>
 
     <!-- Log INFO for hibernate -->
     <Logger name="org.hibernate" level="info" additivity="false">
-      <AppenderRef ref="Console" />
+      <AppenderRef ref="LogToConsole" />
     </Logger>
 
     <!-- Log all SQL statements -->
     <Logger name="org.hibernate.SQL" level="debug" additivity="false">
-      <AppenderRef ref="Console" />
+      <AppenderRef ref="LogToConsole" />
     </Logger>
 
   </Loggers>

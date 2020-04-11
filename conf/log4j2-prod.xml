@@ -29,6 +29,7 @@
 
     <!-- Log error SQL statements -->
     <Logger name="org.hibernate" level="error" additivity="false">
+      <AppenderRef ref="LogToConsole" />
       <AppenderRef ref="LogToFile" />
     </Logger>
   </Loggers>
