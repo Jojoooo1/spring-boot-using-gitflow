@@ -15,16 +15,12 @@ spring:
     hibernate:
       ddl-auto: create
   #Security
-  security:
-    user:
-      name: admin
-      password: password
+  # security:
+  #   user:
+  #     name: admin
+  #     password: password
       
 logging:
-  level:
-    root: info
-    org:
-      springframework: info
-      hibernate: info
-      
+  config: conf/log4j2-dev.xml
+  
 

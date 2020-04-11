@@ -3,7 +3,7 @@ kind: Deployment
 
 metadata:
   name: java-demo-backend-deployment
-  namespace: local
+  namespace: java-demo
 
   labels:
     app: java-demo-backend
@@ -27,6 +27,7 @@ spec:
         stage: local
 
     spec:
+      serviceAccountName: default # d. if you wanna set specific RBAC to the pod
       restartPolicy: Always # d.
       containers:
         - name: java-demo-backend
@@ -37,24 +38,26 @@ spec:
           #     value:
           ports:
             - containerPort: 8080
+          #
+          # Liveness and Readiness
+          # To use when restarting the app will recover it (heap, stack problems etc.)
           # livenessProbe:
+          #   initialDelaySeconds: 60
           #   httpGet:
           #     port: 8080
-          #     path: /actuator/info
-          #   initialDelaySeconds: 30
-          #   timeoutSeconds: 10
-          # readinessProbe:
-          #   httpGet:
-          #     port: service-port
-          #     path: /actuator/health
-          #   initialDelaySeconds: 20
-          #   timeoutSeconds: 5
-          # Sets in jib: -Xms512m, -Xmx1024m (becarefull with the compatibility)
-          # resources:
-          #   requests:
-          #     memory: "128Mi"
-          #     cpu: "250m"
-          #   limits:
-          #     memory: "256Mi"
-          #     cpu: "1000"
-      
+          #     path: /alive
+          readinessProbe:
+            periodSeconds: 10 # d.
+            failureThreshold: 3 # d.
+            httpGet:
+              port: 8080
+              path: /actuator/health
+          # 
+          # RESOURCES (Sets in jib: -Xms512m, -Xmx1024m (becarefull with the compatibility))
+          resources:
+            requests:
+              memory: "512Mi"
+              cpu: "1"
+            limits:
+              memory: "1024Mi"
+              cpu: "1"

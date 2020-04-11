@@ -3,7 +3,7 @@ kind: Deployment
 
 metadata:
   name: java-demo-database-deployment
-  namespace: local
+  namespace: java-demo
 
   labels:
     app: java-demo-database
@@ -19,10 +19,11 @@ spec:
       labels:
         app: java-demo-database
     spec:
+      serviceAccountName: default # d. if you wanna set specific RBAC to the pod
       containers:
         - name: java-demo-database
           image: mysql:latest
-          # imagePullPolicy: Never # d. Always
+          imagePullPolicy: IfNotPresent # d. Always
           env:
             - name: MYSQL_ROOT_PASSWORD
               value: "password"

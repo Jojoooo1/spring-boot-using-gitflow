@@ -1,0 +1,861 @@
+2020-04-11 17:50:26,717 WARN o.s.c.k.c.ConfigMapPropertySource [restartedMain] Can't read configMap with name: [carros] in namespace:[null]. Ignoring.
+io.fabric8.kubernetes.client.KubernetesClientException: Operation: [get]  for kind: [ConfigMap]  with name: [carros]  in namespace: [null]  failed.
+	at io.fabric8.kubernetes.client.KubernetesClientException.launderThrowable(KubernetesClientException.java:64) ~[kubernetes-client-4.4.1.jar:?]
+	at io.fabric8.kubernetes.client.KubernetesClientException.launderThrowable(KubernetesClientException.java:72) ~[kubernetes-client-4.4.1.jar:?]
+	at io.fabric8.kubernetes.client.dsl.base.BaseOperation.getMandatory(BaseOperation.java:229) ~[kubernetes-client-4.4.1.jar:?]
+	at io.fabric8.kubernetes.client.dsl.base.BaseOperation.get(BaseOperation.java:162) ~[kubernetes-client-4.4.1.jar:?]
+	at org.springframework.cloud.kubernetes.config.ConfigMapPropertySource.getData(ConfigMapPropertySource.java:94) ~[spring-cloud-kubernetes-config-1.1.2.RELEASE.jar:1.1.2.RELEASE]
+	at org.springframework.cloud.kubernetes.config.ConfigMapPropertySource.<init>(ConfigMapPropertySource.java:76) ~[spring-cloud-kubernetes-config-1.1.2.RELEASE.jar:1.1.2.RELEASE]
+	at org.springframework.cloud.kubernetes.config.ConfigMapPropertySourceLocator.getMapPropertySourceForSingleConfigMap(ConfigMapPropertySourceLocator.java:95) ~[spring-cloud-kubernetes-config-1.1.2.RELEASE.jar:1.1.2.RELEASE]
+	at org.springframework.cloud.kubernetes.config.ConfigMapPropertySourceLocator.lambda$locate$0(ConfigMapPropertySourceLocator.java:78) ~[spring-cloud-kubernetes-config-1.1.2.RELEASE.jar:1.1.2.RELEASE]
+	at java.util.ArrayList.forEach(ArrayList.java:1540) [?:?]
+	at org.springframework.cloud.kubernetes.config.ConfigMapPropertySourceLocator.locate(ConfigMapPropertySourceLocator.java:77) [spring-cloud-kubernetes-config-1.1.2.RELEASE.jar:1.1.2.RELEASE]
+	at org.springframework.cloud.bootstrap.config.PropertySourceLocator.locateCollection(PropertySourceLocator.java:52) [spring-cloud-context-2.2.2.RELEASE.jar:2.2.2.RELEASE]
+	at org.springframework.cloud.bootstrap.config.PropertySourceLocator.locateCollection(PropertySourceLocator.java:47) [spring-cloud-context-2.2.2.RELEASE.jar:2.2.2.RELEASE]
+	at org.springframework.cloud.bootstrap.config.PropertySourceBootstrapConfiguration.initialize(PropertySourceBootstrapConfiguration.java:97) [spring-cloud-context-2.2.2.RELEASE.jar:2.2.2.RELEASE]
+	at org.springframework.boot.SpringApplication.applyInitializers(SpringApplication.java:626) [spring-boot-2.2.5.RELEASE.jar:2.2.5.RELEASE]
+	at org.springframework.boot.SpringApplication.prepareContext(SpringApplication.java:370) [spring-boot-2.2.5.RELEASE.jar:2.2.5.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:314) [spring-boot-2.2.5.RELEASE.jar:2.2.5.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1226) [spring-boot-2.2.5.RELEASE.jar:2.2.5.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1215) [spring-boot-2.2.5.RELEASE.jar:2.2.5.RELEASE]
+	at com.carros.CarrosApplication.main(CarrosApplication.java:20) [classes/:?]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:?]
+	at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?]
+	at java.lang.reflect.Method.invoke(Method.java:566) ~[?:?]
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49) [spring-boot-devtools-2.2.5.RELEASE.jar:2.2.5.RELEASE]
+Caused by: java.net.UnknownHostException: kubernetes.default.svc: Name or service not known
+	at java.net.Inet6AddressImpl.lookupAllHostAddr(Native Method) ~[?:?]
+	at java.net.InetAddress$PlatformNameService.lookupAllHostAddr(InetAddress.java:929) ~[?:?]
+	at java.net.InetAddress.getAddressesFromNameService(InetAddress.java:1515) ~[?:?]
+	at java.net.InetAddress$NameServiceAddresses.get(InetAddress.java:848) ~[?:?]
+	at java.net.InetAddress.getAllByName0(InetAddress.java:1505) ~[?:?]
+	at java.net.InetAddress.getAllByName(InetAddress.java:1364) ~[?:?]
+	at java.net.InetAddress.getAllByName(InetAddress.java:1298) ~[?:?]
+	at okhttp3.Dns.lambda$static$0(Dns.java:39) ~[okhttp-3.14.7.jar:?]
+	at okhttp3.internal.connection.RouteSelector.resetNextInetSocketAddress(RouteSelector.java:171) ~[okhttp-3.14.7.jar:?]
+	at okhttp3.internal.connection.RouteSelector.nextProxy(RouteSelector.java:135) ~[okhttp-3.14.7.jar:?]
+	at okhttp3.internal.connection.RouteSelector.next(RouteSelector.java:84) ~[okhttp-3.14.7.jar:?]
+	at okhttp3.internal.connection.ExchangeFinder.findConnection(ExchangeFinder.java:187) ~[okhttp-3.14.7.jar:?]
+	at okhttp3.internal.connection.ExchangeFinder.findHealthyConnection(ExchangeFinder.java:108) ~[okhttp-3.14.7.jar:?]
+	at okhttp3.internal.connection.ExchangeFinder.find(ExchangeFinder.java:88) ~[okhttp-3.14.7.jar:?]
+	at okhttp3.internal.connection.Transmitter.newExchange(Transmitter.java:169) ~[okhttp-3.14.7.jar:?]
+	at okhttp3.internal.connection.ConnectInterceptor.intercept(ConnectInterceptor.java:41) ~[okhttp-3.14.7.jar:?]
+	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.java:142) ~[okhttp-3.14.7.jar:?]
+	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.java:117) ~[okhttp-3.14.7.jar:?]
+	at okhttp3.internal.cache.CacheInterceptor.intercept(CacheInterceptor.java:94) ~[okhttp-3.14.7.jar:?]
+	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.java:142) ~[okhttp-3.14.7.jar:?]
+	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.java:117) ~[okhttp-3.14.7.jar:?]
+	at okhttp3.internal.http.BridgeInterceptor.intercept(BridgeInterceptor.java:93) ~[okhttp-3.14.7.jar:?]
+	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.java:142) ~[okhttp-3.14.7.jar:?]
+	at okhttp3.internal.http.RetryAndFollowUpInterceptor.intercept(RetryAndFollowUpInterceptor.java:88) ~[okhttp-3.14.7.jar:?]
+	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.java:142) ~[okhttp-3.14.7.jar:?]
+	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.java:117) ~[okhttp-3.14.7.jar:?]
+	at io.fabric8.kubernetes.client.utils.BackwardsCompatibilityInterceptor.intercept(BackwardsCompatibilityInterceptor.java:119) ~[kubernetes-client-4.4.1.jar:?]
+	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.java:142) ~[okhttp-3.14.7.jar:?]
+	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.java:117) ~[okhttp-3.14.7.jar:?]
+	at io.fabric8.kubernetes.client.utils.ImpersonatorInterceptor.intercept(ImpersonatorInterceptor.java:68) ~[kubernetes-client-4.4.1.jar:?]
+	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.java:142) ~[okhttp-3.14.7.jar:?]
+	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.java:117) ~[okhttp-3.14.7.jar:?]
+	at io.fabric8.kubernetes.client.utils.HttpClientUtils.lambda$createHttpClient$3(HttpClientUtils.java:112) ~[kubernetes-client-4.4.1.jar:?]
+	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.java:142) ~[okhttp-3.14.7.jar:?]
+	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.java:117) ~[okhttp-3.14.7.jar:?]
+	at okhttp3.RealCall.getResponseWithInterceptorChain(RealCall.java:229) ~[okhttp-3.14.7.jar:?]
+	at okhttp3.RealCall.execute(RealCall.java:81) ~[okhttp-3.14.7.jar:?]
+	at io.fabric8.kubernetes.client.dsl.base.OperationSupport.handleResponse(OperationSupport.java:404) ~[kubernetes-client-4.4.1.jar:?]
+	at io.fabric8.kubernetes.client.dsl.base.OperationSupport.handleResponse(OperationSupport.java:365) ~[kubernetes-client-4.4.1.jar:?]
+	at io.fabric8.kubernetes.client.dsl.base.OperationSupport.handleGet(OperationSupport.java:330) ~[kubernetes-client-4.4.1.jar:?]
+	at io.fabric8.kubernetes.client.dsl.base.OperationSupport.handleGet(OperationSupport.java:311) ~[kubernetes-client-4.4.1.jar:?]
+	at io.fabric8.kubernetes.client.dsl.base.BaseOperation.handleGet(BaseOperation.java:810) ~[kubernetes-client-4.4.1.jar:?]
+	at io.fabric8.kubernetes.client.dsl.base.BaseOperation.getMandatory(BaseOperation.java:218) ~[kubernetes-client-4.4.1.jar:?]
+	... 21 more
+2020-04-11 17:50:26,721 INFO o.s.c.b.c.PropertySourceBootstrapConfiguration [restartedMain] Located property source: [BootstrapPropertySource {name='bootstrapProperties-configmap.carros.null'}]
+2020-04-11 17:50:26,742 INFO o.s.b.SpringApplication [restartedMain] The following profiles are active: dev
+2020-04-11 17:50:27,436 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2020-04-11 17:50:27,483 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 42ms. Found 3 JPA repository interfaces.
+2020-04-11 17:50:27,565 WARN o.s.b.a.e.EndpointId [restartedMain] Endpoint ID 'service-registry' contains invalid characters, please migrate to a valid format.
+2020-04-11 17:50:27,660 INFO o.s.c.c.s.GenericScope [restartedMain] BeanFactory id=c906e0ac-5af1-3180-8054-e971b7055c87
+2020-04-11 17:50:27,775 INFO o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker [restartedMain] Bean 'org.springframework.security.config.annotation.configuration.ObjectPostProcessorConfiguration' of type [org.springframework.security.config.annotation.configuration.ObjectPostProcessorConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-04-11 17:50:27,778 INFO o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker [restartedMain] Bean 'objectPostProcessor' of type [org.springframework.security.config.annotation.configuration.AutowireBeanFactoryObjectPostProcessor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-04-11 17:50:27,780 INFO o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker [restartedMain] Bean 'org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler@64f4b587' of type [org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-04-11 17:50:27,783 INFO o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker [restartedMain] Bean 'org.springframework.security.config.annotation.method.configuration.GlobalMethodSecurityConfiguration' of type [org.springframework.security.config.annotation.method.configuration.GlobalMethodSecurityConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-04-11 17:50:27,786 INFO o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker [restartedMain] Bean 'methodSecurityMetadataSource' of type [org.springframework.security.access.method.DelegatingMethodSecurityMetadataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-04-11 17:50:28,140 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 8080 (http)
+2020-04-11 17:50:28,146 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
+2020-04-11 17:50:28,147 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting service [Tomcat]
+2020-04-11 17:50:28,148 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/9.0.31]
+2020-04-11 17:50:28,215 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
+2020-04-11 17:50:28,215 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 1464 ms
+2020-04-11 17:50:28,670 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-1 - Starting...
+2020-04-11 17:50:28,755 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-1 - Start completed.
+2020-04-11 17:50:29,641 INFO o.s.o.j.AbstractEntityManagerFactoryBean [restartedMain] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2020-04-11 17:50:29,664 INFO o.s.b.d.a.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
+2020-04-11 17:50:29,725 WARN o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration [restartedMain] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-04-11 17:50:30,283 INFO o.s.b.a.e.w.EndpointLinksResolver [restartedMain] Exposing 2 endpoint(s) beneath base path '/actuator'
+2020-04-11 17:50:30,344 INFO s.d.s.w.PropertySourcedRequestMappingHandlerMapping [restartedMain] Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2020-04-11 17:50:30,446 INFO o.s.s.w.DefaultSecurityFilterChain [restartedMain] Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@5ea8327c, org.springframework.security.web.context.SecurityContextPersistenceFilter@19773886, org.springframework.security.web.header.HeaderWriterFilter@194b21aa, com.carros.api.infra.cors.CorsConfig@c754363, org.springframework.web.filter.CorsFilter@2c153a80, org.springframework.security.web.authentication.logout.LogoutFilter@1a408ccd, com.carros.api.infra.security.jwt.JwtAuthenticationFilter@17643027, com.carros.api.infra.security.jwt.JwtAuthorizationFilter@840db65, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@9a73bed, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@47cb3636, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@2e88ef55, org.springframework.security.web.session.SessionManagementFilter@1132a283, org.springframework.security.web.access.ExceptionTranslationFilter@45a7c221, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@7e94f91d]
+2020-04-11 17:50:30,547 INFO o.s.s.c.ExecutorConfigurationSupport [restartedMain] Initializing ExecutorService 'applicationTaskExecutor'
+2020-04-11 17:50:30,860 INFO s.d.s.w.p.DocumentationPluginsBootstrapper [restartedMain] Context refreshed
+2020-04-11 17:50:30,870 INFO s.d.s.w.p.DocumentationPluginsBootstrapper [restartedMain] Found 1 custom documentation plugin(s)
+2020-04-11 17:50:30,928 INFO s.d.s.w.s.ApiListingReferenceScanner [restartedMain] Scanning for api listing references
+2020-04-11 17:50:31,069 INFO s.d.s.w.r.o.CachingOperationNameGenerator [restartedMain] Generating unique operation named: getUsingGET_1
+2020-04-11 17:50:31,089 INFO c.c.u.PropertyLogger [restartedMain] ====== Environment and configuration ======
+2020-04-11 17:50:31,090 INFO c.c.u.PropertyLogger [restartedMain] Active profiles: [dev]
+2020-04-11 17:50:31,092 INFO c.c.u.PropertyLogger [restartedMain] ANDROID_AVD_HOME: /mnt/sdb/Android/.android/avd
+2020-04-11 17:50:31,092 INFO c.c.u.PropertyLogger [restartedMain] ANDROID_EMULATOR_HOME: /mnt/sdb/Android/.android
+2020-04-11 17:50:31,092 INFO c.c.u.PropertyLogger [restartedMain] ANDROID_HOME: /mnt/sdb/Android/Sdk
+2020-04-11 17:50:31,092 INFO c.c.u.PropertyLogger [restartedMain] ANDROID_SDK_HOME: /mnt/sdb/Android
+2020-04-11 17:50:31,093 INFO c.c.u.PropertyLogger [restartedMain] ANDROID_SDK_ROOT: /mnt/sdb/Android/Sdk
+2020-04-11 17:50:31,093 INFO c.c.u.PropertyLogger [restartedMain] BUNDLER_EDITOR: subl  >/dev/null 2>&1
+2020-04-11 17:50:31,093 INFO c.c.u.PropertyLogger [restartedMain] CLUTTER_IM_MODULE: xim
+2020-04-11 17:50:31,093 INFO c.c.u.PropertyLogger [restartedMain] COLORTERM: truecolor
+2020-04-11 17:50:31,093 INFO c.c.u.PropertyLogger [restartedMain] CONDA_EXE: /home/jonathan/anaconda3/bin/conda
+2020-04-11 17:50:31,093 INFO c.c.u.PropertyLogger [restartedMain] CONDA_PYTHON_EXE: /home/jonathan/anaconda3/bin/python
+2020-04-11 17:50:31,094 INFO c.c.u.PropertyLogger [restartedMain] CONDA_SHLVL: 0
+2020-04-11 17:50:31,094 INFO c.c.u.PropertyLogger [restartedMain] CUDA_HOME: /usr/local/cuda
+2020-04-11 17:50:31,094 INFO c.c.u.PropertyLogger [restartedMain] DBUS_SESSION_BUS_ADDRESS: unix:path=/run/user/1000/bus
+2020-04-11 17:50:31,094 INFO c.c.u.PropertyLogger [restartedMain] DEFAULTS_PATH: /usr/share/gconf/ubuntu.default.path
+2020-04-11 17:50:31,094 INFO c.c.u.PropertyLogger [restartedMain] DESKTOP_SESSION: ubuntu
+2020-04-11 17:50:31,094 INFO c.c.u.PropertyLogger [restartedMain] DISPLAY: :1
+2020-04-11 17:50:31,095 INFO c.c.u.PropertyLogger [restartedMain] DOCKER_CERT_PATH: /home/jonathan/.minikube/certs
+2020-04-11 17:50:31,095 INFO c.c.u.PropertyLogger [restartedMain] DOCKER_HOST: tcp://172.17.0.2:2376
+2020-04-11 17:50:31,095 INFO c.c.u.PropertyLogger [restartedMain] DOCKER_TLS_VERIFY: 1
+2020-04-11 17:50:31,095 INFO c.c.u.PropertyLogger [restartedMain] GDMSESSION: ubuntu
+2020-04-11 17:50:31,095 INFO c.c.u.PropertyLogger [restartedMain] GJS_DEBUG_OUTPUT: stderr
+2020-04-11 17:50:31,095 INFO c.c.u.PropertyLogger [restartedMain] GJS_DEBUG_TOPICS: JS ERROR;JS LOG
+2020-04-11 17:50:31,096 INFO c.c.u.PropertyLogger [restartedMain] GNOME_DESKTOP_SESSION_ID: this-is-deprecated
+2020-04-11 17:50:31,096 INFO c.c.u.PropertyLogger [restartedMain] GNOME_SHELL_SESSION_MODE: ubuntu
+2020-04-11 17:50:31,096 INFO c.c.u.PropertyLogger [restartedMain] GNOME_TERMINAL_SCREEN: /org/gnome/Terminal/screen/f2fbbb85_b113_4777_a546_eb402c0393ee
+2020-04-11 17:50:31,096 INFO c.c.u.PropertyLogger [restartedMain] GNOME_TERMINAL_SERVICE: :1.732
+2020-04-11 17:50:31,096 INFO c.c.u.PropertyLogger [restartedMain] GOOGLE_APPLICATION_CREDENTIALS: /home/jonathan/Bureau/machine_learning/google-key.json
+2020-04-11 17:50:31,096 INFO c.c.u.PropertyLogger [restartedMain] GOPATH: /home/jonathan/go
+2020-04-11 17:50:31,097 INFO c.c.u.PropertyLogger [restartedMain] GPG_AGENT_INFO: /run/user/1000/gnupg/S.gpg-agent:0:1
+2020-04-11 17:50:31,097 INFO c.c.u.PropertyLogger [restartedMain] GTK2_MODULES: overlay-scrollbar
+2020-04-11 17:50:31,097 INFO c.c.u.PropertyLogger [restartedMain] GTK_IM_MODULE: ibus
+2020-04-11 17:50:31,097 INFO c.c.u.PropertyLogger [restartedMain] GTK_MODULES: gail:atk-bridge
+2020-04-11 17:50:31,098 INFO c.c.u.PropertyLogger [restartedMain] HOME: /home/jonathan
+2020-04-11 17:50:31,098 INFO c.c.u.PropertyLogger [restartedMain] HOMEBREW_CELLAR: /home/linuxbrew/.linuxbrew/Cellar
+2020-04-11 17:50:31,098 INFO c.c.u.PropertyLogger [restartedMain] HOMEBREW_PREFIX: /home/linuxbrew/.linuxbrew
+2020-04-11 17:50:31,098 INFO c.c.u.PropertyLogger [restartedMain] HOMEBREW_REPOSITORY: /home/linuxbrew/.linuxbrew/Homebrew
+2020-04-11 17:50:31,098 INFO c.c.u.PropertyLogger [restartedMain] IM_CONFIG_PHASE: 2
+2020-04-11 17:50:31,098 INFO c.c.u.PropertyLogger [restartedMain] INFOPATH: /home/linuxbrew/.linuxbrew/share/info
+2020-04-11 17:50:31,099 INFO c.c.u.PropertyLogger [restartedMain] JAVA_HOME: /usr/lib/jvm/java-11-openjdk-amd64
+2020-04-11 17:50:31,099 INFO c.c.u.PropertyLogger [restartedMain] LANG: en_US.UTF-8
+2020-04-11 17:50:31,099 INFO c.c.u.PropertyLogger [restartedMain] LC_ALL: en_US.UTF-8
+2020-04-11 17:50:31,099 INFO c.c.u.PropertyLogger [restartedMain] LD_LIBRARY_PATH: :/usr/local/cuda/lib64:/usr/local/cuda/extras/CUPTI/lib64
+2020-04-11 17:50:31,099 INFO c.c.u.PropertyLogger [restartedMain] LESS: -R
+2020-04-11 17:50:31,100 INFO c.c.u.PropertyLogger [restartedMain] LIBVIRT_DEFAULT_URI: qemu:///system
+2020-04-11 17:50:31,100 INFO c.c.u.PropertyLogger [restartedMain] LOGNAME: jonathan
+2020-04-11 17:50:31,100 INFO c.c.u.PropertyLogger [restartedMain] LSCOLORS: Gxfxcxdxbxegedabagacad
+2020-04-11 17:50:31,100 INFO c.c.u.PropertyLogger [restartedMain] LS_COLORS: rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:
+2020-04-11 17:50:31,101 INFO c.c.u.PropertyLogger [restartedMain] MANDATORY_PATH: /usr/share/gconf/ubuntu.mandatory.path
+2020-04-11 17:50:31,101 INFO c.c.u.PropertyLogger [restartedMain] MANPATH: /home/jonathan/.nvm/versions/node/v12.16.1/share/man:/home/linuxbrew/.linuxbrew/share/man:
+2020-04-11 17:50:31,101 INFO c.c.u.PropertyLogger [restartedMain] MAVEN_CMD_LINE_ARGS:  spring-boot:run
+2020-04-11 17:50:31,101 INFO c.c.u.PropertyLogger [restartedMain] MAVEN_PROJECTBASEDIR: /mnt/sdb/Spring/projects/1.references/1.2.spring-boot-using-gitflow
+2020-04-11 17:50:31,101 INFO c.c.u.PropertyLogger [restartedMain] MINIKUBE_ACTIVE_DOCKERD: minikube
+2020-04-11 17:50:31,102 INFO c.c.u.PropertyLogger [restartedMain] NVM_BIN: /home/jonathan/.nvm/versions/node/v12.16.1/bin
+2020-04-11 17:50:31,102 INFO c.c.u.PropertyLogger [restartedMain] NVM_CD_FLAGS: -q
+2020-04-11 17:50:31,102 INFO c.c.u.PropertyLogger [restartedMain] NVM_DIR: /home/jonathan/.nvm
+2020-04-11 17:50:31,102 INFO c.c.u.PropertyLogger [restartedMain] OLDPWD: /mnt/sdb/Spring/projects/1.references/1.2.spring-boot-using-gitflow
+2020-04-11 17:50:31,103 INFO c.c.u.PropertyLogger [restartedMain] PAGER: less
+2020-04-11 17:50:31,103 INFO c.c.u.PropertyLogger [restartedMain] PATH: /home/jonathan/anaconda3/condabin:/home/jonathan/.rbenv/bin:./bin:/home/jonathan/.rbenv/shims:/home/jonathan/.rbenv/bin:/home/jonathan/.nvm/versions/node/v12.16.1/bin:/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:/home/jonathan/bin:/home/jonathan/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/jonathan/.rvm/bin:/usr/local/go/bin:/usr/local/bin/hyperledger/bin_1-4-1:/home/jonathan/.nvm/versions/node/v8.11.3/bin/prettier:/usr/local/bin/robomongo/bin:/usr/local/go/bin:/home/jonathan/go/bin:/usr/local/bin/burrow_0.23.1_Linux_x86_64:/mnt/sdb/Android/flutter/bin:/mnt/sdb/Android/flutter/bin/cache/dart-sdk/bin:/mnt/sdb/Android/Sdk/emulator:/mnt/sdb/Android/Sdk/tools:/mnt/sdb/Android/Sdk/tools/bin:/mnt/sdb/Android/Sdk/platform-tools:/usr/local/bin/tflint:/usr/local/cuda/bin:/usr/local/bin/chromedriver
+2020-04-11 17:50:31,103 INFO c.c.u.PropertyLogger [restartedMain] PID: 19117
+2020-04-11 17:50:31,103 INFO c.c.u.PropertyLogger [restartedMain] PROJECT_ID: maching-learning-235015
+2020-04-11 17:50:31,104 INFO c.c.u.PropertyLogger [restartedMain] PWD: /mnt/sdb/Spring/projects/1.references/1.2.spring-boot-using-gitflow
+2020-04-11 17:50:31,104 INFO c.c.u.PropertyLogger [restartedMain] QT4_IM_MODULE: xim
+2020-04-11 17:50:31,104 INFO c.c.u.PropertyLogger [restartedMain] QT_ACCESSIBILITY: 1
+2020-04-11 17:50:31,104 INFO c.c.u.PropertyLogger [restartedMain] QT_IM_MODULE: ibus
+2020-04-11 17:50:31,104 INFO c.c.u.PropertyLogger [restartedMain] QT_QPA_PLATFORMTHEME: appmenu-qt5
+2020-04-11 17:50:31,105 INFO c.c.u.PropertyLogger [restartedMain] RBENV_SHELL: zsh
+2020-04-11 17:50:31,105 INFO c.c.u.PropertyLogger [restartedMain] SESSION_MANAGER: local/jonathan-xps-15-9560:@/tmp/.ICE-unix/3016,unix/jonathan-xps-15-9560:/tmp/.ICE-unix/3016
+2020-04-11 17:50:31,105 INFO c.c.u.PropertyLogger [restartedMain] SHELL: /usr/bin/zsh
+2020-04-11 17:50:31,105 INFO c.c.u.PropertyLogger [restartedMain] SHLVL: 1
+2020-04-11 17:50:31,105 INFO c.c.u.PropertyLogger [restartedMain] SSH_AGENT_PID: 3257
+2020-04-11 17:50:31,106 INFO c.c.u.PropertyLogger [restartedMain] SSH_AUTH_SOCK: /run/user/1000/keyring/ssh
+2020-04-11 17:50:31,106 INFO c.c.u.PropertyLogger [restartedMain] S_COLORS: auto
+2020-04-11 17:50:31,106 INFO c.c.u.PropertyLogger [restartedMain] TERM: xterm-256color
+2020-04-11 17:50:31,106 INFO c.c.u.PropertyLogger [restartedMain] TEXTDOMAIN: im-config
+2020-04-11 17:50:31,106 INFO c.c.u.PropertyLogger [restartedMain] TEXTDOMAINDIR: /usr/share/locale/
+2020-04-11 17:50:31,107 INFO c.c.u.PropertyLogger [restartedMain] USER: jonathan
+2020-04-11 17:50:31,107 INFO c.c.u.PropertyLogger [restartedMain] USERNAME: jonathan
+2020-04-11 17:50:31,107 INFO c.c.u.PropertyLogger [restartedMain] VTE_VERSION: 5202
+2020-04-11 17:50:31,107 INFO c.c.u.PropertyLogger [restartedMain] WINDOWPATH: 2
+2020-04-11 17:50:31,107 INFO c.c.u.PropertyLogger [restartedMain] XAUTHORITY: /run/user/1000/gdm/Xauthority
+2020-04-11 17:50:31,108 INFO c.c.u.PropertyLogger [restartedMain] XDG_CONFIG_DIRS: /etc/xdg/xdg-ubuntu:/etc/xdg
+2020-04-11 17:50:31,108 INFO c.c.u.PropertyLogger [restartedMain] XDG_CURRENT_DESKTOP: ubuntu:GNOME
+2020-04-11 17:50:31,108 INFO c.c.u.PropertyLogger [restartedMain] XDG_DATA_DIRS: /usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop
+2020-04-11 17:50:31,108 INFO c.c.u.PropertyLogger [restartedMain] XDG_MENU_PREFIX: gnome-
+2020-04-11 17:50:31,108 INFO c.c.u.PropertyLogger [restartedMain] XDG_RUNTIME_DIR: /run/user/1000
+2020-04-11 17:50:31,108 INFO c.c.u.PropertyLogger [restartedMain] XDG_SEAT: seat0
+2020-04-11 17:50:31,109 INFO c.c.u.PropertyLogger [restartedMain] XDG_SESSION_DESKTOP: ubuntu
+2020-04-11 17:50:31,109 INFO c.c.u.PropertyLogger [restartedMain] XDG_SESSION_ID: 2
+2020-04-11 17:50:31,109 INFO c.c.u.PropertyLogger [restartedMain] XDG_SESSION_TYPE: x11
+2020-04-11 17:50:31,109 INFO c.c.u.PropertyLogger [restartedMain] XDG_VTNR: 2
+2020-04-11 17:50:31,109 INFO c.c.u.PropertyLogger [restartedMain] XMODIFIERS: @im=ibus
+2020-04-11 17:50:31,110 INFO c.c.u.PropertyLogger [restartedMain] _: /usr/bin/mvn
+2020-04-11 17:50:31,110 INFO c.c.u.PropertyLogger [restartedMain] _CE_CONDA: 
+2020-04-11 17:50:31,111 INFO c.c.u.PropertyLogger [restartedMain] _CE_M: 
+2020-04-11 17:50:31,111 INFO c.c.u.PropertyLogger [restartedMain] awt.toolkit: sun.awt.X11.XToolkit
+2020-04-11 17:50:31,111 INFO c.c.u.PropertyLogger [restartedMain] catalina.base: /tmp/tomcat.6502065421870710563.8080
+2020-04-11 17:50:31,112 INFO c.c.u.PropertyLogger [restartedMain] catalina.home: /tmp/tomcat.6502065421870710563.8080
+2020-04-11 17:50:31,112 INFO c.c.u.PropertyLogger [restartedMain] catalina.useNaming: false
+2020-04-11 17:50:31,112 INFO c.c.u.PropertyLogger [restartedMain] com.zaxxer.hikari.pool_number: 1
+2020-04-11 17:50:31,112 INFO c.c.u.PropertyLogger [restartedMain] export: 
+2020-04-11 17:50:31,112 INFO c.c.u.PropertyLogger [restartedMain] file.encoding: UTF-8
+2020-04-11 17:50:31,112 INFO c.c.u.PropertyLogger [restartedMain] file.separator: /
+2020-04-11 17:50:31,113 INFO c.c.u.PropertyLogger [restartedMain] java.awt.graphicsenv: sun.awt.X11GraphicsEnvironment
+2020-04-11 17:50:31,113 INFO c.c.u.PropertyLogger [restartedMain] java.awt.headless: true
+2020-04-11 17:50:31,113 INFO c.c.u.PropertyLogger [restartedMain] java.awt.printerjob: sun.print.PSPrinterJob
+2020-04-11 17:50:31,113 INFO c.c.u.PropertyLogger [restartedMain] java.class.version: 55.0
+2020-04-11 17:50:31,113 INFO c.c.u.PropertyLogger [restartedMain] java.home: /usr/lib/jvm/java-11-openjdk-amd64
+2020-04-11 17:50:31,113 INFO c.c.u.PropertyLogger [restartedMain] java.io.tmpdir: /tmp
+2020-04-11 17:50:31,113 INFO c.c.u.PropertyLogger [restartedMain] java.library.path: :/usr/local/cuda/lib64:/usr/local/cuda/extras/CUPTI/lib64:/usr/java/packages/lib:/usr/lib/x86_64-linux-gnu/jni:/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu:/usr/lib/jni:/lib:/usr/lib
+2020-04-11 17:50:31,114 INFO c.c.u.PropertyLogger [restartedMain] java.runtime.name: OpenJDK Runtime Environment
+2020-04-11 17:50:31,114 INFO c.c.u.PropertyLogger [restartedMain] java.runtime.version: 11.0.6+10-post-Ubuntu-1ubuntu118.04.1
+2020-04-11 17:50:31,114 INFO c.c.u.PropertyLogger [restartedMain] java.specification.name: Java Platform API Specification
+2020-04-11 17:50:31,114 INFO c.c.u.PropertyLogger [restartedMain] java.specification.vendor: Oracle Corporation
+2020-04-11 17:50:31,114 INFO c.c.u.PropertyLogger [restartedMain] java.specification.version: 11
+2020-04-11 17:50:31,114 INFO c.c.u.PropertyLogger [restartedMain] java.vendor: Ubuntu
+2020-04-11 17:50:31,115 INFO c.c.u.PropertyLogger [restartedMain] java.vendor.url: https://ubuntu.com/
+2020-04-11 17:50:31,115 INFO c.c.u.PropertyLogger [restartedMain] java.vendor.url.bug: https://bugs.launchpad.net/ubuntu/+source/openjdk-lts
+2020-04-11 17:50:31,115 INFO c.c.u.PropertyLogger [restartedMain] java.version: 11.0.6
+2020-04-11 17:50:31,115 INFO c.c.u.PropertyLogger [restartedMain] java.version.date: 2020-01-14
+2020-04-11 17:50:31,115 INFO c.c.u.PropertyLogger [restartedMain] java.vm.compressedOopsMode: Zero based
+2020-04-11 17:50:31,116 INFO c.c.u.PropertyLogger [restartedMain] java.vm.info: mixed mode, sharing
+2020-04-11 17:50:31,116 INFO c.c.u.PropertyLogger [restartedMain] java.vm.name: OpenJDK 64-Bit Server VM
+2020-04-11 17:50:31,116 INFO c.c.u.PropertyLogger [restartedMain] java.vm.specification.name: Java Virtual Machine Specification
+2020-04-11 17:50:31,116 INFO c.c.u.PropertyLogger [restartedMain] java.vm.specification.vendor: Oracle Corporation
+2020-04-11 17:50:31,117 INFO c.c.u.PropertyLogger [restartedMain] java.vm.specification.version: 11
+2020-04-11 17:50:31,117 INFO c.c.u.PropertyLogger [restartedMain] java.vm.vendor: Ubuntu
+2020-04-11 17:50:31,117 INFO c.c.u.PropertyLogger [restartedMain] java.vm.version: 11.0.6+10-post-Ubuntu-1ubuntu118.04.1
+2020-04-11 17:50:31,117 INFO c.c.u.PropertyLogger [restartedMain] jdk.debug: release
+2020-04-11 17:50:31,118 INFO c.c.u.PropertyLogger [restartedMain] line.separator: 
+
+2020-04-11 17:50:31,119 INFO c.c.u.PropertyLogger [restartedMain] logging.config: conf/log4j2-dev.xml
+2020-04-11 17:50:31,119 INFO c.c.u.PropertyLogger [restartedMain] org.apache.logging.log4j.assignedSequences: 2494
+2020-04-11 17:50:31,119 INFO c.c.u.PropertyLogger [restartedMain] os.arch: amd64
+2020-04-11 17:50:31,120 INFO c.c.u.PropertyLogger [restartedMain] os.name: Linux
+2020-04-11 17:50:31,120 INFO c.c.u.PropertyLogger [restartedMain] os.version: 4.15.0-91-generic
+2020-04-11 17:50:31,120 INFO c.c.u.PropertyLogger [restartedMain] path.separator: :
+2020-04-11 17:50:31,120 INFO c.c.u.PropertyLogger [restartedMain] server.error.include-stacktrace: ALWAYS
+2020-04-11 17:50:31,121 INFO c.c.u.PropertyLogger [restartedMain] server.servlet.jsp.init-parameters.development: true
+2020-04-11 17:50:31,121 INFO c.c.u.PropertyLogger [restartedMain] server.servlet.session.persistent: true
+2020-04-11 17:50:31,121 INFO c.c.u.PropertyLogger [restartedMain] spring.application.name: carros
+2020-04-11 17:50:31,121 INFO c.c.u.PropertyLogger [restartedMain] spring.beaninfo.ignore: true
+2020-04-11 17:50:31,121 INFO c.c.u.PropertyLogger [restartedMain] spring.cloud.client.hostname: 192.168.0.3
+2020-04-11 17:50:31,122 INFO c.c.u.PropertyLogger [restartedMain] spring.cloud.client.ip-address: 192.168.0.3
+2020-04-11 17:50:31,122 INFO c.c.u.PropertyLogger [restartedMain] spring.datasource.url: jdbc:mysql://localhost:3306/database?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
+2020-04-11 17:50:31,122 INFO c.c.u.PropertyLogger [restartedMain] spring.datasource.username: jonathan
+2020-04-11 17:50:31,122 INFO c.c.u.PropertyLogger [restartedMain] spring.freemarker.cache: false
+2020-04-11 17:50:31,122 INFO c.c.u.PropertyLogger [restartedMain] spring.groovy.template.cache: false
+2020-04-11 17:50:31,123 INFO c.c.u.PropertyLogger [restartedMain] spring.h2.console.enabled: true
+2020-04-11 17:50:31,123 INFO c.c.u.PropertyLogger [restartedMain] spring.jpa.hibernate.ddl-auto: create
+2020-04-11 17:50:31,123 INFO c.c.u.PropertyLogger [restartedMain] spring.jpa.properties.hibernate.dialect: org.hibernate.dialect.MySQL55Dialect
+2020-04-11 17:50:31,123 INFO c.c.u.PropertyLogger [restartedMain] spring.jpa.properties.hibernate.format_sql: true
+2020-04-11 17:50:31,123 INFO c.c.u.PropertyLogger [restartedMain] spring.jpa.properties.hibernate.show_sql: true
+2020-04-11 17:50:31,124 INFO c.c.u.PropertyLogger [restartedMain] spring.mustache.cache: false
+2020-04-11 17:50:31,124 INFO c.c.u.PropertyLogger [restartedMain] spring.mvc.log-resolved-exception: true
+2020-04-11 17:50:31,124 INFO c.c.u.PropertyLogger [restartedMain] spring.profiles.active: dev
+2020-04-11 17:50:31,124 INFO c.c.u.PropertyLogger [restartedMain] spring.reactor.debug: true
+2020-04-11 17:50:31,125 INFO c.c.u.PropertyLogger [restartedMain] spring.resources.cache.period: 0
+2020-04-11 17:50:31,125 INFO c.c.u.PropertyLogger [restartedMain] spring.resources.chain.cache: false
+2020-04-11 17:50:31,125 INFO c.c.u.PropertyLogger [restartedMain] spring.security.user.name: admin
+2020-04-11 17:50:31,125 INFO c.c.u.PropertyLogger [restartedMain] spring.template.provider.cache: false
+2020-04-11 17:50:31,126 INFO c.c.u.PropertyLogger [restartedMain] spring.thymeleaf.cache: false
+2020-04-11 17:50:31,126 INFO c.c.u.PropertyLogger [restartedMain] sun.arch.data.model: 64
+2020-04-11 17:50:31,126 INFO c.c.u.PropertyLogger [restartedMain] sun.boot.library.path: /usr/lib/jvm/java-11-openjdk-amd64/lib
+2020-04-11 17:50:31,126 INFO c.c.u.PropertyLogger [restartedMain] sun.cpu.endian: little
+2020-04-11 17:50:31,126 INFO c.c.u.PropertyLogger [restartedMain] sun.cpu.isalist: 
+2020-04-11 17:50:31,126 INFO c.c.u.PropertyLogger [restartedMain] sun.desktop: gnome
+2020-04-11 17:50:31,127 INFO c.c.u.PropertyLogger [restartedMain] sun.io.unicode.encoding: UnicodeLittle
+2020-04-11 17:50:31,127 INFO c.c.u.PropertyLogger [restartedMain] sun.java.command: com.carros.CarrosApplication
+2020-04-11 17:50:31,127 INFO c.c.u.PropertyLogger [restartedMain] sun.java.launcher: SUN_STANDARD
+2020-04-11 17:50:31,127 INFO c.c.u.PropertyLogger [restartedMain] sun.jnu.encoding: UTF-8
+2020-04-11 17:50:31,127 INFO c.c.u.PropertyLogger [restartedMain] sun.management.compiler: HotSpot 64-Bit Tiered Compilers
+2020-04-11 17:50:31,127 INFO c.c.u.PropertyLogger [restartedMain] sun.os.patch.level: unknown
+2020-04-11 17:50:31,128 INFO c.c.u.PropertyLogger [restartedMain] user.country: US
+2020-04-11 17:50:31,128 INFO c.c.u.PropertyLogger [restartedMain] user.dir: /mnt/sdb/Spring/projects/1.references/1.2.spring-boot-using-gitflow
+2020-04-11 17:50:31,128 INFO c.c.u.PropertyLogger [restartedMain] user.home: /home/jonathan
+2020-04-11 17:50:31,128 INFO c.c.u.PropertyLogger [restartedMain] user.language: en
+2020-04-11 17:50:31,128 INFO c.c.u.PropertyLogger [restartedMain] user.name: jonathan
+2020-04-11 17:50:31,129 INFO c.c.u.PropertyLogger [restartedMain] user.timezone: America/Sao_Paulo
+2020-04-11 17:50:31,129 INFO c.c.u.PropertyLogger [restartedMain] ===========================================
+2020-04-11 17:50:31,141 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting ProtocolHandler ["http-nio-8080"]
+2020-04-11 17:50:31,155 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat started on port(s): 8080 (http) with context path ''
+2020-04-11 17:50:31,158 INFO o.s.b.StartupInfoLogger [restartedMain] Started CarrosApplication in 5.297 seconds (JVM running for 5.89)
+2020-04-11 17:52:21,464 INFO o.s.s.c.ExecutorConfigurationSupport [Thread-6] Shutting down ExecutorService 'applicationTaskExecutor'
+2020-04-11 17:52:21,467 INFO o.s.o.j.AbstractEntityManagerFactoryBean [Thread-6] Closing JPA EntityManagerFactory for persistence unit 'default'
+2020-04-11 17:52:21,470 INFO c.z.h.HikariDataSource [Thread-6] HikariPool-1 - Shutdown initiated...
+2020-04-11 17:52:21,478 INFO c.z.h.HikariDataSource [Thread-6] HikariPool-1 - Shutdown completed.
+2020-04-11 17:52:21,700 WARN o.s.c.k.c.ConfigMapPropertySource [restartedMain] Can't read configMap with name: [carros] in namespace:[null]. Ignoring.
+io.fabric8.kubernetes.client.KubernetesClientException: Operation: [get]  for kind: [ConfigMap]  with name: [carros]  in namespace: [null]  failed.
+	at io.fabric8.kubernetes.client.KubernetesClientException.launderThrowable(KubernetesClientException.java:64) ~[kubernetes-client-4.4.1.jar:?]
+	at io.fabric8.kubernetes.client.KubernetesClientException.launderThrowable(KubernetesClientException.java:72) ~[kubernetes-client-4.4.1.jar:?]
+	at io.fabric8.kubernetes.client.dsl.base.BaseOperation.getMandatory(BaseOperation.java:229) ~[kubernetes-client-4.4.1.jar:?]
+	at io.fabric8.kubernetes.client.dsl.base.BaseOperation.get(BaseOperation.java:162) ~[kubernetes-client-4.4.1.jar:?]
+	at org.springframework.cloud.kubernetes.config.ConfigMapPropertySource.getData(ConfigMapPropertySource.java:94) ~[spring-cloud-kubernetes-config-1.1.2.RELEASE.jar:1.1.2.RELEASE]
+	at org.springframework.cloud.kubernetes.config.ConfigMapPropertySource.<init>(ConfigMapPropertySource.java:76) ~[spring-cloud-kubernetes-config-1.1.2.RELEASE.jar:1.1.2.RELEASE]
+	at org.springframework.cloud.kubernetes.config.ConfigMapPropertySourceLocator.getMapPropertySourceForSingleConfigMap(ConfigMapPropertySourceLocator.java:95) ~[spring-cloud-kubernetes-config-1.1.2.RELEASE.jar:1.1.2.RELEASE]
+	at org.springframework.cloud.kubernetes.config.ConfigMapPropertySourceLocator.lambda$locate$0(ConfigMapPropertySourceLocator.java:78) ~[spring-cloud-kubernetes-config-1.1.2.RELEASE.jar:1.1.2.RELEASE]
+	at java.util.ArrayList.forEach(ArrayList.java:1540) [?:?]
+	at org.springframework.cloud.kubernetes.config.ConfigMapPropertySourceLocator.locate(ConfigMapPropertySourceLocator.java:77) [spring-cloud-kubernetes-config-1.1.2.RELEASE.jar:1.1.2.RELEASE]
+	at org.springframework.cloud.bootstrap.config.PropertySourceLocator.locateCollection(PropertySourceLocator.java:52) [spring-cloud-context-2.2.2.RELEASE.jar:2.2.2.RELEASE]
+	at org.springframework.cloud.bootstrap.config.PropertySourceLocator.locateCollection(PropertySourceLocator.java:47) [spring-cloud-context-2.2.2.RELEASE.jar:2.2.2.RELEASE]
+	at org.springframework.cloud.bootstrap.config.PropertySourceBootstrapConfiguration.initialize(PropertySourceBootstrapConfiguration.java:97) [spring-cloud-context-2.2.2.RELEASE.jar:2.2.2.RELEASE]
+	at org.springframework.boot.SpringApplication.applyInitializers(SpringApplication.java:626) [spring-boot-2.2.5.RELEASE.jar:2.2.5.RELEASE]
+	at org.springframework.boot.SpringApplication.prepareContext(SpringApplication.java:370) [spring-boot-2.2.5.RELEASE.jar:2.2.5.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:314) [spring-boot-2.2.5.RELEASE.jar:2.2.5.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1226) [spring-boot-2.2.5.RELEASE.jar:2.2.5.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1215) [spring-boot-2.2.5.RELEASE.jar:2.2.5.RELEASE]
+	at com.carros.CarrosApplication.main(CarrosApplication.java:20) [classes/:?]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:?]
+	at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?]
+	at java.lang.reflect.Method.invoke(Method.java:566) ~[?:?]
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49) [spring-boot-devtools-2.2.5.RELEASE.jar:2.2.5.RELEASE]
+Caused by: java.net.UnknownHostException: kubernetes.default.svc: Name or service not known
+	at java.net.Inet6AddressImpl.lookupAllHostAddr(Native Method) ~[?:?]
+	at java.net.InetAddress$PlatformNameService.lookupAllHostAddr(InetAddress.java:929) ~[?:?]
+	at java.net.InetAddress.getAddressesFromNameService(InetAddress.java:1515) ~[?:?]
+	at java.net.InetAddress$NameServiceAddresses.get(InetAddress.java:848) ~[?:?]
+	at java.net.InetAddress.getAllByName0(InetAddress.java:1505) ~[?:?]
+	at java.net.InetAddress.getAllByName(InetAddress.java:1364) ~[?:?]
+	at java.net.InetAddress.getAllByName(InetAddress.java:1298) ~[?:?]
+	at okhttp3.Dns.lambda$static$0(Dns.java:39) ~[okhttp-3.14.7.jar:?]
+	at okhttp3.internal.connection.RouteSelector.resetNextInetSocketAddress(RouteSelector.java:171) ~[okhttp-3.14.7.jar:?]
+	at okhttp3.internal.connection.RouteSelector.nextProxy(RouteSelector.java:135) ~[okhttp-3.14.7.jar:?]
+	at okhttp3.internal.connection.RouteSelector.next(RouteSelector.java:84) ~[okhttp-3.14.7.jar:?]
+	at okhttp3.internal.connection.ExchangeFinder.findConnection(ExchangeFinder.java:187) ~[okhttp-3.14.7.jar:?]
+	at okhttp3.internal.connection.ExchangeFinder.findHealthyConnection(ExchangeFinder.java:108) ~[okhttp-3.14.7.jar:?]
+	at okhttp3.internal.connection.ExchangeFinder.find(ExchangeFinder.java:88) ~[okhttp-3.14.7.jar:?]
+	at okhttp3.internal.connection.Transmitter.newExchange(Transmitter.java:169) ~[okhttp-3.14.7.jar:?]
+	at okhttp3.internal.connection.ConnectInterceptor.intercept(ConnectInterceptor.java:41) ~[okhttp-3.14.7.jar:?]
+	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.java:142) ~[okhttp-3.14.7.jar:?]
+	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.java:117) ~[okhttp-3.14.7.jar:?]
+	at okhttp3.internal.cache.CacheInterceptor.intercept(CacheInterceptor.java:94) ~[okhttp-3.14.7.jar:?]
+	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.java:142) ~[okhttp-3.14.7.jar:?]
+	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.java:117) ~[okhttp-3.14.7.jar:?]
+	at okhttp3.internal.http.BridgeInterceptor.intercept(BridgeInterceptor.java:93) ~[okhttp-3.14.7.jar:?]
+	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.java:142) ~[okhttp-3.14.7.jar:?]
+	at okhttp3.internal.http.RetryAndFollowUpInterceptor.intercept(RetryAndFollowUpInterceptor.java:88) ~[okhttp-3.14.7.jar:?]
+	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.java:142) ~[okhttp-3.14.7.jar:?]
+	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.java:117) ~[okhttp-3.14.7.jar:?]
+	at io.fabric8.kubernetes.client.utils.BackwardsCompatibilityInterceptor.intercept(BackwardsCompatibilityInterceptor.java:119) ~[kubernetes-client-4.4.1.jar:?]
+	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.java:142) ~[okhttp-3.14.7.jar:?]
+	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.java:117) ~[okhttp-3.14.7.jar:?]
+	at io.fabric8.kubernetes.client.utils.ImpersonatorInterceptor.intercept(ImpersonatorInterceptor.java:68) ~[kubernetes-client-4.4.1.jar:?]
+	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.java:142) ~[okhttp-3.14.7.jar:?]
+	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.java:117) ~[okhttp-3.14.7.jar:?]
+	at io.fabric8.kubernetes.client.utils.HttpClientUtils.lambda$createHttpClient$3(HttpClientUtils.java:112) ~[kubernetes-client-4.4.1.jar:?]
+	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.java:142) ~[okhttp-3.14.7.jar:?]
+	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.java:117) ~[okhttp-3.14.7.jar:?]
+	at okhttp3.RealCall.getResponseWithInterceptorChain(RealCall.java:229) ~[okhttp-3.14.7.jar:?]
+	at okhttp3.RealCall.execute(RealCall.java:81) ~[okhttp-3.14.7.jar:?]
+	at io.fabric8.kubernetes.client.dsl.base.OperationSupport.handleResponse(OperationSupport.java:404) ~[kubernetes-client-4.4.1.jar:?]
+	at io.fabric8.kubernetes.client.dsl.base.OperationSupport.handleResponse(OperationSupport.java:365) ~[kubernetes-client-4.4.1.jar:?]
+	at io.fabric8.kubernetes.client.dsl.base.OperationSupport.handleGet(OperationSupport.java:330) ~[kubernetes-client-4.4.1.jar:?]
+	at io.fabric8.kubernetes.client.dsl.base.OperationSupport.handleGet(OperationSupport.java:311) ~[kubernetes-client-4.4.1.jar:?]
+	at io.fabric8.kubernetes.client.dsl.base.BaseOperation.handleGet(BaseOperation.java:810) ~[kubernetes-client-4.4.1.jar:?]
+	at io.fabric8.kubernetes.client.dsl.base.BaseOperation.getMandatory(BaseOperation.java:218) ~[kubernetes-client-4.4.1.jar:?]
+	... 21 more
+2020-04-11 17:52:21,702 INFO o.s.c.b.c.PropertySourceBootstrapConfiguration [restartedMain] Located property source: [BootstrapPropertySource {name='bootstrapProperties-configmap.carros.null'}]
+2020-04-11 17:52:21,719 INFO o.s.b.SpringApplication [restartedMain] The following profiles are active: dev
+2020-04-11 17:52:22,073 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2020-04-11 17:52:22,087 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 14ms. Found 3 JPA repository interfaces.
+2020-04-11 17:52:22,167 INFO o.s.c.c.s.GenericScope [restartedMain] BeanFactory id=c906e0ac-5af1-3180-8054-e971b7055c87
+2020-04-11 17:52:22,194 INFO o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker [restartedMain] Bean 'org.springframework.security.config.annotation.configuration.ObjectPostProcessorConfiguration' of type [org.springframework.security.config.annotation.configuration.ObjectPostProcessorConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-04-11 17:52:22,196 INFO o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker [restartedMain] Bean 'objectPostProcessor' of type [org.springframework.security.config.annotation.configuration.AutowireBeanFactoryObjectPostProcessor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-04-11 17:52:22,196 INFO o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker [restartedMain] Bean 'org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler@492fcc0a' of type [org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-04-11 17:52:22,199 INFO o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker [restartedMain] Bean 'org.springframework.security.config.annotation.method.configuration.GlobalMethodSecurityConfiguration' of type [org.springframework.security.config.annotation.method.configuration.GlobalMethodSecurityConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-04-11 17:52:22,199 INFO o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker [restartedMain] Bean 'methodSecurityMetadataSource' of type [org.springframework.security.access.method.DelegatingMethodSecurityMetadataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-04-11 17:52:22,281 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 8080 (http)
+2020-04-11 17:52:22,282 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
+2020-04-11 17:52:22,282 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting service [Tomcat]
+2020-04-11 17:52:22,282 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/9.0.31]
+2020-04-11 17:52:22,299 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
+2020-04-11 17:52:22,299 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 577 ms
+2020-04-11 17:52:22,458 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-2 - Starting...
+2020-04-11 17:52:22,462 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-2 - Start completed.
+2020-04-11 17:52:23,015 INFO o.s.o.j.AbstractEntityManagerFactoryBean [restartedMain] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2020-04-11 17:52:23,042 INFO o.s.b.d.a.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
+2020-04-11 17:52:23,081 WARN o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration [restartedMain] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-04-11 17:52:23,261 INFO o.s.b.a.e.w.EndpointLinksResolver [restartedMain] Exposing 2 endpoint(s) beneath base path '/actuator'
+2020-04-11 17:52:23,293 INFO s.d.s.w.PropertySourcedRequestMappingHandlerMapping [restartedMain] Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2020-04-11 17:52:23,322 INFO o.s.s.w.DefaultSecurityFilterChain [restartedMain] Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@59ed79d4, org.springframework.security.web.context.SecurityContextPersistenceFilter@361069ac, org.springframework.security.web.header.HeaderWriterFilter@5bae2081, com.carros.api.infra.cors.CorsConfig@3cb1bfb6, org.springframework.web.filter.CorsFilter@3e2bf2a0, org.springframework.security.web.authentication.logout.LogoutFilter@f369916, com.carros.api.infra.security.jwt.JwtAuthenticationFilter@ed01183, com.carros.api.infra.security.jwt.JwtAuthorizationFilter@3c41ea54, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@19871ef7, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@33079f6e, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@d3cbe65, org.springframework.security.web.session.SessionManagementFilter@548bab65, org.springframework.security.web.access.ExceptionTranslationFilter@3df24950, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@3bf17759]
+2020-04-11 17:52:23,367 INFO o.s.s.c.ExecutorConfigurationSupport [restartedMain] Initializing ExecutorService 'applicationTaskExecutor'
+2020-04-11 17:52:23,486 INFO s.d.s.w.p.DocumentationPluginsBootstrapper [restartedMain] Context refreshed
+2020-04-11 17:52:23,487 INFO s.d.s.w.p.DocumentationPluginsBootstrapper [restartedMain] Found 1 custom documentation plugin(s)
+2020-04-11 17:52:23,499 INFO s.d.s.w.s.ApiListingReferenceScanner [restartedMain] Scanning for api listing references
+2020-04-11 17:52:23,536 INFO s.d.s.w.r.o.CachingOperationNameGenerator [restartedMain] Generating unique operation named: getUsingGET_1
+2020-04-11 17:52:23,543 INFO c.c.u.PropertyLogger [restartedMain] ====== Environment and configuration ======
+2020-04-11 17:52:23,543 INFO c.c.u.PropertyLogger [restartedMain] Active profiles: [dev]
+2020-04-11 17:52:23,544 INFO c.c.u.PropertyLogger [restartedMain] ANDROID_AVD_HOME: /mnt/sdb/Android/.android/avd
+2020-04-11 17:52:23,545 INFO c.c.u.PropertyLogger [restartedMain] ANDROID_EMULATOR_HOME: /mnt/sdb/Android/.android
+2020-04-11 17:52:23,545 INFO c.c.u.PropertyLogger [restartedMain] ANDROID_HOME: /mnt/sdb/Android/Sdk
+2020-04-11 17:52:23,545 INFO c.c.u.PropertyLogger [restartedMain] ANDROID_SDK_HOME: /mnt/sdb/Android
+2020-04-11 17:52:23,545 INFO c.c.u.PropertyLogger [restartedMain] ANDROID_SDK_ROOT: /mnt/sdb/Android/Sdk
+2020-04-11 17:52:23,545 INFO c.c.u.PropertyLogger [restartedMain] BUNDLER_EDITOR: subl  >/dev/null 2>&1
+2020-04-11 17:52:23,546 INFO c.c.u.PropertyLogger [restartedMain] CLUTTER_IM_MODULE: xim
+2020-04-11 17:52:23,546 INFO c.c.u.PropertyLogger [restartedMain] COLORTERM: truecolor
+2020-04-11 17:52:23,546 INFO c.c.u.PropertyLogger [restartedMain] CONDA_EXE: /home/jonathan/anaconda3/bin/conda
+2020-04-11 17:52:23,546 INFO c.c.u.PropertyLogger [restartedMain] CONDA_PYTHON_EXE: /home/jonathan/anaconda3/bin/python
+2020-04-11 17:52:23,546 INFO c.c.u.PropertyLogger [restartedMain] CONDA_SHLVL: 0
+2020-04-11 17:52:23,546 INFO c.c.u.PropertyLogger [restartedMain] CUDA_HOME: /usr/local/cuda
+2020-04-11 17:52:23,546 INFO c.c.u.PropertyLogger [restartedMain] DBUS_SESSION_BUS_ADDRESS: unix:path=/run/user/1000/bus
+2020-04-11 17:52:23,546 INFO c.c.u.PropertyLogger [restartedMain] DEFAULTS_PATH: /usr/share/gconf/ubuntu.default.path
+2020-04-11 17:52:23,546 INFO c.c.u.PropertyLogger [restartedMain] DESKTOP_SESSION: ubuntu
+2020-04-11 17:52:23,547 INFO c.c.u.PropertyLogger [restartedMain] DISPLAY: :1
+2020-04-11 17:52:23,547 INFO c.c.u.PropertyLogger [restartedMain] DOCKER_CERT_PATH: /home/jonathan/.minikube/certs
+2020-04-11 17:52:23,547 INFO c.c.u.PropertyLogger [restartedMain] DOCKER_HOST: tcp://172.17.0.2:2376
+2020-04-11 17:52:23,547 INFO c.c.u.PropertyLogger [restartedMain] DOCKER_TLS_VERIFY: 1
+2020-04-11 17:52:23,547 INFO c.c.u.PropertyLogger [restartedMain] GDMSESSION: ubuntu
+2020-04-11 17:52:23,547 INFO c.c.u.PropertyLogger [restartedMain] GJS_DEBUG_OUTPUT: stderr
+2020-04-11 17:52:23,547 INFO c.c.u.PropertyLogger [restartedMain] GJS_DEBUG_TOPICS: JS ERROR;JS LOG
+2020-04-11 17:52:23,547 INFO c.c.u.PropertyLogger [restartedMain] GNOME_DESKTOP_SESSION_ID: this-is-deprecated
+2020-04-11 17:52:23,547 INFO c.c.u.PropertyLogger [restartedMain] GNOME_SHELL_SESSION_MODE: ubuntu
+2020-04-11 17:52:23,547 INFO c.c.u.PropertyLogger [restartedMain] GNOME_TERMINAL_SCREEN: /org/gnome/Terminal/screen/f2fbbb85_b113_4777_a546_eb402c0393ee
+2020-04-11 17:52:23,548 INFO c.c.u.PropertyLogger [restartedMain] GNOME_TERMINAL_SERVICE: :1.732
+2020-04-11 17:52:23,548 INFO c.c.u.PropertyLogger [restartedMain] GOOGLE_APPLICATION_CREDENTIALS: /home/jonathan/Bureau/machine_learning/google-key.json
+2020-04-11 17:52:23,548 INFO c.c.u.PropertyLogger [restartedMain] GOPATH: /home/jonathan/go
+2020-04-11 17:52:23,548 INFO c.c.u.PropertyLogger [restartedMain] GPG_AGENT_INFO: /run/user/1000/gnupg/S.gpg-agent:0:1
+2020-04-11 17:52:23,548 INFO c.c.u.PropertyLogger [restartedMain] GTK2_MODULES: overlay-scrollbar
+2020-04-11 17:52:23,548 INFO c.c.u.PropertyLogger [restartedMain] GTK_IM_MODULE: ibus
+2020-04-11 17:52:23,548 INFO c.c.u.PropertyLogger [restartedMain] GTK_MODULES: gail:atk-bridge
+2020-04-11 17:52:23,548 INFO c.c.u.PropertyLogger [restartedMain] HOME: /home/jonathan
+2020-04-11 17:52:23,548 INFO c.c.u.PropertyLogger [restartedMain] HOMEBREW_CELLAR: /home/linuxbrew/.linuxbrew/Cellar
+2020-04-11 17:52:23,548 INFO c.c.u.PropertyLogger [restartedMain] HOMEBREW_PREFIX: /home/linuxbrew/.linuxbrew
+2020-04-11 17:52:23,548 INFO c.c.u.PropertyLogger [restartedMain] HOMEBREW_REPOSITORY: /home/linuxbrew/.linuxbrew/Homebrew
+2020-04-11 17:52:23,548 INFO c.c.u.PropertyLogger [restartedMain] IM_CONFIG_PHASE: 2
+2020-04-11 17:52:23,549 INFO c.c.u.PropertyLogger [restartedMain] INFOPATH: /home/linuxbrew/.linuxbrew/share/info
+2020-04-11 17:52:23,549 INFO c.c.u.PropertyLogger [restartedMain] JAVA_HOME: /usr/lib/jvm/java-11-openjdk-amd64
+2020-04-11 17:52:23,549 INFO c.c.u.PropertyLogger [restartedMain] LANG: en_US.UTF-8
+2020-04-11 17:52:23,549 INFO c.c.u.PropertyLogger [restartedMain] LC_ALL: en_US.UTF-8
+2020-04-11 17:52:23,549 INFO c.c.u.PropertyLogger [restartedMain] LD_LIBRARY_PATH: :/usr/local/cuda/lib64:/usr/local/cuda/extras/CUPTI/lib64
+2020-04-11 17:52:23,549 INFO c.c.u.PropertyLogger [restartedMain] LESS: -R
+2020-04-11 17:52:23,549 INFO c.c.u.PropertyLogger [restartedMain] LIBVIRT_DEFAULT_URI: qemu:///system
+2020-04-11 17:52:23,549 INFO c.c.u.PropertyLogger [restartedMain] LOGNAME: jonathan
+2020-04-11 17:52:23,549 INFO c.c.u.PropertyLogger [restartedMain] LSCOLORS: Gxfxcxdxbxegedabagacad
+2020-04-11 17:52:23,549 INFO c.c.u.PropertyLogger [restartedMain] LS_COLORS: rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:
+2020-04-11 17:52:23,549 INFO c.c.u.PropertyLogger [restartedMain] MANDATORY_PATH: /usr/share/gconf/ubuntu.mandatory.path
+2020-04-11 17:52:23,549 INFO c.c.u.PropertyLogger [restartedMain] MANPATH: /home/jonathan/.nvm/versions/node/v12.16.1/share/man:/home/linuxbrew/.linuxbrew/share/man:
+2020-04-11 17:52:23,549 INFO c.c.u.PropertyLogger [restartedMain] MAVEN_CMD_LINE_ARGS:  spring-boot:run
+2020-04-11 17:52:23,550 INFO c.c.u.PropertyLogger [restartedMain] MAVEN_PROJECTBASEDIR: /mnt/sdb/Spring/projects/1.references/1.2.spring-boot-using-gitflow
+2020-04-11 17:52:23,550 INFO c.c.u.PropertyLogger [restartedMain] MINIKUBE_ACTIVE_DOCKERD: minikube
+2020-04-11 17:52:23,550 INFO c.c.u.PropertyLogger [restartedMain] NVM_BIN: /home/jonathan/.nvm/versions/node/v12.16.1/bin
+2020-04-11 17:52:23,550 INFO c.c.u.PropertyLogger [restartedMain] NVM_CD_FLAGS: -q
+2020-04-11 17:52:23,550 INFO c.c.u.PropertyLogger [restartedMain] NVM_DIR: /home/jonathan/.nvm
+2020-04-11 17:52:23,550 INFO c.c.u.PropertyLogger [restartedMain] OLDPWD: /mnt/sdb/Spring/projects/1.references/1.2.spring-boot-using-gitflow
+2020-04-11 17:52:23,550 INFO c.c.u.PropertyLogger [restartedMain] PAGER: less
+2020-04-11 17:52:23,550 INFO c.c.u.PropertyLogger [restartedMain] PATH: /home/jonathan/anaconda3/condabin:/home/jonathan/.rbenv/bin:./bin:/home/jonathan/.rbenv/shims:/home/jonathan/.rbenv/bin:/home/jonathan/.nvm/versions/node/v12.16.1/bin:/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:/home/jonathan/bin:/home/jonathan/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/jonathan/.rvm/bin:/usr/local/go/bin:/usr/local/bin/hyperledger/bin_1-4-1:/home/jonathan/.nvm/versions/node/v8.11.3/bin/prettier:/usr/local/bin/robomongo/bin:/usr/local/go/bin:/home/jonathan/go/bin:/usr/local/bin/burrow_0.23.1_Linux_x86_64:/mnt/sdb/Android/flutter/bin:/mnt/sdb/Android/flutter/bin/cache/dart-sdk/bin:/mnt/sdb/Android/Sdk/emulator:/mnt/sdb/Android/Sdk/tools:/mnt/sdb/Android/Sdk/tools/bin:/mnt/sdb/Android/Sdk/platform-tools:/usr/local/bin/tflint:/usr/local/cuda/bin:/usr/local/bin/chromedriver
+2020-04-11 17:52:23,550 INFO c.c.u.PropertyLogger [restartedMain] PID: 19117
+2020-04-11 17:52:23,550 INFO c.c.u.PropertyLogger [restartedMain] PROJECT_ID: maching-learning-235015
+2020-04-11 17:52:23,550 INFO c.c.u.PropertyLogger [restartedMain] PWD: /mnt/sdb/Spring/projects/1.references/1.2.spring-boot-using-gitflow
+2020-04-11 17:52:23,551 INFO c.c.u.PropertyLogger [restartedMain] QT4_IM_MODULE: xim
+2020-04-11 17:52:23,551 INFO c.c.u.PropertyLogger [restartedMain] QT_ACCESSIBILITY: 1
+2020-04-11 17:52:23,551 INFO c.c.u.PropertyLogger [restartedMain] QT_IM_MODULE: ibus
+2020-04-11 17:52:23,551 INFO c.c.u.PropertyLogger [restartedMain] QT_QPA_PLATFORMTHEME: appmenu-qt5
+2020-04-11 17:52:23,551 INFO c.c.u.PropertyLogger [restartedMain] RBENV_SHELL: zsh
+2020-04-11 17:52:23,551 INFO c.c.u.PropertyLogger [restartedMain] SESSION_MANAGER: local/jonathan-xps-15-9560:@/tmp/.ICE-unix/3016,unix/jonathan-xps-15-9560:/tmp/.ICE-unix/3016
+2020-04-11 17:52:23,551 INFO c.c.u.PropertyLogger [restartedMain] SHELL: /usr/bin/zsh
+2020-04-11 17:52:23,551 INFO c.c.u.PropertyLogger [restartedMain] SHLVL: 1
+2020-04-11 17:52:23,551 INFO c.c.u.PropertyLogger [restartedMain] SSH_AGENT_PID: 3257
+2020-04-11 17:52:23,551 INFO c.c.u.PropertyLogger [restartedMain] SSH_AUTH_SOCK: /run/user/1000/keyring/ssh
+2020-04-11 17:52:23,551 INFO c.c.u.PropertyLogger [restartedMain] S_COLORS: auto
+2020-04-11 17:52:23,552 INFO c.c.u.PropertyLogger [restartedMain] TERM: xterm-256color
+2020-04-11 17:52:23,552 INFO c.c.u.PropertyLogger [restartedMain] TEXTDOMAIN: im-config
+2020-04-11 17:52:23,552 INFO c.c.u.PropertyLogger [restartedMain] TEXTDOMAINDIR: /usr/share/locale/
+2020-04-11 17:52:23,552 INFO c.c.u.PropertyLogger [restartedMain] USER: jonathan
+2020-04-11 17:52:23,552 INFO c.c.u.PropertyLogger [restartedMain] USERNAME: jonathan
+2020-04-11 17:52:23,552 INFO c.c.u.PropertyLogger [restartedMain] VTE_VERSION: 5202
+2020-04-11 17:52:23,552 INFO c.c.u.PropertyLogger [restartedMain] WINDOWPATH: 2
+2020-04-11 17:52:23,552 INFO c.c.u.PropertyLogger [restartedMain] XAUTHORITY: /run/user/1000/gdm/Xauthority
+2020-04-11 17:52:23,552 INFO c.c.u.PropertyLogger [restartedMain] XDG_CONFIG_DIRS: /etc/xdg/xdg-ubuntu:/etc/xdg
+2020-04-11 17:52:23,552 INFO c.c.u.PropertyLogger [restartedMain] XDG_CURRENT_DESKTOP: ubuntu:GNOME
+2020-04-11 17:52:23,552 INFO c.c.u.PropertyLogger [restartedMain] XDG_DATA_DIRS: /usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop
+2020-04-11 17:52:23,553 INFO c.c.u.PropertyLogger [restartedMain] XDG_MENU_PREFIX: gnome-
+2020-04-11 17:52:23,553 INFO c.c.u.PropertyLogger [restartedMain] XDG_RUNTIME_DIR: /run/user/1000
+2020-04-11 17:52:23,553 INFO c.c.u.PropertyLogger [restartedMain] XDG_SEAT: seat0
+2020-04-11 17:52:23,553 INFO c.c.u.PropertyLogger [restartedMain] XDG_SESSION_DESKTOP: ubuntu
+2020-04-11 17:52:23,553 INFO c.c.u.PropertyLogger [restartedMain] XDG_SESSION_ID: 2
+2020-04-11 17:52:23,553 INFO c.c.u.PropertyLogger [restartedMain] XDG_SESSION_TYPE: x11
+2020-04-11 17:52:23,553 INFO c.c.u.PropertyLogger [restartedMain] XDG_VTNR: 2
+2020-04-11 17:52:23,553 INFO c.c.u.PropertyLogger [restartedMain] XMODIFIERS: @im=ibus
+2020-04-11 17:52:23,553 INFO c.c.u.PropertyLogger [restartedMain] _: /usr/bin/mvn
+2020-04-11 17:52:23,553 INFO c.c.u.PropertyLogger [restartedMain] _CE_CONDA: 
+2020-04-11 17:52:23,553 INFO c.c.u.PropertyLogger [restartedMain] _CE_M: 
+2020-04-11 17:52:23,554 INFO c.c.u.PropertyLogger [restartedMain] awt.toolkit: sun.awt.X11.XToolkit
+2020-04-11 17:52:23,554 INFO c.c.u.PropertyLogger [restartedMain] catalina.base: /tmp/tomcat.8528026903521461806.8080
+2020-04-11 17:52:23,554 INFO c.c.u.PropertyLogger [restartedMain] catalina.home: /tmp/tomcat.6502065421870710563.8080
+2020-04-11 17:52:23,554 INFO c.c.u.PropertyLogger [restartedMain] catalina.useNaming: false
+2020-04-11 17:52:23,554 INFO c.c.u.PropertyLogger [restartedMain] com.zaxxer.hikari.pool_number: 2
+2020-04-11 17:52:23,554 INFO c.c.u.PropertyLogger [restartedMain] export: 
+2020-04-11 17:52:23,554 INFO c.c.u.PropertyLogger [restartedMain] file.encoding: UTF-8
+2020-04-11 17:52:23,554 INFO c.c.u.PropertyLogger [restartedMain] file.separator: /
+2020-04-11 17:52:23,554 INFO c.c.u.PropertyLogger [restartedMain] java.awt.graphicsenv: sun.awt.X11GraphicsEnvironment
+2020-04-11 17:52:23,554 INFO c.c.u.PropertyLogger [restartedMain] java.awt.headless: true
+2020-04-11 17:52:23,554 INFO c.c.u.PropertyLogger [restartedMain] java.awt.printerjob: sun.print.PSPrinterJob
+2020-04-11 17:52:23,555 INFO c.c.u.PropertyLogger [restartedMain] java.class.version: 55.0
+2020-04-11 17:52:23,555 INFO c.c.u.PropertyLogger [restartedMain] java.home: /usr/lib/jvm/java-11-openjdk-amd64
+2020-04-11 17:52:23,555 INFO c.c.u.PropertyLogger [restartedMain] java.io.tmpdir: /tmp
+2020-04-11 17:52:23,555 INFO c.c.u.PropertyLogger [restartedMain] java.library.path: :/usr/local/cuda/lib64:/usr/local/cuda/extras/CUPTI/lib64:/usr/java/packages/lib:/usr/lib/x86_64-linux-gnu/jni:/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu:/usr/lib/jni:/lib:/usr/lib
+2020-04-11 17:52:23,555 INFO c.c.u.PropertyLogger [restartedMain] java.runtime.name: OpenJDK Runtime Environment
+2020-04-11 17:52:23,555 INFO c.c.u.PropertyLogger [restartedMain] java.runtime.version: 11.0.6+10-post-Ubuntu-1ubuntu118.04.1
+2020-04-11 17:52:23,555 INFO c.c.u.PropertyLogger [restartedMain] java.specification.name: Java Platform API Specification
+2020-04-11 17:52:23,555 INFO c.c.u.PropertyLogger [restartedMain] java.specification.vendor: Oracle Corporation
+2020-04-11 17:52:23,555 INFO c.c.u.PropertyLogger [restartedMain] java.specification.version: 11
+2020-04-11 17:52:23,555 INFO c.c.u.PropertyLogger [restartedMain] java.vendor: Ubuntu
+2020-04-11 17:52:23,555 INFO c.c.u.PropertyLogger [restartedMain] java.vendor.url: https://ubuntu.com/
+2020-04-11 17:52:23,555 INFO c.c.u.PropertyLogger [restartedMain] java.vendor.url.bug: https://bugs.launchpad.net/ubuntu/+source/openjdk-lts
+2020-04-11 17:52:23,556 INFO c.c.u.PropertyLogger [restartedMain] java.version: 11.0.6
+2020-04-11 17:52:23,556 INFO c.c.u.PropertyLogger [restartedMain] java.version.date: 2020-01-14
+2020-04-11 17:52:23,556 INFO c.c.u.PropertyLogger [restartedMain] java.vm.compressedOopsMode: Zero based
+2020-04-11 17:52:23,556 INFO c.c.u.PropertyLogger [restartedMain] java.vm.info: mixed mode, sharing
+2020-04-11 17:52:23,556 INFO c.c.u.PropertyLogger [restartedMain] java.vm.name: OpenJDK 64-Bit Server VM
+2020-04-11 17:52:23,556 INFO c.c.u.PropertyLogger [restartedMain] java.vm.specification.name: Java Virtual Machine Specification
+2020-04-11 17:52:23,556 INFO c.c.u.PropertyLogger [restartedMain] java.vm.specification.vendor: Oracle Corporation
+2020-04-11 17:52:23,556 INFO c.c.u.PropertyLogger [restartedMain] java.vm.specification.version: 11
+2020-04-11 17:52:23,556 INFO c.c.u.PropertyLogger [restartedMain] java.vm.vendor: Ubuntu
+2020-04-11 17:52:23,556 INFO c.c.u.PropertyLogger [restartedMain] java.vm.version: 11.0.6+10-post-Ubuntu-1ubuntu118.04.1
+2020-04-11 17:52:23,556 INFO c.c.u.PropertyLogger [restartedMain] jdk.debug: release
+2020-04-11 17:52:23,556 INFO c.c.u.PropertyLogger [restartedMain] line.separator: 
+
+2020-04-11 17:52:23,557 INFO c.c.u.PropertyLogger [restartedMain] logging.config: conf/log4j2-dev.xml
+2020-04-11 17:52:23,557 INFO c.c.u.PropertyLogger [restartedMain] org.apache.logging.log4j.assignedSequences: 2494
+2020-04-11 17:52:23,557 INFO c.c.u.PropertyLogger [restartedMain] os.arch: amd64
+2020-04-11 17:52:23,557 INFO c.c.u.PropertyLogger [restartedMain] os.name: Linux
+2020-04-11 17:52:23,557 INFO c.c.u.PropertyLogger [restartedMain] os.version: 4.15.0-91-generic
+2020-04-11 17:52:23,557 INFO c.c.u.PropertyLogger [restartedMain] path.separator: :
+2020-04-11 17:52:23,557 INFO c.c.u.PropertyLogger [restartedMain] server.error.include-stacktrace: ALWAYS
+2020-04-11 17:52:23,557 INFO c.c.u.PropertyLogger [restartedMain] server.servlet.jsp.init-parameters.development: true
+2020-04-11 17:52:23,558 INFO c.c.u.PropertyLogger [restartedMain] server.servlet.session.persistent: true
+2020-04-11 17:52:23,558 INFO c.c.u.PropertyLogger [restartedMain] spring.application.name: carros
+2020-04-11 17:52:23,558 INFO c.c.u.PropertyLogger [restartedMain] spring.beaninfo.ignore: true
+2020-04-11 17:52:23,558 INFO c.c.u.PropertyLogger [restartedMain] spring.cloud.client.hostname: 192.168.0.3
+2020-04-11 17:52:23,558 INFO c.c.u.PropertyLogger [restartedMain] spring.cloud.client.ip-address: 192.168.0.3
+2020-04-11 17:52:23,558 INFO c.c.u.PropertyLogger [restartedMain] spring.datasource.url: jdbc:mysql://localhost:3306/database?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
+2020-04-11 17:52:23,558 INFO c.c.u.PropertyLogger [restartedMain] spring.datasource.username: jonathan
+2020-04-11 17:52:23,558 INFO c.c.u.PropertyLogger [restartedMain] spring.freemarker.cache: false
+2020-04-11 17:52:23,558 INFO c.c.u.PropertyLogger [restartedMain] spring.groovy.template.cache: false
+2020-04-11 17:52:23,559 INFO c.c.u.PropertyLogger [restartedMain] spring.h2.console.enabled: true
+2020-04-11 17:52:23,559 INFO c.c.u.PropertyLogger [restartedMain] spring.jpa.hibernate.ddl-auto: create
+2020-04-11 17:52:23,559 INFO c.c.u.PropertyLogger [restartedMain] spring.jpa.properties.hibernate.dialect: org.hibernate.dialect.MySQL55Dialect
+2020-04-11 17:52:23,559 INFO c.c.u.PropertyLogger [restartedMain] spring.jpa.properties.hibernate.format_sql: true
+2020-04-11 17:52:23,559 INFO c.c.u.PropertyLogger [restartedMain] spring.jpa.properties.hibernate.show_sql: true
+2020-04-11 17:52:23,559 INFO c.c.u.PropertyLogger [restartedMain] spring.mustache.cache: false
+2020-04-11 17:52:23,559 INFO c.c.u.PropertyLogger [restartedMain] spring.mvc.log-resolved-exception: true
+2020-04-11 17:52:23,559 INFO c.c.u.PropertyLogger [restartedMain] spring.profiles.active: dev
+2020-04-11 17:52:23,560 INFO c.c.u.PropertyLogger [restartedMain] spring.reactor.debug: true
+2020-04-11 17:52:23,560 INFO c.c.u.PropertyLogger [restartedMain] spring.resources.cache.period: 0
+2020-04-11 17:52:23,560 INFO c.c.u.PropertyLogger [restartedMain] spring.resources.chain.cache: false
+2020-04-11 17:52:23,560 INFO c.c.u.PropertyLogger [restartedMain] spring.template.provider.cache: false
+2020-04-11 17:52:23,560 INFO c.c.u.PropertyLogger [restartedMain] spring.thymeleaf.cache: false
+2020-04-11 17:52:23,560 INFO c.c.u.PropertyLogger [restartedMain] sun.arch.data.model: 64
+2020-04-11 17:52:23,560 INFO c.c.u.PropertyLogger [restartedMain] sun.boot.library.path: /usr/lib/jvm/java-11-openjdk-amd64/lib
+2020-04-11 17:52:23,560 INFO c.c.u.PropertyLogger [restartedMain] sun.cpu.endian: little
+2020-04-11 17:52:23,560 INFO c.c.u.PropertyLogger [restartedMain] sun.cpu.isalist: 
+2020-04-11 17:52:23,560 INFO c.c.u.PropertyLogger [restartedMain] sun.desktop: gnome
+2020-04-11 17:52:23,560 INFO c.c.u.PropertyLogger [restartedMain] sun.io.unicode.encoding: UnicodeLittle
+2020-04-11 17:52:23,561 INFO c.c.u.PropertyLogger [restartedMain] sun.java.command: com.carros.CarrosApplication
+2020-04-11 17:52:23,561 INFO c.c.u.PropertyLogger [restartedMain] sun.java.launcher: SUN_STANDARD
+2020-04-11 17:52:23,561 INFO c.c.u.PropertyLogger [restartedMain] sun.jnu.encoding: UTF-8
+2020-04-11 17:52:23,561 INFO c.c.u.PropertyLogger [restartedMain] sun.management.compiler: HotSpot 64-Bit Tiered Compilers
+2020-04-11 17:52:23,561 INFO c.c.u.PropertyLogger [restartedMain] sun.os.patch.level: unknown
+2020-04-11 17:52:23,561 INFO c.c.u.PropertyLogger [restartedMain] user.country: US
+2020-04-11 17:52:23,561 INFO c.c.u.PropertyLogger [restartedMain] user.dir: /mnt/sdb/Spring/projects/1.references/1.2.spring-boot-using-gitflow
+2020-04-11 17:52:23,561 INFO c.c.u.PropertyLogger [restartedMain] user.home: /home/jonathan
+2020-04-11 17:52:23,561 INFO c.c.u.PropertyLogger [restartedMain] user.language: en
+2020-04-11 17:52:23,561 INFO c.c.u.PropertyLogger [restartedMain] user.name: jonathan
+2020-04-11 17:52:23,561 INFO c.c.u.PropertyLogger [restartedMain] user.timezone: America/Sao_Paulo
+2020-04-11 17:52:23,561 INFO c.c.u.PropertyLogger [restartedMain] ===========================================
+2020-04-11 17:52:23,569 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting ProtocolHandler ["http-nio-8080"]
+2020-04-11 17:52:23,576 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat started on port(s): 8080 (http) with context path ''
+2020-04-11 17:52:23,577 INFO o.s.b.StartupInfoLogger [restartedMain] Started CarrosApplication in 2.009 seconds (JVM running for 118.309)
+2020-04-11 17:52:23,580 INFO o.s.b.d.a.ConditionEvaluationDeltaLoggingListener [restartedMain] Condition evaluation unchanged
+2020-04-11 17:52:35,880 INFO o.s.s.c.ExecutorConfigurationSupport [Thread-11] Shutting down ExecutorService 'applicationTaskExecutor'
+2020-04-11 17:52:35,881 INFO o.s.o.j.AbstractEntityManagerFactoryBean [Thread-11] Closing JPA EntityManagerFactory for persistence unit 'default'
+2020-04-11 17:52:35,882 INFO c.z.h.HikariDataSource [Thread-11] HikariPool-2 - Shutdown initiated...
+2020-04-11 17:52:35,887 INFO c.z.h.HikariDataSource [Thread-11] HikariPool-2 - Shutdown completed.
+2020-04-11 17:52:36,036 WARN o.s.c.k.c.ConfigMapPropertySource [restartedMain] Can't read configMap with name: [carros] in namespace:[null]. Ignoring.
+io.fabric8.kubernetes.client.KubernetesClientException: Operation: [get]  for kind: [ConfigMap]  with name: [carros]  in namespace: [null]  failed.
+	at io.fabric8.kubernetes.client.KubernetesClientException.launderThrowable(KubernetesClientException.java:64) ~[kubernetes-client-4.4.1.jar:?]
+	at io.fabric8.kubernetes.client.KubernetesClientException.launderThrowable(KubernetesClientException.java:72) ~[kubernetes-client-4.4.1.jar:?]
+	at io.fabric8.kubernetes.client.dsl.base.BaseOperation.getMandatory(BaseOperation.java:229) ~[kubernetes-client-4.4.1.jar:?]
+	at io.fabric8.kubernetes.client.dsl.base.BaseOperation.get(BaseOperation.java:162) ~[kubernetes-client-4.4.1.jar:?]
+	at org.springframework.cloud.kubernetes.config.ConfigMapPropertySource.getData(ConfigMapPropertySource.java:94) ~[spring-cloud-kubernetes-config-1.1.2.RELEASE.jar:1.1.2.RELEASE]
+	at org.springframework.cloud.kubernetes.config.ConfigMapPropertySource.<init>(ConfigMapPropertySource.java:76) ~[spring-cloud-kubernetes-config-1.1.2.RELEASE.jar:1.1.2.RELEASE]
+	at org.springframework.cloud.kubernetes.config.ConfigMapPropertySourceLocator.getMapPropertySourceForSingleConfigMap(ConfigMapPropertySourceLocator.java:95) ~[spring-cloud-kubernetes-config-1.1.2.RELEASE.jar:1.1.2.RELEASE]
+	at org.springframework.cloud.kubernetes.config.ConfigMapPropertySourceLocator.lambda$locate$0(ConfigMapPropertySourceLocator.java:78) ~[spring-cloud-kubernetes-config-1.1.2.RELEASE.jar:1.1.2.RELEASE]
+	at java.util.ArrayList.forEach(ArrayList.java:1540) [?:?]
+	at org.springframework.cloud.kubernetes.config.ConfigMapPropertySourceLocator.locate(ConfigMapPropertySourceLocator.java:77) [spring-cloud-kubernetes-config-1.1.2.RELEASE.jar:1.1.2.RELEASE]
+	at org.springframework.cloud.bootstrap.config.PropertySourceLocator.locateCollection(PropertySourceLocator.java:52) [spring-cloud-context-2.2.2.RELEASE.jar:2.2.2.RELEASE]
+	at org.springframework.cloud.bootstrap.config.PropertySourceLocator.locateCollection(PropertySourceLocator.java:47) [spring-cloud-context-2.2.2.RELEASE.jar:2.2.2.RELEASE]
+	at org.springframework.cloud.bootstrap.config.PropertySourceBootstrapConfiguration.initialize(PropertySourceBootstrapConfiguration.java:97) [spring-cloud-context-2.2.2.RELEASE.jar:2.2.2.RELEASE]
+	at org.springframework.boot.SpringApplication.applyInitializers(SpringApplication.java:626) [spring-boot-2.2.5.RELEASE.jar:2.2.5.RELEASE]
+	at org.springframework.boot.SpringApplication.prepareContext(SpringApplication.java:370) [spring-boot-2.2.5.RELEASE.jar:2.2.5.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:314) [spring-boot-2.2.5.RELEASE.jar:2.2.5.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1226) [spring-boot-2.2.5.RELEASE.jar:2.2.5.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1215) [spring-boot-2.2.5.RELEASE.jar:2.2.5.RELEASE]
+	at com.carros.CarrosApplication.main(CarrosApplication.java:20) [classes/:?]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:?]
+	at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?]
+	at java.lang.reflect.Method.invoke(Method.java:566) ~[?:?]
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49) [spring-boot-devtools-2.2.5.RELEASE.jar:2.2.5.RELEASE]
+Caused by: java.net.UnknownHostException: kubernetes.default.svc: Name or service not known
+	at java.net.Inet6AddressImpl.lookupAllHostAddr(Native Method) ~[?:?]
+	at java.net.InetAddress$PlatformNameService.lookupAllHostAddr(InetAddress.java:929) ~[?:?]
+	at java.net.InetAddress.getAddressesFromNameService(InetAddress.java:1515) ~[?:?]
+	at java.net.InetAddress$NameServiceAddresses.get(InetAddress.java:848) ~[?:?]
+	at java.net.InetAddress.getAllByName0(InetAddress.java:1505) ~[?:?]
+	at java.net.InetAddress.getAllByName(InetAddress.java:1364) ~[?:?]
+	at java.net.InetAddress.getAllByName(InetAddress.java:1298) ~[?:?]
+	at okhttp3.Dns.lambda$static$0(Dns.java:39) ~[okhttp-3.14.7.jar:?]
+	at okhttp3.internal.connection.RouteSelector.resetNextInetSocketAddress(RouteSelector.java:171) ~[okhttp-3.14.7.jar:?]
+	at okhttp3.internal.connection.RouteSelector.nextProxy(RouteSelector.java:135) ~[okhttp-3.14.7.jar:?]
+	at okhttp3.internal.connection.RouteSelector.next(RouteSelector.java:84) ~[okhttp-3.14.7.jar:?]
+	at okhttp3.internal.connection.ExchangeFinder.findConnection(ExchangeFinder.java:187) ~[okhttp-3.14.7.jar:?]
+	at okhttp3.internal.connection.ExchangeFinder.findHealthyConnection(ExchangeFinder.java:108) ~[okhttp-3.14.7.jar:?]
+	at okhttp3.internal.connection.ExchangeFinder.find(ExchangeFinder.java:88) ~[okhttp-3.14.7.jar:?]
+	at okhttp3.internal.connection.Transmitter.newExchange(Transmitter.java:169) ~[okhttp-3.14.7.jar:?]
+	at okhttp3.internal.connection.ConnectInterceptor.intercept(ConnectInterceptor.java:41) ~[okhttp-3.14.7.jar:?]
+	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.java:142) ~[okhttp-3.14.7.jar:?]
+	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.java:117) ~[okhttp-3.14.7.jar:?]
+	at okhttp3.internal.cache.CacheInterceptor.intercept(CacheInterceptor.java:94) ~[okhttp-3.14.7.jar:?]
+	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.java:142) ~[okhttp-3.14.7.jar:?]
+	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.java:117) ~[okhttp-3.14.7.jar:?]
+	at okhttp3.internal.http.BridgeInterceptor.intercept(BridgeInterceptor.java:93) ~[okhttp-3.14.7.jar:?]
+	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.java:142) ~[okhttp-3.14.7.jar:?]
+	at okhttp3.internal.http.RetryAndFollowUpInterceptor.intercept(RetryAndFollowUpInterceptor.java:88) ~[okhttp-3.14.7.jar:?]
+	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.java:142) ~[okhttp-3.14.7.jar:?]
+	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.java:117) ~[okhttp-3.14.7.jar:?]
+	at io.fabric8.kubernetes.client.utils.BackwardsCompatibilityInterceptor.intercept(BackwardsCompatibilityInterceptor.java:119) ~[kubernetes-client-4.4.1.jar:?]
+	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.java:142) ~[okhttp-3.14.7.jar:?]
+	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.java:117) ~[okhttp-3.14.7.jar:?]
+	at io.fabric8.kubernetes.client.utils.ImpersonatorInterceptor.intercept(ImpersonatorInterceptor.java:68) ~[kubernetes-client-4.4.1.jar:?]
+	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.java:142) ~[okhttp-3.14.7.jar:?]
+	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.java:117) ~[okhttp-3.14.7.jar:?]
+	at io.fabric8.kubernetes.client.utils.HttpClientUtils.lambda$createHttpClient$3(HttpClientUtils.java:112) ~[kubernetes-client-4.4.1.jar:?]
+	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.java:142) ~[okhttp-3.14.7.jar:?]
+	at okhttp3.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.java:117) ~[okhttp-3.14.7.jar:?]
+	at okhttp3.RealCall.getResponseWithInterceptorChain(RealCall.java:229) ~[okhttp-3.14.7.jar:?]
+	at okhttp3.RealCall.execute(RealCall.java:81) ~[okhttp-3.14.7.jar:?]
+	at io.fabric8.kubernetes.client.dsl.base.OperationSupport.handleResponse(OperationSupport.java:404) ~[kubernetes-client-4.4.1.jar:?]
+	at io.fabric8.kubernetes.client.dsl.base.OperationSupport.handleResponse(OperationSupport.java:365) ~[kubernetes-client-4.4.1.jar:?]
+	at io.fabric8.kubernetes.client.dsl.base.OperationSupport.handleGet(OperationSupport.java:330) ~[kubernetes-client-4.4.1.jar:?]
+	at io.fabric8.kubernetes.client.dsl.base.OperationSupport.handleGet(OperationSupport.java:311) ~[kubernetes-client-4.4.1.jar:?]
+	at io.fabric8.kubernetes.client.dsl.base.BaseOperation.handleGet(BaseOperation.java:810) ~[kubernetes-client-4.4.1.jar:?]
+	at io.fabric8.kubernetes.client.dsl.base.BaseOperation.getMandatory(BaseOperation.java:218) ~[kubernetes-client-4.4.1.jar:?]
+	... 21 more
+2020-04-11 17:52:36,037 INFO o.s.c.b.c.PropertySourceBootstrapConfiguration [restartedMain] Located property source: [BootstrapPropertySource {name='bootstrapProperties-configmap.carros.null'}]
+2020-04-11 17:52:36,050 INFO o.s.b.SpringApplication [restartedMain] The following profiles are active: dev
+2020-04-11 17:52:36,311 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2020-04-11 17:52:36,322 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 10ms. Found 3 JPA repository interfaces.
+2020-04-11 17:52:36,377 INFO o.s.c.c.s.GenericScope [restartedMain] BeanFactory id=c906e0ac-5af1-3180-8054-e971b7055c87
+2020-04-11 17:52:36,405 INFO o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker [restartedMain] Bean 'org.springframework.security.config.annotation.configuration.ObjectPostProcessorConfiguration' of type [org.springframework.security.config.annotation.configuration.ObjectPostProcessorConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-04-11 17:52:36,406 INFO o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker [restartedMain] Bean 'objectPostProcessor' of type [org.springframework.security.config.annotation.configuration.AutowireBeanFactoryObjectPostProcessor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-04-11 17:52:36,407 INFO o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker [restartedMain] Bean 'org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler@40a0515d' of type [org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-04-11 17:52:36,408 INFO o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker [restartedMain] Bean 'org.springframework.security.config.annotation.method.configuration.GlobalMethodSecurityConfiguration' of type [org.springframework.security.config.annotation.method.configuration.GlobalMethodSecurityConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-04-11 17:52:36,409 INFO o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker [restartedMain] Bean 'methodSecurityMetadataSource' of type [org.springframework.security.access.method.DelegatingMethodSecurityMetadataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-04-11 17:52:36,476 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 8080 (http)
+2020-04-11 17:52:36,477 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
+2020-04-11 17:52:36,477 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting service [Tomcat]
+2020-04-11 17:52:36,477 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/9.0.31]
+2020-04-11 17:52:36,495 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
+2020-04-11 17:52:36,495 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 443 ms
+2020-04-11 17:52:36,626 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-3 - Starting...
+2020-04-11 17:52:36,630 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-3 - Start completed.
+2020-04-11 17:52:37,102 INFO o.s.o.j.AbstractEntityManagerFactoryBean [restartedMain] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2020-04-11 17:52:37,129 INFO o.s.b.d.a.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
+2020-04-11 17:52:37,158 WARN o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration [restartedMain] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-04-11 17:52:37,335 INFO o.s.b.a.e.w.EndpointLinksResolver [restartedMain] Exposing 2 endpoint(s) beneath base path '/actuator'
+2020-04-11 17:52:37,366 INFO s.d.s.w.PropertySourcedRequestMappingHandlerMapping [restartedMain] Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2020-04-11 17:52:37,389 INFO o.s.s.w.DefaultSecurityFilterChain [restartedMain] Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@c8136de, org.springframework.security.web.context.SecurityContextPersistenceFilter@7f4c812a, org.springframework.security.web.header.HeaderWriterFilter@6891fe15, com.carros.api.infra.cors.CorsConfig@66c69d7e, org.springframework.web.filter.CorsFilter@499ebf36, org.springframework.security.web.authentication.logout.LogoutFilter@4aec21dc, com.carros.api.infra.security.jwt.JwtAuthenticationFilter@48216142, com.carros.api.infra.security.jwt.JwtAuthorizationFilter@4d93895e, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@3b294a67, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@5c2f7a41, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@1fecc0ff, org.springframework.security.web.session.SessionManagementFilter@2d24168b, org.springframework.security.web.access.ExceptionTranslationFilter@3b4ffdd1, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@3df7893e]
+2020-04-11 17:52:37,434 INFO o.s.s.c.ExecutorConfigurationSupport [restartedMain] Initializing ExecutorService 'applicationTaskExecutor'
+2020-04-11 17:52:37,538 INFO s.d.s.w.p.DocumentationPluginsBootstrapper [restartedMain] Context refreshed
+2020-04-11 17:52:37,539 INFO s.d.s.w.p.DocumentationPluginsBootstrapper [restartedMain] Found 1 custom documentation plugin(s)
+2020-04-11 17:52:37,548 INFO s.d.s.w.s.ApiListingReferenceScanner [restartedMain] Scanning for api listing references
+2020-04-11 17:52:37,590 INFO s.d.s.w.r.o.CachingOperationNameGenerator [restartedMain] Generating unique operation named: getUsingGET_1
+2020-04-11 17:52:37,601 INFO c.c.u.PropertyLogger [restartedMain] ====== Environment and configuration ======
+2020-04-11 17:52:37,601 INFO c.c.u.PropertyLogger [restartedMain] Active profiles: [dev]
+2020-04-11 17:52:37,602 INFO c.c.u.PropertyLogger [restartedMain] ANDROID_AVD_HOME: /mnt/sdb/Android/.android/avd
+2020-04-11 17:52:37,602 INFO c.c.u.PropertyLogger [restartedMain] ANDROID_EMULATOR_HOME: /mnt/sdb/Android/.android
+2020-04-11 17:52:37,603 INFO c.c.u.PropertyLogger [restartedMain] ANDROID_HOME: /mnt/sdb/Android/Sdk
+2020-04-11 17:52:37,603 INFO c.c.u.PropertyLogger [restartedMain] ANDROID_SDK_HOME: /mnt/sdb/Android
+2020-04-11 17:52:37,603 INFO c.c.u.PropertyLogger [restartedMain] ANDROID_SDK_ROOT: /mnt/sdb/Android/Sdk
+2020-04-11 17:52:37,603 INFO c.c.u.PropertyLogger [restartedMain] BUNDLER_EDITOR: subl  >/dev/null 2>&1
+2020-04-11 17:52:37,603 INFO c.c.u.PropertyLogger [restartedMain] CLUTTER_IM_MODULE: xim
+2020-04-11 17:52:37,603 INFO c.c.u.PropertyLogger [restartedMain] COLORTERM: truecolor
+2020-04-11 17:52:37,603 INFO c.c.u.PropertyLogger [restartedMain] CONDA_EXE: /home/jonathan/anaconda3/bin/conda
+2020-04-11 17:52:37,603 INFO c.c.u.PropertyLogger [restartedMain] CONDA_PYTHON_EXE: /home/jonathan/anaconda3/bin/python
+2020-04-11 17:52:37,603 INFO c.c.u.PropertyLogger [restartedMain] CONDA_SHLVL: 0
+2020-04-11 17:52:37,603 INFO c.c.u.PropertyLogger [restartedMain] CUDA_HOME: /usr/local/cuda
+2020-04-11 17:52:37,603 INFO c.c.u.PropertyLogger [restartedMain] DBUS_SESSION_BUS_ADDRESS: unix:path=/run/user/1000/bus
+2020-04-11 17:52:37,603 INFO c.c.u.PropertyLogger [restartedMain] DEFAULTS_PATH: /usr/share/gconf/ubuntu.default.path
+2020-04-11 17:52:37,603 INFO c.c.u.PropertyLogger [restartedMain] DESKTOP_SESSION: ubuntu
+2020-04-11 17:52:37,603 INFO c.c.u.PropertyLogger [restartedMain] DISPLAY: :1
+2020-04-11 17:52:37,603 INFO c.c.u.PropertyLogger [restartedMain] DOCKER_CERT_PATH: /home/jonathan/.minikube/certs
+2020-04-11 17:52:37,603 INFO c.c.u.PropertyLogger [restartedMain] DOCKER_HOST: tcp://172.17.0.2:2376
+2020-04-11 17:52:37,603 INFO c.c.u.PropertyLogger [restartedMain] DOCKER_TLS_VERIFY: 1
+2020-04-11 17:52:37,604 INFO c.c.u.PropertyLogger [restartedMain] GDMSESSION: ubuntu
+2020-04-11 17:52:37,604 INFO c.c.u.PropertyLogger [restartedMain] GJS_DEBUG_OUTPUT: stderr
+2020-04-11 17:52:37,604 INFO c.c.u.PropertyLogger [restartedMain] GJS_DEBUG_TOPICS: JS ERROR;JS LOG
+2020-04-11 17:52:37,604 INFO c.c.u.PropertyLogger [restartedMain] GNOME_DESKTOP_SESSION_ID: this-is-deprecated
+2020-04-11 17:52:37,604 INFO c.c.u.PropertyLogger [restartedMain] GNOME_SHELL_SESSION_MODE: ubuntu
+2020-04-11 17:52:37,604 INFO c.c.u.PropertyLogger [restartedMain] GNOME_TERMINAL_SCREEN: /org/gnome/Terminal/screen/f2fbbb85_b113_4777_a546_eb402c0393ee
+2020-04-11 17:52:37,604 INFO c.c.u.PropertyLogger [restartedMain] GNOME_TERMINAL_SERVICE: :1.732
+2020-04-11 17:52:37,604 INFO c.c.u.PropertyLogger [restartedMain] GOOGLE_APPLICATION_CREDENTIALS: /home/jonathan/Bureau/machine_learning/google-key.json
+2020-04-11 17:52:37,604 INFO c.c.u.PropertyLogger [restartedMain] GOPATH: /home/jonathan/go
+2020-04-11 17:52:37,604 INFO c.c.u.PropertyLogger [restartedMain] GPG_AGENT_INFO: /run/user/1000/gnupg/S.gpg-agent:0:1
+2020-04-11 17:52:37,604 INFO c.c.u.PropertyLogger [restartedMain] GTK2_MODULES: overlay-scrollbar
+2020-04-11 17:52:37,604 INFO c.c.u.PropertyLogger [restartedMain] GTK_IM_MODULE: ibus
+2020-04-11 17:52:37,604 INFO c.c.u.PropertyLogger [restartedMain] GTK_MODULES: gail:atk-bridge
+2020-04-11 17:52:37,604 INFO c.c.u.PropertyLogger [restartedMain] HOME: /home/jonathan
+2020-04-11 17:52:37,604 INFO c.c.u.PropertyLogger [restartedMain] HOMEBREW_CELLAR: /home/linuxbrew/.linuxbrew/Cellar
+2020-04-11 17:52:37,604 INFO c.c.u.PropertyLogger [restartedMain] HOMEBREW_PREFIX: /home/linuxbrew/.linuxbrew
+2020-04-11 17:52:37,604 INFO c.c.u.PropertyLogger [restartedMain] HOMEBREW_REPOSITORY: /home/linuxbrew/.linuxbrew/Homebrew
+2020-04-11 17:52:37,605 INFO c.c.u.PropertyLogger [restartedMain] IM_CONFIG_PHASE: 2
+2020-04-11 17:52:37,605 INFO c.c.u.PropertyLogger [restartedMain] INFOPATH: /home/linuxbrew/.linuxbrew/share/info
+2020-04-11 17:52:37,605 INFO c.c.u.PropertyLogger [restartedMain] JAVA_HOME: /usr/lib/jvm/java-11-openjdk-amd64
+2020-04-11 17:52:37,605 INFO c.c.u.PropertyLogger [restartedMain] LANG: en_US.UTF-8
+2020-04-11 17:52:37,605 INFO c.c.u.PropertyLogger [restartedMain] LC_ALL: en_US.UTF-8
+2020-04-11 17:52:37,605 INFO c.c.u.PropertyLogger [restartedMain] LD_LIBRARY_PATH: :/usr/local/cuda/lib64:/usr/local/cuda/extras/CUPTI/lib64
+2020-04-11 17:52:37,605 INFO c.c.u.PropertyLogger [restartedMain] LESS: -R
+2020-04-11 17:52:37,605 INFO c.c.u.PropertyLogger [restartedMain] LIBVIRT_DEFAULT_URI: qemu:///system
+2020-04-11 17:52:37,605 INFO c.c.u.PropertyLogger [restartedMain] LOGNAME: jonathan
+2020-04-11 17:52:37,605 INFO c.c.u.PropertyLogger [restartedMain] LSCOLORS: Gxfxcxdxbxegedabagacad
+2020-04-11 17:52:37,605 INFO c.c.u.PropertyLogger [restartedMain] LS_COLORS: rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:
+2020-04-11 17:52:37,605 INFO c.c.u.PropertyLogger [restartedMain] MANDATORY_PATH: /usr/share/gconf/ubuntu.mandatory.path
+2020-04-11 17:52:37,605 INFO c.c.u.PropertyLogger [restartedMain] MANPATH: /home/jonathan/.nvm/versions/node/v12.16.1/share/man:/home/linuxbrew/.linuxbrew/share/man:
+2020-04-11 17:52:37,605 INFO c.c.u.PropertyLogger [restartedMain] MAVEN_CMD_LINE_ARGS:  spring-boot:run
+2020-04-11 17:52:37,605 INFO c.c.u.PropertyLogger [restartedMain] MAVEN_PROJECTBASEDIR: /mnt/sdb/Spring/projects/1.references/1.2.spring-boot-using-gitflow
+2020-04-11 17:52:37,606 INFO c.c.u.PropertyLogger [restartedMain] MINIKUBE_ACTIVE_DOCKERD: minikube
+2020-04-11 17:52:37,606 INFO c.c.u.PropertyLogger [restartedMain] NVM_BIN: /home/jonathan/.nvm/versions/node/v12.16.1/bin
+2020-04-11 17:52:37,606 INFO c.c.u.PropertyLogger [restartedMain] NVM_CD_FLAGS: -q
+2020-04-11 17:52:37,606 INFO c.c.u.PropertyLogger [restartedMain] NVM_DIR: /home/jonathan/.nvm
+2020-04-11 17:52:37,606 INFO c.c.u.PropertyLogger [restartedMain] OLDPWD: /mnt/sdb/Spring/projects/1.references/1.2.spring-boot-using-gitflow
+2020-04-11 17:52:37,606 INFO c.c.u.PropertyLogger [restartedMain] PAGER: less
+2020-04-11 17:52:37,606 INFO c.c.u.PropertyLogger [restartedMain] PATH: /home/jonathan/anaconda3/condabin:/home/jonathan/.rbenv/bin:./bin:/home/jonathan/.rbenv/shims:/home/jonathan/.rbenv/bin:/home/jonathan/.nvm/versions/node/v12.16.1/bin:/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:/home/jonathan/bin:/home/jonathan/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/jonathan/.rvm/bin:/usr/local/go/bin:/usr/local/bin/hyperledger/bin_1-4-1:/home/jonathan/.nvm/versions/node/v8.11.3/bin/prettier:/usr/local/bin/robomongo/bin:/usr/local/go/bin:/home/jonathan/go/bin:/usr/local/bin/burrow_0.23.1_Linux_x86_64:/mnt/sdb/Android/flutter/bin:/mnt/sdb/Android/flutter/bin/cache/dart-sdk/bin:/mnt/sdb/Android/Sdk/emulator:/mnt/sdb/Android/Sdk/tools:/mnt/sdb/Android/Sdk/tools/bin:/mnt/sdb/Android/Sdk/platform-tools:/usr/local/bin/tflint:/usr/local/cuda/bin:/usr/local/bin/chromedriver
+2020-04-11 17:52:37,606 INFO c.c.u.PropertyLogger [restartedMain] PID: 19117
+2020-04-11 17:52:37,606 INFO c.c.u.PropertyLogger [restartedMain] PROJECT_ID: maching-learning-235015
+2020-04-11 17:52:37,606 INFO c.c.u.PropertyLogger [restartedMain] PWD: /mnt/sdb/Spring/projects/1.references/1.2.spring-boot-using-gitflow
+2020-04-11 17:52:37,607 INFO c.c.u.PropertyLogger [restartedMain] QT4_IM_MODULE: xim
+2020-04-11 17:52:37,607 INFO c.c.u.PropertyLogger [restartedMain] QT_ACCESSIBILITY: 1
+2020-04-11 17:52:37,607 INFO c.c.u.PropertyLogger [restartedMain] QT_IM_MODULE: ibus
+2020-04-11 17:52:37,607 INFO c.c.u.PropertyLogger [restartedMain] QT_QPA_PLATFORMTHEME: appmenu-qt5
+2020-04-11 17:52:37,607 INFO c.c.u.PropertyLogger [restartedMain] RBENV_SHELL: zsh
+2020-04-11 17:52:37,607 INFO c.c.u.PropertyLogger [restartedMain] SESSION_MANAGER: local/jonathan-xps-15-9560:@/tmp/.ICE-unix/3016,unix/jonathan-xps-15-9560:/tmp/.ICE-unix/3016
+2020-04-11 17:52:37,607 INFO c.c.u.PropertyLogger [restartedMain] SHELL: /usr/bin/zsh
+2020-04-11 17:52:37,607 INFO c.c.u.PropertyLogger [restartedMain] SHLVL: 1
+2020-04-11 17:52:37,607 INFO c.c.u.PropertyLogger [restartedMain] SSH_AGENT_PID: 3257
+2020-04-11 17:52:37,607 INFO c.c.u.PropertyLogger [restartedMain] SSH_AUTH_SOCK: /run/user/1000/keyring/ssh
+2020-04-11 17:52:37,607 INFO c.c.u.PropertyLogger [restartedMain] S_COLORS: auto
+2020-04-11 17:52:37,607 INFO c.c.u.PropertyLogger [restartedMain] TERM: xterm-256color
+2020-04-11 17:52:37,607 INFO c.c.u.PropertyLogger [restartedMain] TEXTDOMAIN: im-config
+2020-04-11 17:52:37,607 INFO c.c.u.PropertyLogger [restartedMain] TEXTDOMAINDIR: /usr/share/locale/
+2020-04-11 17:52:37,607 INFO c.c.u.PropertyLogger [restartedMain] USER: jonathan
+2020-04-11 17:52:37,608 INFO c.c.u.PropertyLogger [restartedMain] USERNAME: jonathan
+2020-04-11 17:52:37,608 INFO c.c.u.PropertyLogger [restartedMain] VTE_VERSION: 5202
+2020-04-11 17:52:37,608 INFO c.c.u.PropertyLogger [restartedMain] WINDOWPATH: 2
+2020-04-11 17:52:37,608 INFO c.c.u.PropertyLogger [restartedMain] XAUTHORITY: /run/user/1000/gdm/Xauthority
+2020-04-11 17:52:37,608 INFO c.c.u.PropertyLogger [restartedMain] XDG_CONFIG_DIRS: /etc/xdg/xdg-ubuntu:/etc/xdg
+2020-04-11 17:52:37,608 INFO c.c.u.PropertyLogger [restartedMain] XDG_CURRENT_DESKTOP: ubuntu:GNOME
+2020-04-11 17:52:37,608 INFO c.c.u.PropertyLogger [restartedMain] XDG_DATA_DIRS: /usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop
+2020-04-11 17:52:37,608 INFO c.c.u.PropertyLogger [restartedMain] XDG_MENU_PREFIX: gnome-
+2020-04-11 17:52:37,608 INFO c.c.u.PropertyLogger [restartedMain] XDG_RUNTIME_DIR: /run/user/1000
+2020-04-11 17:52:37,608 INFO c.c.u.PropertyLogger [restartedMain] XDG_SEAT: seat0
+2020-04-11 17:52:37,608 INFO c.c.u.PropertyLogger [restartedMain] XDG_SESSION_DESKTOP: ubuntu
+2020-04-11 17:52:37,608 INFO c.c.u.PropertyLogger [restartedMain] XDG_SESSION_ID: 2
+2020-04-11 17:52:37,608 INFO c.c.u.PropertyLogger [restartedMain] XDG_SESSION_TYPE: x11
+2020-04-11 17:52:37,608 INFO c.c.u.PropertyLogger [restartedMain] XDG_VTNR: 2
+2020-04-11 17:52:37,608 INFO c.c.u.PropertyLogger [restartedMain] XMODIFIERS: @im=ibus
+2020-04-11 17:52:37,608 INFO c.c.u.PropertyLogger [restartedMain] _: /usr/bin/mvn
+2020-04-11 17:52:37,609 INFO c.c.u.PropertyLogger [restartedMain] _CE_CONDA: 
+2020-04-11 17:52:37,609 INFO c.c.u.PropertyLogger [restartedMain] _CE_M: 
+2020-04-11 17:52:37,609 INFO c.c.u.PropertyLogger [restartedMain] awt.toolkit: sun.awt.X11.XToolkit
+2020-04-11 17:52:37,609 INFO c.c.u.PropertyLogger [restartedMain] catalina.base: /tmp/tomcat.1897522354074842927.8080
+2020-04-11 17:52:37,609 INFO c.c.u.PropertyLogger [restartedMain] catalina.home: /tmp/tomcat.6502065421870710563.8080
+2020-04-11 17:52:37,609 INFO c.c.u.PropertyLogger [restartedMain] catalina.useNaming: false
+2020-04-11 17:52:37,609 INFO c.c.u.PropertyLogger [restartedMain] com.zaxxer.hikari.pool_number: 3
+2020-04-11 17:52:37,609 INFO c.c.u.PropertyLogger [restartedMain] export: 
+2020-04-11 17:52:37,609 INFO c.c.u.PropertyLogger [restartedMain] file.encoding: UTF-8
+2020-04-11 17:52:37,609 INFO c.c.u.PropertyLogger [restartedMain] file.separator: /
+2020-04-11 17:52:37,609 INFO c.c.u.PropertyLogger [restartedMain] java.awt.graphicsenv: sun.awt.X11GraphicsEnvironment
+2020-04-11 17:52:37,609 INFO c.c.u.PropertyLogger [restartedMain] java.awt.headless: true
+2020-04-11 17:52:37,609 INFO c.c.u.PropertyLogger [restartedMain] java.awt.printerjob: sun.print.PSPrinterJob
+2020-04-11 17:52:37,609 INFO c.c.u.PropertyLogger [restartedMain] java.class.version: 55.0
+2020-04-11 17:52:37,609 INFO c.c.u.PropertyLogger [restartedMain] java.home: /usr/lib/jvm/java-11-openjdk-amd64
+2020-04-11 17:52:37,609 INFO c.c.u.PropertyLogger [restartedMain] java.io.tmpdir: /tmp
+2020-04-11 17:52:37,610 INFO c.c.u.PropertyLogger [restartedMain] java.library.path: :/usr/local/cuda/lib64:/usr/local/cuda/extras/CUPTI/lib64:/usr/java/packages/lib:/usr/lib/x86_64-linux-gnu/jni:/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu:/usr/lib/jni:/lib:/usr/lib
+2020-04-11 17:52:37,610 INFO c.c.u.PropertyLogger [restartedMain] java.runtime.name: OpenJDK Runtime Environment
+2020-04-11 17:52:37,610 INFO c.c.u.PropertyLogger [restartedMain] java.runtime.version: 11.0.6+10-post-Ubuntu-1ubuntu118.04.1
+2020-04-11 17:52:37,610 INFO c.c.u.PropertyLogger [restartedMain] java.specification.name: Java Platform API Specification
+2020-04-11 17:52:37,610 INFO c.c.u.PropertyLogger [restartedMain] java.specification.vendor: Oracle Corporation
+2020-04-11 17:52:37,610 INFO c.c.u.PropertyLogger [restartedMain] java.specification.version: 11
+2020-04-11 17:52:37,610 INFO c.c.u.PropertyLogger [restartedMain] java.vendor: Ubuntu
+2020-04-11 17:52:37,610 INFO c.c.u.PropertyLogger [restartedMain] java.vendor.url: https://ubuntu.com/
+2020-04-11 17:52:37,610 INFO c.c.u.PropertyLogger [restartedMain] java.vendor.url.bug: https://bugs.launchpad.net/ubuntu/+source/openjdk-lts
+2020-04-11 17:52:37,610 INFO c.c.u.PropertyLogger [restartedMain] java.version: 11.0.6
+2020-04-11 17:52:37,610 INFO c.c.u.PropertyLogger [restartedMain] java.version.date: 2020-01-14
+2020-04-11 17:52:37,610 INFO c.c.u.PropertyLogger [restartedMain] java.vm.compressedOopsMode: Zero based
+2020-04-11 17:52:37,610 INFO c.c.u.PropertyLogger [restartedMain] java.vm.info: mixed mode, sharing
+2020-04-11 17:52:37,610 INFO c.c.u.PropertyLogger [restartedMain] java.vm.name: OpenJDK 64-Bit Server VM
+2020-04-11 17:52:37,610 INFO c.c.u.PropertyLogger [restartedMain] java.vm.specification.name: Java Virtual Machine Specification
+2020-04-11 17:52:37,611 INFO c.c.u.PropertyLogger [restartedMain] java.vm.specification.vendor: Oracle Corporation
+2020-04-11 17:52:37,611 INFO c.c.u.PropertyLogger [restartedMain] java.vm.specification.version: 11
+2020-04-11 17:52:37,611 INFO c.c.u.PropertyLogger [restartedMain] java.vm.vendor: Ubuntu
+2020-04-11 17:52:37,611 INFO c.c.u.PropertyLogger [restartedMain] java.vm.version: 11.0.6+10-post-Ubuntu-1ubuntu118.04.1
+2020-04-11 17:52:37,611 INFO c.c.u.PropertyLogger [restartedMain] jdk.debug: release
+2020-04-11 17:52:37,611 INFO c.c.u.PropertyLogger [restartedMain] line.separator: 
+
+2020-04-11 17:52:37,611 INFO c.c.u.PropertyLogger [restartedMain] logging.config: conf/log4j2-dev.xml
+2020-04-11 17:52:37,611 INFO c.c.u.PropertyLogger [restartedMain] org.apache.logging.log4j.assignedSequences: 2494
+2020-04-11 17:52:37,611 INFO c.c.u.PropertyLogger [restartedMain] os.arch: amd64
+2020-04-11 17:52:37,611 INFO c.c.u.PropertyLogger [restartedMain] os.name: Linux
+2020-04-11 17:52:37,611 INFO c.c.u.PropertyLogger [restartedMain] os.version: 4.15.0-91-generic
+2020-04-11 17:52:37,611 INFO c.c.u.PropertyLogger [restartedMain] path.separator: :
+2020-04-11 17:52:37,611 INFO c.c.u.PropertyLogger [restartedMain] server.error.include-stacktrace: ALWAYS
+2020-04-11 17:52:37,612 INFO c.c.u.PropertyLogger [restartedMain] server.servlet.jsp.init-parameters.development: true
+2020-04-11 17:52:37,612 INFO c.c.u.PropertyLogger [restartedMain] server.servlet.session.persistent: true
+2020-04-11 17:52:37,612 INFO c.c.u.PropertyLogger [restartedMain] spring.application.name: carros
+2020-04-11 17:52:37,612 INFO c.c.u.PropertyLogger [restartedMain] spring.beaninfo.ignore: true
+2020-04-11 17:52:37,612 INFO c.c.u.PropertyLogger [restartedMain] spring.cloud.client.hostname: 192.168.0.3
+2020-04-11 17:52:37,612 INFO c.c.u.PropertyLogger [restartedMain] spring.cloud.client.ip-address: 192.168.0.3
+2020-04-11 17:52:37,612 INFO c.c.u.PropertyLogger [restartedMain] spring.datasource.url: jdbc:mysql://localhost:3306/database?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
+2020-04-11 17:52:37,612 INFO c.c.u.PropertyLogger [restartedMain] spring.datasource.username: jonathan
+2020-04-11 17:52:37,612 INFO c.c.u.PropertyLogger [restartedMain] spring.freemarker.cache: false
+2020-04-11 17:52:37,612 INFO c.c.u.PropertyLogger [restartedMain] spring.groovy.template.cache: false
+2020-04-11 17:52:37,612 INFO c.c.u.PropertyLogger [restartedMain] spring.h2.console.enabled: true
+2020-04-11 17:52:37,613 INFO c.c.u.PropertyLogger [restartedMain] spring.jpa.hibernate.ddl-auto: create
+2020-04-11 17:52:37,613 INFO c.c.u.PropertyLogger [restartedMain] spring.jpa.properties.hibernate.dialect: org.hibernate.dialect.MySQL55Dialect
+2020-04-11 17:52:37,613 INFO c.c.u.PropertyLogger [restartedMain] spring.jpa.properties.hibernate.format_sql: true
+2020-04-11 17:52:37,613 INFO c.c.u.PropertyLogger [restartedMain] spring.jpa.properties.hibernate.show_sql: true
+2020-04-11 17:52:37,613 INFO c.c.u.PropertyLogger [restartedMain] spring.mustache.cache: false
+2020-04-11 17:52:37,613 INFO c.c.u.PropertyLogger [restartedMain] spring.mvc.log-resolved-exception: true
+2020-04-11 17:52:37,613 INFO c.c.u.PropertyLogger [restartedMain] spring.profiles.active: dev
+2020-04-11 17:52:37,613 INFO c.c.u.PropertyLogger [restartedMain] spring.reactor.debug: true
+2020-04-11 17:52:37,613 INFO c.c.u.PropertyLogger [restartedMain] spring.resources.cache.period: 0
+2020-04-11 17:52:37,613 INFO c.c.u.PropertyLogger [restartedMain] spring.resources.chain.cache: false
+2020-04-11 17:52:37,613 INFO c.c.u.PropertyLogger [restartedMain] spring.template.provider.cache: false
+2020-04-11 17:52:37,613 INFO c.c.u.PropertyLogger [restartedMain] spring.thymeleaf.cache: false
+2020-04-11 17:52:37,613 INFO c.c.u.PropertyLogger [restartedMain] sun.arch.data.model: 64
+2020-04-11 17:52:37,613 INFO c.c.u.PropertyLogger [restartedMain] sun.boot.library.path: /usr/lib/jvm/java-11-openjdk-amd64/lib
+2020-04-11 17:52:37,613 INFO c.c.u.PropertyLogger [restartedMain] sun.cpu.endian: little
+2020-04-11 17:52:37,613 INFO c.c.u.PropertyLogger [restartedMain] sun.cpu.isalist: 
+2020-04-11 17:52:37,614 INFO c.c.u.PropertyLogger [restartedMain] sun.desktop: gnome
+2020-04-11 17:52:37,614 INFO c.c.u.PropertyLogger [restartedMain] sun.io.unicode.encoding: UnicodeLittle
+2020-04-11 17:52:37,614 INFO c.c.u.PropertyLogger [restartedMain] sun.java.command: com.carros.CarrosApplication
+2020-04-11 17:52:37,614 INFO c.c.u.PropertyLogger [restartedMain] sun.java.launcher: SUN_STANDARD
+2020-04-11 17:52:37,614 INFO c.c.u.PropertyLogger [restartedMain] sun.jnu.encoding: UTF-8
+2020-04-11 17:52:37,614 INFO c.c.u.PropertyLogger [restartedMain] sun.management.compiler: HotSpot 64-Bit Tiered Compilers
+2020-04-11 17:52:37,614 INFO c.c.u.PropertyLogger [restartedMain] sun.os.patch.level: unknown
+2020-04-11 17:52:37,614 INFO c.c.u.PropertyLogger [restartedMain] user.country: US
+2020-04-11 17:52:37,614 INFO c.c.u.PropertyLogger [restartedMain] user.dir: /mnt/sdb/Spring/projects/1.references/1.2.spring-boot-using-gitflow
+2020-04-11 17:52:37,614 INFO c.c.u.PropertyLogger [restartedMain] user.home: /home/jonathan
+2020-04-11 17:52:37,614 INFO c.c.u.PropertyLogger [restartedMain] user.language: en
+2020-04-11 17:52:37,614 INFO c.c.u.PropertyLogger [restartedMain] user.name: jonathan
+2020-04-11 17:52:37,614 INFO c.c.u.PropertyLogger [restartedMain] user.timezone: America/Sao_Paulo
+2020-04-11 17:52:37,614 INFO c.c.u.PropertyLogger [restartedMain] ===========================================
+2020-04-11 17:52:37,622 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting ProtocolHandler ["http-nio-8080"]
+2020-04-11 17:52:37,625 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat started on port(s): 8080 (http) with context path ''
+2020-04-11 17:52:37,627 INFO o.s.b.StartupInfoLogger [restartedMain] Started CarrosApplication in 1.677 seconds (JVM running for 132.359)
+2020-04-11 17:52:37,629 INFO o.s.b.d.a.ConditionEvaluationDeltaLoggingListener [restartedMain] Condition evaluation unchanged

@@ -3,7 +3,6 @@ kind: Config
 
 profiles:
   ### Local environment ###
-
   - name: minikube
     # automatically activate this profile when current context is "minikube"
     activation:
@@ -19,11 +18,42 @@ profiles:
             args:
               - -P local-k8s #
             type: maven
-      # tagPolicy:
-      #   gitCommit: {} # first look at tag, then use short commit
+      tagPolicy:
+        gitCommit: {} # first look at tag, then use short commit
     # test: Container Structure Tests
     deploy:
+      statusCheckDeadlineSeconds: 60s # d. 120s
       kubeContext: minikube
+      kubectl: # deploy using kubectl
+        manifests:
+          - "k8s/local/database/*.yaml"
+          - "k8s/local/*.yaml"
+          - "k8s/local/backend/*.yaml"
+    # Automatically expose service using --port-forward
+    # portForward:
+    #   - resourceType: Service
+    #     resourceName: java-demo-backend-service
+    #     namespace: java-demo
+    #     port: 8080
+    #     localPort: 8080
+
+  ### Staging environment ###
+  - name: statging
+    build:
+      local:
+        push: true # will not push the image
+      artifacts:
+        - image: jojoooo1/carros # name of the image that will be build locally
+          # context: . # context where the image is being built
+          jib:
+            args:
+              - -P staging-k8s #
+            type: maven
+      tagPolicy:
+        gitCommit: {} # first look at tag, then use short commit
+    # test: Container Structure Tests
+    deploy:
+      statusCheckDeadlineSeconds: 60s # d. 120s
       kubectl: # deploy using kubectl
         manifests:
           - "k8s/local/*.yaml"
@@ -36,35 +66,3 @@ profiles:
     #     namespace: java-demo
     #     port: 8080
     #     localPort: 8080
-
-  # ### Staging environment ###
-  # - name: staging-profile
-  #   build:
-  #     artifacts:
-  #       - image: jojoooo1/carros # name of the image that will be build locally
-  #         # context: . # context where the image is being built
-  #     # tagPolicy:
-  #     #   envTemplate:
-  #     #   template: "{{.IMAGE_NAME}}:{{.RELEASE_VERSION}}"
-
-  #   deploy:
-  #     kubeContext: staging
-  #     # statusCheckDeadlineSeconds: 300
-  #     kubectl:
-  #       manifests:
-  #         - "k8s/staging/**.yaml"
-
-  # ### Production environment ###
-
-  # - name: production
-  #   build:
-  #     artifacts:
-  #       - image: jojoooo1/carros # name of the image that will be build locally
-  #         # context: . # context where the image is being built
-  #     # tagPolicy:
-  #     #   gitCommit: {} # first look at tag, then use short commit
-  #   deploy:
-  #     kubeContext: production
-  #     kubectl:
-  #       manifests:
-  #         - - "k8s/production/**.yaml"

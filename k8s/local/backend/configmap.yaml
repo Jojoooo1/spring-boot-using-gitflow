@@ -24,8 +24,4 @@ data:
           ddl-auto: none
     #               
     logging:
-      level:
-        root: info
-        org:
-          springframework: info
-          hibernate: info
+      config: conf/log4j2-dev.xml

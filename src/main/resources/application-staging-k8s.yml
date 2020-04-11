@@ -1,8 +1,19 @@
+management:
+  endpoint:
+    health:
+      enabled: true
+    info:
+      enabled: true
+
 spring:
   cloud:
     kubernetes:
       reload:
         enabled: true
       config:
-        name: spring-boot-configmap
-        namespace: local
+      #   # ConfigMap default
+        name: carros
+        namespace: java-demo
+        sources:
+            - name: config-test # Not working: issue opened
+              namespace: java-demo
