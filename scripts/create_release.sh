@@ -1,4 +1,7 @@
 #!/bin/bash
+
+set -e # exit on first error
+
 # Make sure we are on branch develop
 git checkout develop
 git pull origin develop
