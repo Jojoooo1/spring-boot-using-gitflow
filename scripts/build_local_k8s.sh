@@ -9,4 +9,6 @@ sudo kubectl config set-context minikube --namespace java-demo
 #
 cd ..
 # Start skaffold
-skaffold dev -v info --port-forward --rpc-http-port 44489 --filename skaffold.yaml -p minikube
+skaffold dev \
+  --verbosity=info --tail=true \
+  --filename=skaffold.yaml --profile=minikube

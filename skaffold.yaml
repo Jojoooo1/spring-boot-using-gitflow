@@ -31,3 +31,10 @@ profiles:
           - "k8s/local/database/*.yaml"
           - "k8s/local/*.yaml"
           - "k8s/local/backend/*.yaml"
+
+    portForward:
+      - resourceType: Service
+        resourceName: java-demo-backend-service
+        namespace: java-demo
+        port: 8080
+        localPort: 8080

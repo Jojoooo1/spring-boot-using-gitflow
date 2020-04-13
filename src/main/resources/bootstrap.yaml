@@ -20,5 +20,7 @@ spring:
         name: carros
         namespace: java-demo
         sources:
-            - name: config-test # Not working: issue opened
+            - name: config-test
+              namespace: java-demo
+            - name: carros 
               namespace: java-demo

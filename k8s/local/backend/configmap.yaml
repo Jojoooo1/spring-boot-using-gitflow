@@ -28,4 +28,4 @@ data:
         change-log: classpath:/db/db.changelog-master.xml
     #               
     logging:
-      config: conf/log4j2-dev.xml
+      config: classpath:log4j2-dev.xml
