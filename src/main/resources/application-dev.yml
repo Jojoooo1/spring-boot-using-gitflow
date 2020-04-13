@@ -1,30 +1,26 @@
-# MySQL
 spring:
+
   datasource:
-    # Modify Spring default database (Spring Boot configures by default the application to connect to an in-memory store)
-    url: jdbc:mysql://localhost:3306/database?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
-    username: jonathan
-    password: password
+    url: jdbc:h2:mem:database
+    driver-class-name: org.h2.Driver
+    username: sa # default username
+    password: 
 
   jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    show-sql: false
+    hibernate:
+      ddl-auto: validate
     properties:
       hibernate:
-        dialect: org.hibernate.dialect.MySQL55Dialect
         show_sql: true
         format_sql: true
-    hibernate:
-      ddl-auto: create
-  #Security
-  security:
-    user:
-      name: admin
-      password: password
-      
-logging:
-  level:
-    root: info
-    org:
-      springframework: info
-      hibernate: info
-      
+  h2:
+    console:
+      enabled: true
 
+  liquibase:
+    change-log: classpath:/db/db.changelog-master.xml
+
+logging:
+  config: classpath:log4j2-dev.xml

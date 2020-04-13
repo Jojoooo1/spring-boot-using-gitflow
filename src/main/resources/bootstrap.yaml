@@ -1,0 +1,26 @@
+spring:
+  application:
+    name: carros
+  profiles:
+    active: '@spring.profile.active@'
+---
+spring:
+  profiles: dev
+  cloud: 
+    kubernetes:
+      enabled: false
+---
+spring:
+  profiles: local-k8s,staging-k8s
+  cloud:
+    kubernetes:
+      reload:
+        enabled: true
+      config:
+        name: carros
+        namespace: java-demo
+        sources:
+            - name: config-test
+              namespace: java-demo
+            - name: carros 
+              namespace: java-demo

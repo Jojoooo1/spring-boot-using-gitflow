@@ -1,8 +1,0 @@
-spring:
-  cloud:
-    kubernetes:
-      reload:
-        enabled: true
-      config:
-        name: spring-boot-configmap
-        namespace: production

@@ -1,0 +1,47 @@
+# only used for testing purpose
+
+apiVersion: skaffold/v2beta1
+kind: Config
+
+profiles:
+  ### Local environment ###
+  - name: minikube
+    # automatically activate this profile when current context is "minikube"
+    activation:
+      - kubeContext: minikube
+
+    build:
+      local:
+        push: false # will not push the image
+      artifacts:
+        - image: jojoooo1/carros # name of the image that will be build locally
+          # context: . # context where the image is being built
+          jib:
+            args:
+              - -P local-k8s #
+            type: maven
+      tagPolicy:
+        gitCommit: {} # first look at tag, then use short commit
+    # test: Container Structure Tests
+    deploy:
+      statusCheckDeadlineSeconds: 60 # d. 120s
+      kubeContext: minikube
+      kubectl: # deploy using kubectl
+        manifests:
+          - "k8s/local/database/*.yaml"
+          - "k8s/local/*.yaml"
+          - "k8s/local/backend/*.yaml"
+          
+    # Sets by default already
+    # portForward:
+    #   - resourceType: Service
+    #     resourceName: java-demo-backend-service
+    #     namespace: java-demo
+    #     port: 8080
+    #     localPort: 8080
+
+    #   - resourceType: Service
+    #     resourceName: java-demo-database-service
+    #     namespace: java-demo
+    #     port: 3306
+    #     localPort: 3306
