@@ -2,10 +2,10 @@ name: CI for release branch
 
 on:
   pull_request:
-    branches: [release-v*]
+    branches: [release-*]
 
   push:
-    branches: [release-v*]
+    branches: [release-*]
 
 env: 
   DOCKER_USERNAME: jojoooo1
@@ -34,8 +34,6 @@ jobs:
         run: |
           echo "::set-env name=SOURCE_BRANCH::$(echo ${GITHUB_REF##*/})"
           echo "RELEASE_VERSION: $SOURCE_BRANCH"
-          echo "::set-env name=RELEASE_VERSION::${GITHUB_REF##*-v}"
-          echo "RELEASE_VERSION: $RELEASE_VERSION"
 
       # Verifies UT & IT
       - name: Build with Maven
@@ -52,14 +50,18 @@ jobs:
     runs-on: ubuntu-latest
     needs: release-verify-build
     steps:
+      - name: "echo RELEASE_VERSION"
+        run: |
+          echo "::set-env name=RELEASE_VERSION::${GITHUB_REF##*-}"
+          echo "RELEASE_VERSION: $RELEASE_VERSION"
       - name: Sets Release Candidate version in pom.xml
         run: mvn versions:set -DnewVersion=${{ RELEASE_VERSION }}.rc-${{ github.sha }}
       - name: Build & Push Release Candidate to Docker repository
         run: |
-          mvn compile -Pstaging jib:build \
+          mvn compile -P staging jib:build \
             -Djib.to.auth.username=${{ DOCKER_USERNAME }} \
-            -Djib.to.auth.password=${{ DOCKER_PASSWORD }} \
             -Djib.to.image=docker.io/${{ DOCKER_USERNAME }}/${{ DOCKER_IMAGE }} \
+            -Djib.to.auth.password=${{ DOCKER_PASSWORD }} \
             -Djib.to.tags=${{ RELEASE_VERSION }}.rc-${{ github.sha }}
       - name: Commit changes to $SOURCE_BRANCH
         run: |

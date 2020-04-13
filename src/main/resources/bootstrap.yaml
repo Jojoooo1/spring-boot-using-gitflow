@@ -11,7 +11,22 @@ spring:
       enabled: false
 ---
 spring:
-  profiles: local-k8s,staging-k8s
+  profiles: local-k8s
+  cloud:
+    kubernetes:
+      reload:
+        enabled: true
+      config:
+        name: carros
+        namespace: java-demo
+        sources:
+            - name: config-test
+              namespace: java-demo
+            - name: carros 
+              namespace: java-demo
+---
+spring:
+  profiles: staging
   cloud:
     kubernetes:
       reload:
