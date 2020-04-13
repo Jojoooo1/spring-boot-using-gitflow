@@ -25,7 +25,7 @@
     <spring-cloud.version>Hoxton.SR3</spring-cloud.version>
     <!-- MySQL & Liquibase -->
     <mysql-connector.version>8.0.19</mysql-connector.version>
-    <liquibase.version>3.8.9</liquibase.version>
+    <!-- <liquibase.version>3.8.9</liquibase.version> -->
     <!-- Lombok & ModelMapper-->
     <lombok.version>1.18.12</lombok.version>
     <modelmapper.version>2.3.7</modelmapper.version>
@@ -162,11 +162,11 @@
 
     <!-- Database version management -->
 
-    <!-- <dependency>
+    <dependency>
       <groupId>org.liquibase</groupId>
       <artifactId>liquibase-core</artifactId>
       <version>${liquibase.version}</version>
-    </dependency> -->
+    </dependency>
 
     <!-- Lombok -->
 
@@ -325,7 +325,6 @@
   </dependencyManagement>
 
   <!-- Maven build -->
-
   <build>
 
     <pluginManagement>
@@ -360,6 +359,11 @@
         <configuration>
           <mainClass>com.carros.CarrosApplication</mainClass>
         </configuration>
+      </plugin>
+
+      <plugin>
+        <groupId>org.liquibase</groupId>
+        <artifactId>liquibase-maven-plugin</artifactId>
       </plugin>
 
       <!-- Unit tests -->
@@ -548,7 +552,7 @@
             <!-- <image>adoptopenjdk:11-jre-hotspot</image> -->
           </from>
           <to>
-            <image>docker.io/${jib.to.image.username}/${project.artifactId}</image>
+            <!-- <image>docker.io/${jib.to.image.username}/${project.artifactId}</image> -->
             <!-- <auth>
               <username>${jib.to.auth.username}</username>
             </auth>

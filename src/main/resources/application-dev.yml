@@ -1,27 +1,26 @@
 spring:
+
   datasource:
     url: jdbc:h2:mem:database
     driver-class-name: org.h2.Driver
     username: sa # default username
     password: 
+
   jpa:
     database-platform: org.hibernate.dialect.H2Dialect
     show-sql: false
+    hibernate:
+      ddl-auto: validate
     properties:
       hibernate:
         show_sql: true
         format_sql: true
-        ddl-auto: create-drop
   h2:
     console:
       enabled: true
-  #Security
-  # security:
-  #   user:
-  #     name: admin
-  #     password: password
+
+  liquibase:
+    change-log: classpath:/db/db.changelog-master.xml
 
 logging:
   config: conf/log4j2-dev.xml
-  
-
