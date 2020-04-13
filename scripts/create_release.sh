@@ -24,7 +24,7 @@ if [[ $RESPONSE =~ ^([yY][eE][sS]|[yY])$ ]]; then
   git push origin $NEW_RELEASE
 else
   echo
-  echo "Exiting..."
+  echo "Action cancelled exiting..."
   exit 0
 fi
 
