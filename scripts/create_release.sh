@@ -21,7 +21,7 @@ if [[ $RESPONSE =~ ^([yY][eE][sS]|[yY])$ ]]; then
   echo "Creating branch release-$NEW_RELEASE..."
   echo
   git checkout -b release-$NEW_RELEASE
-  git push origin $NEW_RELEASE
+  git push origin release-$NEW_RELEASE
 else
   echo
   echo "Action cancelled exiting..."
