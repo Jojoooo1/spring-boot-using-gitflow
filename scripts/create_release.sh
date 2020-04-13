@@ -1,6 +1,7 @@
 #!/bin/bash
 # Make sure we are on branch develop
 git checkout develop
+git pull origin develop
 # Get latest tag
 LATEST_TAG=$(git describe --tags $(git rev-list --tags --max-count=1))
 echo
