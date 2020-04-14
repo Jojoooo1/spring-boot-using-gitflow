@@ -11,7 +11,7 @@ env:
   DOCKER_IMAGE: carros
 
 jobs:
-  release-deploy:
+  release-build-and-deploy:
     if: "! contains(toJSON(github.event.commits.*.message), '[skip-ci]')"
     runs-on: ubuntu-latest
     steps:
