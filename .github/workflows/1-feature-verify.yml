@@ -28,6 +28,6 @@ jobs:
           restore-keys: ${{ runner.os }}-m2
 
       # Test project
-      - name: Build & Test
+      - name: Run Unit & Integration Test
         run: mvn clean verify -P all-test
       # TODO: on push failure send notification
