@@ -1,4 +1,4 @@
-name: CI for building and deploying to master
+name: CI for building and deploying stable image to master
 
 on:
   # Only push become we want it to be triggered when the merge happen
