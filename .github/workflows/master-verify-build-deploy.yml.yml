@@ -1,8 +1,8 @@
-name: CI for building and deploying latest image
+name: CI for building and deploying to master
 
 on:
-  # pull_request:
-  #   branches: [master]
+  pull_request:
+    branches: [master]
 
   push:
     branches: [master]
