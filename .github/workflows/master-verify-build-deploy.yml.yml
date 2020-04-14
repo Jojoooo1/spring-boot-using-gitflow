@@ -1,4 +1,4 @@
-name: CI for feature branch
+name: CI for building and deploying latest image
 
 on:
   pull_request:
@@ -18,14 +18,14 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: 11
-      - name: Cache Maven packages
-        uses: actions/cache@v1
-        with:
-          path: ~/.m2
-          key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
-          restore-keys: ${{ runner.os }}-m2
+      # - name: Cache Maven packages
+      #   uses: actions/cache@v1
+      #   with:
+      #     path: ~/.m2
+      #     key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
+      #     restore-keys: ${{ runner.os }}-m2
 
-      # Test
-      - name: Build with Maven
-        run: mvn clean verify -P all-test # can use sonar:sonar
+      # # Test
+      # - name: Build with Maven
+      #   run: mvn clean verify -P all-test # can use sonar:sonar
 
