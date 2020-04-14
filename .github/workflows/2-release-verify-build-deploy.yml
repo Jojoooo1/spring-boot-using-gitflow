@@ -4,7 +4,8 @@ on:
   push:
     branches: [release-*] # d. (opened, synchronize, or reopened)
 
-env: 
+env:
+  GITHUB_USERNAME: jojoooo1
   DOCKER_USERNAME: jojoooo1
   DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
   DOCKER_IMAGE: carros
@@ -69,6 +70,7 @@ jobs:
       ## Commit maven version update ##
       - name: Commit changes to $SOURCE_BRANCH
         run: |
+          git config --global user.email "$GITHUB_USERNAME"
           git diff
           git add .
           git commit -m "Pushed image to: docker.io/${DOCKER_USERNAME}/${DOCKER_IMAGE}:$RELEASE_NAME"
