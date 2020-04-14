@@ -74,6 +74,5 @@ jobs:
           git config --global user.name $GITHUB_USERNAME
           git config --global user.email "$GITHUB_USERNAME@users.noreply.github.com"
           git diff
-          git add .
-          git commit -m "Pushed image to: docker.io/${DOCKER_USERNAME}/${DOCKER_IMAGE}:$RELEASE_NAME"
+          git commit -am "Pushed image to: docker.io/${DOCKER_USERNAME}/${DOCKER_IMAGE}:$RELEASE_NAME"
           git push origin $SOURCE_BRANCH
