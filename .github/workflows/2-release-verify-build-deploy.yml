@@ -28,7 +28,7 @@ jobs:
           restore-keys: ${{ runner.os }}-m2
 
       ## Unit & Integration Test ##
-      - name: Build with Maven
+      - name: Build & Test
         run: mvn clean verify -P all-test
 
       # TODO: on push failure send notification
