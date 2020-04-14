@@ -70,5 +70,6 @@ jobs:
       - name: Commit changes to $SOURCE_BRANCH
         run: |
           git diff
-          git add -am "Pushed image to: docker.io/${DOCKER_USERNAME}/${DOCKER_IMAGE}:$RELEASE_NAME"
+          git add .
+          git commit -m "Pushed image to: docker.io/${DOCKER_USERNAME}/${DOCKER_IMAGE}:$RELEASE_NAME"
           git push origin $SOURCE_BRANCH
