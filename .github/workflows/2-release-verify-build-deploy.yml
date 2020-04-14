@@ -10,7 +10,7 @@ env:
   DOCKER_IMAGE : carros
 
 jobs:
-  release-verify-build:
+  release-deploy:
     if: "! contains(toJSON(github.event.commits.*.message), '[skip-ci]')"
     runs-on: ubuntu-latest
     steps:
@@ -56,10 +56,10 @@ jobs:
       ## Push to image registry ##
       - name: Build & Push Release Candidate to Docker registry
         run: |
-          mvn compile -P staging jib:build \
+          mvn clean compile -P staging jib:build \
             -Djib.to.auth.username=$DOCKER_USERNAME \
-            -Djib.to.image=docker.io/${ DOCKER_USERNAME }/$DOCKER_IMAGE \
             -Djib.to.auth.password=$DOCKER_PASSWORD \
+            -Djib.to.image=docker.io/${ DOCKER_USERNAME }/$DOCKER_IMAGE \
             -Djib.to.tags=$RELEASE_NAME
 
       ## Commit maven version update ##
