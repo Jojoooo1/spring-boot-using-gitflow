@@ -27,7 +27,7 @@ jobs:
           key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
           restore-keys: ${{ runner.os }}-m2
 
-      # ## Unit & Integration Test ##
+      ## Unit & Integration Test ##
       - name: Build with Maven
         run: mvn clean verify -P all-test
 
@@ -42,7 +42,7 @@ jobs:
         run: |
           echo "::set-env name=SOURCE_BRANCH::${GITHUB_REF##*/}"
           echo "::set-env name=RELEASE_VERSION::${GITHUB_REF##*release-}"
-      - name: echo "::set-env name=RELEASE_NAME::${RELEASE_VERSION}.rc-$GITHUB_SHA"
+      - run: echo "::set-env name=RELEASE_NAME::${RELEASE_VERSION}.rc-$GITHUB_SHA" # new run because can not use $RELEASE_VERSION in same run
       - name: "echo ENV_VARIABLE"
         run: |
           echo SOURCE_BRANCH: "$SOURCE_BRANCH"
