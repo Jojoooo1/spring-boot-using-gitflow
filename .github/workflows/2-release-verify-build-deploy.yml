@@ -36,6 +36,7 @@ jobs:
       # Can use Sonar
       # Or can use PMD, FindBugs and Checkstyle
       # Can add dependency scanning
+      # Can upload test report
 
       ## Sets environment variables ##
       - name: "Sets ENV_VARIABLE"
