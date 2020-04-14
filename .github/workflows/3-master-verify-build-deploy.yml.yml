@@ -1,9 +1,7 @@
 name: CI for building and deploying to master
 
 on:
-  pull_request:
-    branches: [master]
-
+  # Only push become we want it to be triggered when the merge happen
   push:
     branches: [master]
 
