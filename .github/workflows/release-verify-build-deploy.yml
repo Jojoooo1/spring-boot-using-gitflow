@@ -1,9 +1,6 @@
 name: CI for building and deploying release candidate image
 
 on:
-  pull_request:
-    branches: [release-*]
-
   push:
     branches: [release-*]
 

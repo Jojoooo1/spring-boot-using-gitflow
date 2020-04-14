@@ -1,6 +1,6 @@
 name: CI for Unit & Integration Test
 
-# Every time a pull request is open and a merge is executed in branch develop this CI will be triggered
+# Every time a pull request is open and a merge is executed in develop this CI will be triggered
 
 on:
   pull_request:
