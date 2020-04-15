@@ -37,21 +37,32 @@ spec:
           #   - name: JAVA_TOOL_OPTIONS # used by distroless image
           #     value:
           ports:
-            - containerPort: 8080
+            - name: container-port
+              containerPort: 8080
           #
           # Liveness and Readiness
           # To use when restarting the app will recover it (heap, stack problems etc.)
-          livenessProbe:
-            failureThreshold: 2 # d. 1
-            periodSeconds: 15 # d. 10
+          # livenessProbe:
+          #   failureThreshold: 2 # d. 1
+          #   periodSeconds: 15 # d. 10
+          #   httpGet:
+          #     port: 8080
+          #     path: /actuator/health
+          #
+          # Indicates that the Pod has successfully initialized. 
+          # No other probes are executed until this completes successfully.
+          startupProbe:
             httpGet:
-              port: 8080
               path: /actuator/health
+              port: container-port
+            failureThreshold: 3
+            periodSeconds: 25
+
           readinessProbe:
             periodSeconds: 10 # d.
             failureThreshold: 3 # d.
             httpGet:
-              port: 8080
+              port: container-port
               path: /actuator/health
           # 
           # RESOURCES (Sets in jib: -Xms512m, -Xmx1024m (becarefull with the compatibility))
