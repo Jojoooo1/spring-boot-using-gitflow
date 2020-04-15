@@ -24,6 +24,10 @@ data:
             show_sql: true
             format_sql: true
 
+      h2:
+        console:
+          enabled: false
+
       liquibase:
         change-log: classpath:/db/db.changelog-master.xml
     #               

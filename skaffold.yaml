@@ -24,12 +24,12 @@ profiles:
         gitCommit: {} # first look at tag, then use short commit
     # test: Container Structure Tests
     deploy:
-      statusCheckDeadlineSeconds: 60 # d. 120s
+      statusCheckDeadlineSeconds: 120 # d. 120s
       kubeContext: minikube
       kubectl: # deploy using kubectl
         manifests:
+          - "k8s/local/common/*.yaml"
           - "k8s/local/database/*.yaml"
-          - "k8s/local/*.yaml"
           - "k8s/local/backend/*.yaml"
           
     # Sets by default already

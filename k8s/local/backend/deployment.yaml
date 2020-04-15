@@ -41,11 +41,12 @@ spec:
           #
           # Liveness and Readiness
           # To use when restarting the app will recover it (heap, stack problems etc.)
-          # livenessProbe:
-          #   initialDelaySeconds: 60
-          #   httpGet:
-          #     port: 8080
-          #     path: /alive
+          livenessProbe:
+            failureThreshold: 2 # d. 1
+            periodSeconds: 15 # d. 10
+            httpGet:
+              port: 8080
+              path: /actuator/health
           readinessProbe:
             periodSeconds: 10 # d.
             failureThreshold: 3 # d.
