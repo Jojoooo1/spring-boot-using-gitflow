@@ -106,8 +106,8 @@
     <profile>
       <id>prod-k8s</id>
       <properties>
-        <build.profile.id>prod</build.profile.id>
-        <spring.profile.active>prod</spring.profile.active>
+        <build.profile.id>prod-k8s</build.profile.id>
+        <spring.profile.active>prod-k8s</spring.profile.active>
       </properties>
     </profile>
   </profiles>
