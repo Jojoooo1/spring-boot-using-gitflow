@@ -2,7 +2,7 @@ name: CI for building and deploying release candidate image to staging
 
 on:
   push:
-    branches: [release-*] # d. (opened, synchronize, or reopened)
+    branches: [release-*] # d. (opened, synchronize, or reopened) #
 
 env:
   GITHUB_USERNAME: jojoooo1
