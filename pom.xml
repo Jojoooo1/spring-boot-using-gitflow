@@ -563,8 +563,8 @@
             </ports>
             <!--  can use at runtime JAVA_TOOL_OPTIONS -->
             <jvmFlags>
-              <jvmFlag>-Xms512m</jvmFlag>
-              <jvmFlag>-Xmx1024m</jvmFlag>
+              <jvmFlag>-Xms256m</jvmFlag>
+              <jvmFlag>-Xmx512m</jvmFlag>
             </jvmFlags>
           </container>
         </configuration>
