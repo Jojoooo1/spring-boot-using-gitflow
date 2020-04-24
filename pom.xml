@@ -561,11 +561,11 @@
             <ports>
               <port>${jib.container.port}</port>
             </ports>
-            <!--  can use at runtime JAVA_TOOL_OPTIONS -->
-            <jvmFlags>
-              <jvmFlag>-Xms512m</jvmFlag>
-              <jvmFlag>-Xmx1024m</jvmFlag>
-            </jvmFlags>
+            <!--  Defined in JAVA_TOOL_OPTIONS -->
+            <!-- <jvmFlags>
+              <jvmFlag>-Xms128m</jvmFlag> Initial heap size 
+              <jvmFlag>-Xmx256m</jvmFlag> Max heap size
+            </jvmFlags> -->
           </container>
         </configuration>
       </plugin>
