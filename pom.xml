@@ -561,7 +561,7 @@
             <ports>
               <port>${jib.container.port}</port>
             </ports>
-            <!--  Defined in JAVA_TOOL_OPTIONS -->
+            <!--  Defining in JAVA_TOOL_OPTIONS for better control -->
             <!-- <jvmFlags>
               <jvmFlag>-Xms128m</jvmFlag> Initial heap size 
               <jvmFlag>-Xmx256m</jvmFlag> Max heap size
