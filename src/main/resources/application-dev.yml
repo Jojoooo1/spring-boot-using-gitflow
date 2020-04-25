@@ -24,3 +24,13 @@ spring:
 
 logging:
   config: classpath:log4j2-dev.xml
+
+
+# Metrics related configurations
+management:
+  endpoints:    
+    web:
+      exposure:
+        include: "health,info,prometheus"
+
+
