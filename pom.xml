@@ -16,11 +16,8 @@
 
   <!-- <version>1.0.0</version> -->
   <!-- <version>${revision}${sha1}${changelist}</version> -->
-<<<<<<< HEAD
   <version>rc-1.1.0-624ff97e92dd06c091d48d51e8f71e513a950ffa</version>
-=======
-  <version>rc-1.1.0-447132e56cc9035e486b41483cb0496b60aee5e4</version>
->>>>>>> 76354bf0d7a02099ebd0976a64f09a4b7fbaa836
+
 
   <properties>
     <java.version>11</java.version>
@@ -153,6 +150,7 @@
     <dependency>
       <groupId>io.micrometer</groupId>
       <artifactId>micrometer-registry-prometheus</artifactId>
+      <version>${micrometer.version}</version>
     </dependency>
 
     <!-- JPA & MySQL & H2-->
