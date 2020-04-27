@@ -16,7 +16,8 @@
 
   <!-- <version>1.0.0</version> -->
   <!-- <version>${revision}${sha1}${changelist}</version> -->
-  <version>1.1-SNAPSHOT</version>
+
+  <version>1.1.0</version>
 
   <properties>
     <java.version>11</java.version>
@@ -47,6 +48,8 @@
     <sonar.password>admin</sonar.password>
     <!-- Jaxb -->
     <jaxb.version>2.3.1</jaxb.version>
+    <!-- Prometheus scrapping -->
+    <micrometer.version>1.4.2</micrometer.version>
   </properties>
 
   <!-- <scm>
@@ -106,8 +109,8 @@
     <profile>
       <id>prod-k8s</id>
       <properties>
-        <build.profile.id>prod</build.profile.id>
-        <spring.profile.active>prod</spring.profile.active>
+        <build.profile.id>prod-k8s</build.profile.id>
+        <spring.profile.active>prod-k8s</spring.profile.active>
       </properties>
     </profile>
   </profiles>
@@ -137,9 +140,17 @@
       <artifactId>spring-boot-devtools</artifactId>
       <scope>runtime</scope>
     </dependency>
+
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-actuator</artifactId>
+    </dependency>
+
+    <!-- Enable Prometheus scrapping  -->
+    <dependency>
+      <groupId>io.micrometer</groupId>
+      <artifactId>micrometer-registry-prometheus</artifactId>
+      <version>${micrometer.version}</version>
     </dependency>
 
     <!-- JPA & MySQL & H2-->
@@ -561,11 +572,11 @@
             <ports>
               <port>${jib.container.port}</port>
             </ports>
-            <!--  can use at runtime JAVA_TOOL_OPTIONS -->
-            <jvmFlags>
-              <jvmFlag>-Xms512m</jvmFlag>
-              <jvmFlag>-Xmx1024m</jvmFlag>
-            </jvmFlags>
+            <!--  Defining in JAVA_TOOL_OPTIONS for better control -->
+            <!-- <jvmFlags>
+              <jvmFlag>-Xms128m</jvmFlag> Initial heap size 
+              <jvmFlag>-Xmx256m</jvmFlag> Max heap size
+            </jvmFlags> -->
           </container>
         </configuration>
       </plugin>

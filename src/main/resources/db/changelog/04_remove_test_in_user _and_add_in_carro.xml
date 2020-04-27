@@ -4,13 +4,8 @@
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
 
   <changeSet id="04" author="jonathan">
-    <rollback>
-      <dropColumn tableName="user" columnName="test"></dropColumn>
-    </rollback>
-    <addColumn tableName="carro">
-      <column name="test" type="varchar(255)">
-        <constraints />
-      </column>
-    </addColumn>
+    <dropColumn tableName="user">
+      <column name="test" type="varchar(255)" />
+    </dropColumn>
   </changeSet>
 </databaseChangeLog>

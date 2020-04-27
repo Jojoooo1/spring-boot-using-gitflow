@@ -17,11 +17,12 @@ echo
 read -r -p "Are you sure you want to create the release \"$NEW_RELEASE\" [Y/n]:  " RESPONSE
 
 if [[ $RESPONSE =~ ^([yY][eE][sS]|[yY])$ ]]; then
+  BRANCH_NAME="release-$NEW_RELEASE"
   echo
-  echo "Creating branch release-$NEW_RELEASE..."
+  echo "Creating branch $BRANCH_NAME..."
   echo
-  git checkout -b release-$NEW_RELEASE
-  git push origin release-$NEW_RELEASE
+  git checkout -b $BRANCH_NAME
+  git push origin $BRANCH_NAME
 else
   echo
   echo "Action cancelled exiting..."

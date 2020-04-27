@@ -1,13 +1,14 @@
-name: CI for feature branch
+name: CI for Unit & Integration Test
 
-# Every time a pull request is open and a merge is executed in branch develop this CI will be triggered
+# Every time a pull request is open and a merge is executed in develop this CI will be triggered
 
 on:
+  # GitHub sends the pull_request event to the base repository and no pull request events occur on the forked repository.
   pull_request:
-    branches: [develop]
+    branches: [develop] # d. (opened, synchronize, or reopened)
 
   push:
-    branches: [develop]
+    branches: [develop] # 
 
 jobs:
   feature-verify:
@@ -28,6 +29,6 @@ jobs:
           restore-keys: ${{ runner.os }}-m2
 
       # Test project
-      - name: Build & Test
+      - name: Run Unit & Integration Test
         run: mvn clean verify -P all-test
       # TODO: on push failure send notification
