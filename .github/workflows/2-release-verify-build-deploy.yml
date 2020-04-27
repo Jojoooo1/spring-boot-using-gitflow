@@ -134,6 +134,8 @@ jobs:
             -Djib.to.image=$IMAGE_REGISTRY \
             -Djib.to.tags=$RELEASE_NAME
       
+      ## Can add Static Analysis of vulnerabilities for Containers (clair) 
+      
       ## Commit maven version update ##
       ## If protected can use force push with admin right and skip-ci
       - name: Commit changes to Master
