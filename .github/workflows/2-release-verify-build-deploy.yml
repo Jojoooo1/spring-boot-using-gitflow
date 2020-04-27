@@ -13,7 +13,7 @@ env:
 
 jobs:
   # Does not deloy to k8s staging => GitOps pattern (flux will do it automatically)
-  build-and-deploy-release-candidate:
+  release-build-and-deploy-release-candidate:
     if: "contains(toJSON(github.head_ref), 'release-') && github.event.action != 'closed' && ! contains(toJSON(github.event.commits.*.message), '[skip-ci]')"
     runs-on: ubuntu-latest
     steps:
@@ -84,7 +84,7 @@ jobs:
           git push origin $GITHUB_HEAD_REF
   
   # Does not deloy to k8s master => GitOps pattern (flux will do it automatically)
-  build-and-deploy-master:
+  release-build-and-deploy-master:
     # on PR closed and merged
     if: "contains(toJSON(github.head_ref), 'release-') && github.event.action == 'closed' && github.event.pull_request.merged == true && ! contains(toJSON(github.event.commits.*.message), '[skip-ci]')"
     runs-on: ubuntu-latest
