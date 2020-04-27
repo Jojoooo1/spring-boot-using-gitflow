@@ -142,6 +142,8 @@ jobs:
         run: |
           git config --global user.name $GITHUB_USERNAME
           git config --global user.email "$GITHUB_USERNAME@users.noreply.github.com"
+          # synchronizes with the remote repositories (in order to be able to checkout to master)
+          git fetch
           git checkout master
           git diff
           git commit -am "Pushed image to: docker.io/${DOCKER_USERNAME}/${DOCKER_IMAGE}:$RELEASE_NAME"
