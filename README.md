@@ -3,18 +3,18 @@
 <img src="https://nvie.com/img/git-model@2x.png" height="600">
 </div>
 
-## Types of branch
+## Types of branches
 
 The Git-flow model uses 5 types of branches to aid parallel development between team members.
 
-### Long lived branch
+### Long lived branches
 
 - `origin/master`
   - Always reflects a production-ready state.
 - `origin/develop`
   - Always reflects a state with the latest delivered development changes for the next release.
 
-### Short  lived branch
+### Short  lived branches
 
 - `origin/feature-*`:
   - Branch off from develop used to create new feature for the application
