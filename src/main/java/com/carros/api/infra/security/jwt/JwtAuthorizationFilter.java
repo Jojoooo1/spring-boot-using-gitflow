@@ -22,7 +22,7 @@ import java.util.List;
 
 public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
 
-  private static Logger logger = LoggerFactory.getLogger(JwtAuthorizationFilter.class);
+  private static Logger LOGGER = LoggerFactory.getLogger(JwtAuthorizationFilter.class);
   private UserDetailsService userDetailsService;
 
   public JwtAuthorizationFilter(AuthenticationManager authenticationManager, UserDetailsService userDetailsService) {
@@ -37,7 +37,6 @@ public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
     String token = request.getHeader("Authorization");
 
     if (StringUtils.isEmpty(token) || !token.startsWith("Bearer ")) {
-      // Não informou o authorization
       filterChain.doFilter(request, response);
       return;
     }
@@ -51,7 +50,6 @@ public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
       String login = JwtUtil.getLogin(token);
       UserDetails userDetails = userDetailsService.loadUserByUsername(login);
       List<GrantedAuthority> authorities = JwtUtil.getRoles(token);
-      // var authorities = ((UserDetails) userDetails).getAuthorities();
       Authentication auth = new UsernamePasswordAuthenticationToken(userDetails, null, authorities);
 
       // Salva o Authentication no contexto do Spring
@@ -59,8 +57,7 @@ public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
       filterChain.doFilter(request, response);
 
     } catch (RuntimeException ex) {
-      logger.error("Authentication error: " + ex.getMessage(), ex);
-      throw ex;
+      LOGGER.error("Authentication error: " + ex.getMessage(), ex);
     }
   }
 }
