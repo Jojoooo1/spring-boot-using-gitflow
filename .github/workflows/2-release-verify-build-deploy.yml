@@ -75,7 +75,7 @@ jobs:
 
       ## Commit maven version update ##
       ## If protected can use force push with admin right and skip-ci
-      - name: Commit changes to ${{ GITHUB_HEAD_REF }}
+      - name: "Commit changes to branch \"${{ GITHUB_HEAD_REF }}\""
         run: |
           git config --global user.name $GITHUB_USERNAME
           git config --global user.email "$GITHUB_USERNAME@users.noreply.github.com"
