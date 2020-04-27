@@ -1,4 +1,4 @@
-name: CI for building and deploying release candidate image to staging
+name: CI for building and deploying image from release branch
 
 on:
   pull_request:
@@ -12,7 +12,8 @@ env:
   DOCKER_IMAGE: carros
 
 jobs:
-  release-build-and-deploy-release-candidate-image:
+  # Does not deloy to k8s staging => GitOps pattern (flux will do it automatically)
+  build-and-deploy-release-candidate:
     if: "contains(toJSON(github.head_ref), 'release-') && github.event.action != 'closed' && ! contains(toJSON(github.event.commits.*.message), '[skip-ci]')"
     runs-on: ubuntu-latest
     steps:
@@ -78,13 +79,17 @@ jobs:
           git commit -am "Pushed image to: docker.io/${DOCKER_USERNAME}/${DOCKER_IMAGE}:$RELEASE_NAME"
           git push origin $GITHUB_HEAD_REF
   
-  release-build-and-deploy-master-image:
+  # Does not deloy to k8s master => GitOps pattern (flux will do it automatically)
+  build-and-deploy-master:
     # on PR closed and merged
     if: "contains(toJSON(github.head_ref), 'release-') && github.event.action == 'closed' && github.event.pull_request.merged == true && ! contains(toJSON(github.event.commits.*.message), '[skip-ci]')"
     runs-on: ubuntu-latest
     steps:
       ## Setup ## 
       - uses: actions/checkout@v2
+        with:
+          ref: master
+
       - name: Set up JDK 11
         uses: actions/setup-java@v1
         with:

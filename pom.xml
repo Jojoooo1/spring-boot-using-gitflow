@@ -16,7 +16,7 @@
 
   <!-- <version>1.0.0</version> -->
   <!-- <version>${revision}${sha1}${changelist}</version> -->
-  <version>rc-1.1.0-624ff97e92dd06c091d48d51e8f71e513a950ffa</version>
+  <version>rc-1.1.0-3a5e51e65994cf06420693f0c4e8e117ceefd0cc</version>
 
 
   <properties>
