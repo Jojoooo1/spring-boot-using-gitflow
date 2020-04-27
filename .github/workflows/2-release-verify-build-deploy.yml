@@ -85,7 +85,7 @@ jobs:
   
   # Does not deloy to k8s master => GitOps pattern (flux will do it automatically)
   release-build-and-deploy-master:
-    # on PR closed and merged
+    # From release: on pull_request closed and merged to master
     if: "contains(toJSON(github.head_ref), 'release-') && github.event.action == 'closed' && github.event.pull_request.merged == true && ! contains(toJSON(github.event.commits.*.message), '[skip-ci]')"
     runs-on: ubuntu-latest
     steps:
