@@ -1,4 +1,4 @@
-name: CI for Unit & Integration Test
+name: CI for testing release from develop branch
 
 # Every time a pull request is open and a merge is executed in develop this CI will be triggered
 
