@@ -80,7 +80,11 @@ jobs:
           git config --global user.name $GITHUB_USERNAME
           git config --global user.email "$GITHUB_USERNAME@users.noreply.github.com"
           git diff
-          git commit -am "Pushed image to: docker.io/${DOCKER_USERNAME}/${DOCKER_IMAGE}:$RELEASE_NAME"
+          git commit -am "
+            Set application version to '$RELEASE_NAME' in pom.xml
+            image pushed to 'docker.io/${DOCKER_USERNAME}/${DOCKER_IMAGE}:$RELEASE_NAME'
+          "
+
           git push origin $GITHUB_HEAD_REF
   
   # Does not deloy to k8s master => GitOps pattern (flux will do it automatically)
