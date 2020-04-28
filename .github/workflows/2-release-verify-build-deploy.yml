@@ -80,12 +80,16 @@ jobs:
           git config --global user.name $GITHUB_USERNAME
           git config --global user.email "$GITHUB_USERNAME@users.noreply.github.com"
           git diff
-          git commit -am "Pushed image to: docker.io/${DOCKER_USERNAME}/${DOCKER_IMAGE}:$RELEASE_NAME"
+          git add . 
+          git commit \
+            -m "Application version set to '$RELEASE_NAME' in pom.xml" \
+            -m "Docker image pushed to 'docker.io/${DOCKER_USERNAME}/${DOCKER_IMAGE}:$RELEASE_NAME'"
+
           git push origin $GITHUB_HEAD_REF
   
   # Does not deloy to k8s master => GitOps pattern (flux will do it automatically)
   release-build-and-deploy-master:
-    # on PR closed and merged
+    # From release: on pull_request closed and merged to master
     if: "contains(toJSON(github.head_ref), 'release-') && github.event.action == 'closed' && github.event.pull_request.merged == true && ! contains(toJSON(github.event.commits.*.message), '[skip-ci]')"
     runs-on: ubuntu-latest
     steps:

@@ -1,26 +1,34 @@
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: cluster-read
+  labels:
+    name: cluster-read-service-account
+---
 apiVersion: rbac.authorization.k8s.io/v1
-kind: Role # namespace scoped | CluserRole is cluster scoped (could have used ClusterRole with a RoleBinding scoped within a namespace in order to reuse the role)
+kind: ClusterRole # ClusterRole: cluster scoped | Role: namespace scoped
 metadata:
   name: cluster-read-role
-  namespace: java-demo # only use this field for Role (ns scoped)
+  # namespace: java-demo # only used for Role (namespace scoped)
 rules:
   - apiGroups: [""]
     resources: ["configmaps", "pods", "services", "endpoints", "secrets"]
     verbs: ["get", "list", "watch"]
 ---
 apiVersion: rbac.authorization.k8s.io/v1
-kind: RoleBinding
+kind: ClusterRoleBinding
 metadata:
   name: cluster-read-rolebinding
   #  Scope this binding to a specific namespace
   namespace: java-demo
-# The Target: User, Account, Group etc.
+# The Target: User, ServiceAccount, Group etc.
 subjects:
   - kind: ServiceAccount
-    name: default # default service created at pod level
-    namespace: java-demo
-# The Role
+    name: cluster-read # pod serviceAccountName
+    namespace: java-demo # scope role to namespace java-demo 
+# The ClusterRole
 roleRef:
-  kind: Role
+  kind: ClusterRole
   name: cluster-read-role
   apiGroup: rbac.authorization.k8s.io
