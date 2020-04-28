@@ -3,6 +3,8 @@
 set -e # exit on first error
 
 # Make sure we are on branch develop
+echo
+echo ">>> Pulling last develop branch"
 git checkout develop
 git pull origin develop
 
