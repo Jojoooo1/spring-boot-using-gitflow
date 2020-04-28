@@ -8,6 +8,10 @@ echo ">>> Pulling last develop branch"
 git checkout develop
 git pull origin develop
 
+echo
+echo ">>> Pulling last tags"
+git fetch --prune --tags # git tag -d $(git tag) # delete all local tags
+
 # Get latest tag
 LATEST_TAG=$(git describe --tags $(git rev-list --tags --max-count=1))
 
