@@ -82,8 +82,7 @@ jobs:
           git diff
           git add . 
           git commit \
-            -m "Application version set to '$RELEASE_NAME' in pom.xml" \
-            -m "Docker image pushed to 'docker.io/${DOCKER_USERNAME}/${DOCKER_IMAGE}:$RELEASE_NAME'"
+            -m "version updated to '$RELEASE_NAME' in pom.xml & image pushed to registry 'docker.io/${DOCKER_USERNAME}/${DOCKER_IMAGE}:$RELEASE_NAME'"
 
           git push origin $GITHUB_HEAD_REF
   
