@@ -34,8 +34,3 @@ spring:
       config:
         name: carros
         namespace: java-demo
-        sources:
-            - name: config-test
-              namespace: java-demo
-            - name: carros 
-              namespace: java-demo
