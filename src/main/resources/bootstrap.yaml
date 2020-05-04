@@ -20,8 +20,8 @@ spring:
         name: carros
         namespace: java-demo
         sources:
-            - name: config-test
-              namespace: java-demo
+            # - name: config-test
+            #   namespace: java-demo
             - name: carros 
               namespace: java-demo
 ---
@@ -33,9 +33,4 @@ spring:
         enabled: true
       config:
         name: carros
-        namespace: java-demo
-        sources:
-            - name: config-test
-              namespace: java-demo
-            - name: carros 
-              namespace: java-demo
+        namespace: staging
