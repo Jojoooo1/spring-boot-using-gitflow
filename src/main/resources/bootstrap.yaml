@@ -17,11 +17,7 @@ spring:
       reload:
         enabled: true
       config:
-        name: carros
-        namespace: java-demo
         sources:
-            - name: config-test
-              namespace: java-demo
             - name: carros 
               namespace: java-demo
 ---
@@ -32,5 +28,6 @@ spring:
       reload:
         enabled: true
       config:
-        name: carros
-        namespace: java-demo
+        sources:
+          - name: carros 
+            namespace: java-demo
