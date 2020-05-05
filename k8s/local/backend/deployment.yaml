@@ -27,7 +27,7 @@ spec:
         stage: local
 
     spec:
-      serviceAccountName: cluster-read # d. default
+      serviceAccountName: read-namespace # d. default
       restartPolicy: Always # d.
       containers:
         - name: java-demo-backend
