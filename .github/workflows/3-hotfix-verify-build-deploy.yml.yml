@@ -13,7 +13,7 @@ env:
 
 jobs:
   # Does not deloy to k8s staging => GitOps pattern (flux will do it automatically)
-  release-build-and-deploy-release-candidate:
+  hotfix-build-and-deploy-release-candidate:
     if: "contains(toJSON(github.head_ref), 'hotfix-') && github.event.action != 'closed' && ! contains(toJSON(github.event.commits.*.message), '[skip-ci]')"
     runs-on: ubuntu-latest
     steps:
@@ -91,7 +91,7 @@ jobs:
       #     git push origin $GITHUB_HEAD_REF
   
   # Does not deloy to k8s master => GitOps pattern (flux will do it automatically)
-  release-build-and-deploy-master:
+  hotfix-build-and-deploy-master:
     # From release: on pull_request closed and merged to master
     if: "contains(toJSON(github.head_ref), 'hotfix-') && github.event.action == 'closed' && github.event.pull_request.merged == true && ! contains(toJSON(github.event.commits.*.message), '[skip-ci]')"
     runs-on: ubuntu-latest
