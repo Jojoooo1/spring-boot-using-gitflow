@@ -50,7 +50,12 @@ jobs:
           echo ">>> Pulling last tags"
           git fetch --prune --tags
           # Bump last digit of tag version
-          echo "::set-env name=RELEASE_VERSION::$(git describe --tags --abbrev=0 | awk -F. '{$NF+=1; OFS="."; print $0}')"
+          LATEST_TAG=$(git describe --tags $(git rev-list --tags --max-count=1))
+          TAG_LIST=(`echo $LATEST_TAG | tr '.' ' '`)
+          V_MAJOR=${TAG_LIST[1]}
+          V_MINOR=${TAG_LIST[2]}
+          V_PATCH=$(( ${TAG_LIST[3]} + 1))
+          echo "::set-env name=RELEASE_VERSION::${V_MAJOR}.${V_MINOR}.${V_PATCH}"
           echo "::set-env name=IMAGE_REGISTRY::docker.io/${DOCKER_USERNAME}/$DOCKER_IMAGE"
 
       - run: echo "::set-env name=RELEASE_NAME::rc-${RELEASE_VERSION}-${{ github.event.pull_request.head.sha }}" # new run because can not use $RELEASE_VERSION in same run
