@@ -15,18 +15,6 @@ spring:
       hibernate:
         show_sql: true
         format_sql: true
-  h2:
-    console:
-      enabled: true
 
-  liquibase:
-    change-log: classpath:/db/db.changelog-master.xml
-
-logging:
-  config: classpath:log4j2-dev.xml
-
-management:
-  endpoints:
-    web:
-      exposure:
-        include: info, health, prometheus
+# logging:
+#   config: classpath:log4j2-dev.xml
