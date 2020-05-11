@@ -38,7 +38,7 @@ jobs:
       - name: Run Unit & Integration Test
         run: mvn clean verify -P all-test
 
-      # TODO: on push failure send notification
+      # TODO:  on push failure send notification
       # Can use Sonar
       # Or can use PMD, FindBugs and Checkstyle
       # Can add dependency scanning
