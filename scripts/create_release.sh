@@ -26,6 +26,9 @@ read -r -p "Are you sure you want to create the release \"$NEW_RELEASE\" [Y/n]: 
 
 if [[ $RESPONSE =~ ^([yY][eE][sS]|[yY])$ ]]; then
 
+  IFS='.' read -ra ver <<<$RESPONSE
+  [[ "${#ver[@]}" -ne 3 ]] && echo "Invalid Semantic versioning value" && return 1
+
   BRANCH_NAME="release-$NEW_RELEASE"
 
   echo
