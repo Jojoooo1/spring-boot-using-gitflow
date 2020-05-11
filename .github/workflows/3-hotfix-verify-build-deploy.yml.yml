@@ -34,9 +34,9 @@ jobs:
           key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
           restore-keys: ${{ runner.os }}-m2
 
-      ## Unit & Integration Test ##
-      - name: Run Unit & Integration Test
-        run: mvn clean verify -P all-test
+      # ## Unit & Integration Test ##
+      # - name: Run Unit & Integration Test
+      #   run: mvn clean verify -P all-test
 
       # TODO: on push failure send notification
       # Can use Sonar
@@ -55,18 +55,22 @@ jobs:
           V_MAJOR=${TAG_LIST[1]}
           V_MINOR=${TAG_LIST[2]}
           V_PATCH=$(( ${TAG_LIST[3]} + 1))
-          echo "::set-env name=RELEASE_VERSION::${V_MAJOR}.${V_MINOR}.${V_PATCH}"
-          echo "::set-env name=IMAGE_REGISTRY::docker.io/${DOCKER_USERNAME}/$DOCKER_IMAGE"
+          echo $TAG_LIST
+          echo $V_MAJOR
+          echo $V_MINOR
+          echo $V_PATCH
+          # echo "::set-env name=RELEASE_VERSION::${V_MAJOR}.${V_MINOR}.${V_PATCH}"
+          # echo "::set-env name=IMAGE_REGISTRY::docker.io/${DOCKER_USERNAME}/$DOCKER_IMAGE"
 
-      - run: echo "::set-env name=RELEASE_NAME::rc-${RELEASE_VERSION}-${{ github.event.pull_request.head.sha }}" # new run because can not use $RELEASE_VERSION in same run
-      - name: "echo ENV_VARIABLE"
-        run: |
-          echo BRANCH_NAME: "$GITHUB_HEAD_REF"
-          echo RELEASE_VERSION: "$RELEASE_VERSION"
+      # - run: echo "::set-env name=RELEASE_NAME::rc-${RELEASE_VERSION}-${{ github.event.pull_request.head.sha }}" # new run because can not use $RELEASE_VERSION in same run
+      # - name: "echo ENV_VARIABLE"
+      #   run: |
+      #     echo BRANCH_NAME: "$GITHUB_HEAD_REF"
+      #     echo RELEASE_VERSION: "$RELEASE_VERSION"
 
-          echo RELEASE_NAME: "$RELEASE_NAME"
-          echo IMAGE_REGISTRY: $IMAGE_REGISTRY
-          echo DOCKER_USERNAME: $DOCKER_USERNAME
+      #     echo RELEASE_NAME: "$RELEASE_NAME"
+      #     echo IMAGE_REGISTRY: $IMAGE_REGISTRY
+      #     echo DOCKER_USERNAME: $DOCKER_USERNAME
 
       # ## Sets Maven version ##
       # - name: Sets Maven Release Candidate version in pom.xml
