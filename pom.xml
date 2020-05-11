@@ -17,7 +17,7 @@
   <!-- <version>1.0.0</version> -->
   <!-- <version>${revision}${sha1}${changelist}</version> -->
 
-  <version>1.3.2</version>
+  <version>1.3.4</version>
 
   <properties>
     <java.version>11</java.version>
@@ -50,6 +50,7 @@
     <jaxb.version>2.3.1</jaxb.version>
     <!-- Prometheus scrapping -->
     <micrometer.version>1.4.2</micrometer.version>
+    <logstash.version>6.3</logstash.version>
   </properties>
 
   <!-- <scm>
@@ -122,17 +123,22 @@
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-web</artifactId>
-      <exclusions>
+      <!-- <exclusions>
         <exclusion>
           <groupId>org.springframework.boot</groupId>
           <artifactId>spring-boot-starter-logging</artifactId>
         </exclusion>
-      </exclusions>
+      </exclusions> -->
     </dependency>
     <!-- Log4j2 -->
-    <dependency>
+    <!-- <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-log4j2</artifactId>
+    </dependency> -->
+    <dependency>
+      <groupId>net.logstash.logback</groupId>
+      <artifactId>logstash-logback-encoder</artifactId>
+      <version>${logstash.version}</version>
     </dependency>
 
     <dependency>
