@@ -49,26 +49,24 @@ jobs:
         run: |
           echo ">>> Pulling last tags"
           git fetch --prune --tags
-          #
+          # Gets and bumps tag version
           LATEST_TAG=$(git describe --tags $(git rev-list --tags --max-count=1))
-          echo $LATEST_TAG
           TAG_LIST=(`echo $LATEST_TAG | tr '.' ' '`)
-          echo $TAG_LIST
-          V_MAJOR=${TAG_LIST[1]}
-          V_MINOR=${TAG_LIST[2]}
-          V_PATCH=$(( ${TAG_LIST[3]} + 1))
-          # echo "::set-env name=RELEASE_VERSION::${V_MAJOR}.${V_MINOR}.${V_PATCH}"
-          # echo "::set-env name=IMAGE_REGISTRY::docker.io/${DOCKER_USERNAME}/$DOCKER_IMAGE"
+          V_MAJOR=${TAG_LIST[0]}
+          V_MINOR=${TAG_LIST[1]}
+          V_PATCH=$(( ${TAG_LIST[2]} + 1))
+          echo "::set-env name=RELEASE_VERSION::${V_MAJOR}.${V_MINOR}.${V_PATCH}"
+          echo "::set-env name=IMAGE_REGISTRY::docker.io/${DOCKER_USERNAME}/$DOCKER_IMAGE"
 
-      # - run: echo "::set-env name=RELEASE_NAME::rc-${RELEASE_VERSION}-${{ github.event.pull_request.head.sha }}" # new run because can not use $RELEASE_VERSION in same run
-      # - name: "echo ENV_VARIABLE"
-      #   run: |
-      #     echo BRANCH_NAME: "$GITHUB_HEAD_REF"
-      #     echo RELEASE_VERSION: "$RELEASE_VERSION"
+      - run: echo "::set-env name=RELEASE_NAME::rc-${RELEASE_VERSION}-${{ github.event.pull_request.head.sha }}" # new run because can not use $RELEASE_VERSION in same run
+      - name: "echo ENV_VARIABLE"
+        run: |
+          echo BRANCH_NAME: "$GITHUB_HEAD_REF"
+          echo RELEASE_VERSION: "$RELEASE_VERSION"
 
-      #     echo RELEASE_NAME: "$RELEASE_NAME"
-      #     echo IMAGE_REGISTRY: $IMAGE_REGISTRY
-      #     echo DOCKER_USERNAME: $DOCKER_USERNAME
+          echo RELEASE_NAME: "$RELEASE_NAME"
+          echo IMAGE_REGISTRY: $IMAGE_REGISTRY
+          echo DOCKER_USERNAME: $DOCKER_USERNAME
 
       # ## Sets Maven version ##
       # - name: Sets Maven Release Candidate version in pom.xml
