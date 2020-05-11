@@ -54,7 +54,7 @@ jobs:
         run: |
           TAG_LIST=(`echo $RELEASE_VERSION | tr '.' ' '`)
           # Exit if invalid semver
-          [[ "${#TAG_LIST[@]}" -ne 3 ]] && echo "Invalid Semantic versioning string" && exit 1
+          [[ "${#TAG_LIST[@]}" -ne 3 ]] && echo "$RELEASE_VERSION is not a valid semantic version" && exit 1
 
       - run: echo "::set-env name=RELEASE_NAME::rc-${RELEASE_VERSION}-${{ github.event.pull_request.head.sha }}" # new run because can not use $RELEASE_VERSION in same run
       - name: "echo ENV_VARIABLE"
@@ -124,7 +124,7 @@ jobs:
         run: |
           TAG_LIST=(`echo $RELEASE_VERSION | tr '.' ' '`)
           # Exit if invalid semver
-          [[ "${#TAG_LIST[@]}" -ne 3 ]] && echo "Invalid Semantic versioning string" && exit 1
+          [[ "${#TAG_LIST[@]}" -ne 3 ]] && echo "$RELEASE_VERSION is not a valid semantic version" && exit 1
           
       - run: echo "::set-env name=RELEASE_NAME::${RELEASE_VERSION}" # new run because can not use $RELEASE_VERSION in same run
       - name: "echo ENV_VARIABLE"
