@@ -49,7 +49,7 @@ jobs:
         run: |
           echo ">>> Pulling last tags"
           git fetch --prune --tags
-          # Bump last digit of tag version
+          #
           LATEST_TAG=$(git describe --tags $(git rev-list --tags --max-count=1))
           TAG_LIST=(`echo $LATEST_TAG | tr '.' ' '`)
           V_MAJOR=${TAG_LIST[1]}
