@@ -1,4 +1,4 @@
-name: CI for building and deploying image from hotfix branch
+name: "Hotfix branch: builds and deploys image"
 
 on:
   pull_request:

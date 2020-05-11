@@ -1,4 +1,4 @@
-name: CI for building and deploying image from release branch
+name: "Release branch: builds and deploys image"
 
 on:
   pull_request:
