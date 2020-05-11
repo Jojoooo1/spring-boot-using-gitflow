@@ -1,14 +1,32 @@
 spring:
+  main:
+    banner-mode: "off"
   application:
     name: carros
   profiles:
     active: '@spring.profile.active@'
+  liquibase:
+    change-log: classpath:/db/db.changelog-master.xml
+
+# TODO restrict access to health endpoints with a token
+management:
+  # Starting at Spring Boot 2,only health and info are exposed
+  endpoints:
+    web:
+      exposure:
+        include: info, health, prometheus
+  endpoint:
+    health:
+      show-details: always
 ---
 spring:
   profiles: dev
   cloud: 
     kubernetes:
       enabled: false
+  h2:
+    console:
+      enabled: true
 ---
 spring:
   profiles: local-k8s

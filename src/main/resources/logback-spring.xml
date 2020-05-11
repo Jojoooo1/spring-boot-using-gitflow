@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- 
+  Docker has built-in logging driver for Fluentd which is very convenient for applications running on Kubernetes. 
+  Logs are directly shipped to Fluentd service from STDOUT and no additional logs file or persistent storage is required  
+-->
+
+<configuration>
+  <appender name="consoleAppender" class="ch.qos.logback.core.ConsoleAppender">
+    <encoder class="net.logstash.logback.encoder.LogstashEncoder" />
+  </appender>
+  <logger name="jsonLogger" additivity="false" level="DEBUG">
+    <appender-ref ref="consoleAppender" />
+  </logger>
+  <logger name="org.hibernate.SQL" level="INFO" additivity="false">
+    <appender-ref ref="consoleAppender" />
+  </logger>
+  <logger name="org.hibernate" level="INFO" additivity="false">
+    <appender-ref ref="consoleAppender" />
+  </logger>
+  <root level="INFO">
+    <appender-ref ref="consoleAppender" />
+  </root>
+</configuration>
