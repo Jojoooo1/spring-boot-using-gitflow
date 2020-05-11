@@ -51,14 +51,12 @@ jobs:
           git fetch --prune --tags
           #
           LATEST_TAG=$(git describe --tags $(git rev-list --tags --max-count=1))
+          echo $LATEST_TAG
           TAG_LIST=(`echo $LATEST_TAG | tr '.' ' '`)
+          echo $TAG_LIST
           V_MAJOR=${TAG_LIST[1]}
           V_MINOR=${TAG_LIST[2]}
           V_PATCH=$(( ${TAG_LIST[3]} + 1))
-          echo $TAG_LIST
-          echo $V_MAJOR
-          echo $V_MINOR
-          echo $V_PATCH
           # echo "::set-env name=RELEASE_VERSION::${V_MAJOR}.${V_MINOR}.${V_PATCH}"
           # echo "::set-env name=IMAGE_REGISTRY::docker.io/${DOCKER_USERNAME}/$DOCKER_IMAGE"
 
