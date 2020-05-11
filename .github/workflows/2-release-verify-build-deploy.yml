@@ -50,6 +50,12 @@ jobs:
           echo "::set-env name=RELEASE_VERSION::${GITHUB_HEAD_REF##*release-}"
           echo "::set-env name=IMAGE_REGISTRY::docker.io/${DOCKER_USERNAME}/$DOCKER_IMAGE"
 
+      - name: "Verify Semantic versioning pattern"
+        run: |
+          TAG_LIST=(`echo $RELEASE_VERSION | tr '.' ' '`)
+          # Exit if invalid semver
+          [[ "${#TAG_LIST[@]}" -ne 3 ]] && echo "Invalid Semantic versioning string" && return 1
+
       - run: echo "::set-env name=RELEASE_NAME::rc-${RELEASE_VERSION}-${{ github.event.pull_request.head.sha }}" # new run because can not use $RELEASE_VERSION in same run
       - name: "echo ENV_VARIABLE"
         run: |
@@ -75,7 +81,7 @@ jobs:
 
       ## Commit maven version update ##
       ## If protected can use force push with admin right and skip-ci
-      - name: "Committing changes to branch \"${{ github.head_ref }}\""
+      - name: 'Committing changes to branch "${{ github.head_ref }}"'
         run: |
           git config --global user.name $GITHUB_USERNAME
           git config --global user.email "$GITHUB_USERNAME@users.noreply.github.com"
@@ -85,7 +91,7 @@ jobs:
             -m "version updated to '$RELEASE_NAME' in pom.xml & image pushed to registry 'docker.io/${DOCKER_USERNAME}/${DOCKER_IMAGE}:$RELEASE_NAME'"
 
           git push origin $GITHUB_HEAD_REF
-  
+
   # Does not deloy to k8s master => GitOps pattern (flux will do it automatically)
   release-build-and-deploy-master:
     # From release: on pull_request closed and merged to master
@@ -136,16 +142,16 @@ jobs:
             -Djib.to.auth.password=$DOCKER_PASSWORD \
             -Djib.to.image=$IMAGE_REGISTRY \
             -Djib.to.tags=$RELEASE_NAME
-      
-      ## Can add Static Analysis of vulnerabilities for Containers (clair) 
-      
+
+      ## Can add Static Analysis of vulnerabilities for Containers (clair)
+
       ## Commit maven version update ##
       ## If protected can use force push with admin right and skip-ci
       - name: Committing changes to "master"
         run: |
           git config --global user.name $GITHUB_USERNAME
           git config --global user.email "$GITHUB_USERNAME@users.noreply.github.com"
-          # synchronizes with the remote repositories (in order to be able to checkout to master)
+          # Sync with remote repo to checkout master
           git fetch
           git checkout master
           git diff
@@ -154,5 +160,5 @@ jobs:
 
       - name: Create & push tag
         run: |
-          git tag -a $RELEASE_VERSION -m "Release: $RELEASE_VERSION"
+          git tag -a $RELEASE_VERSION -m "Version release: $RELEASE_VERSION"
           git push origin $RELEASE_VERSION
