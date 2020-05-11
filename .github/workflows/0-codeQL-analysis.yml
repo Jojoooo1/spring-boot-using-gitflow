@@ -23,7 +23,7 @@ jobs:
 
 
       - name: Run Unit & Integration Test
-        run: mvn clean verify -P all-test
+        run: mvn clean verify
 
       - name: Perform CodeQL Analysis
         uses: github/codeql-action/analyze@v1
