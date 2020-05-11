@@ -28,15 +28,7 @@ jobs:
           key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
           restore-keys: ${{ runner.os }}-m2
 
-      - name: Initialize CodeQL
-        uses: github/codeql-action/init@v1
-        with:
-          languages: java
-
       # Test project
       - name: Run Unit & Integration Test
         run: mvn clean verify -P all-test
       # TODO: on push failure send notification
-
-      - name: Perform CodeQL Analysis
-        uses: github/codeql-action/analyze@v1
