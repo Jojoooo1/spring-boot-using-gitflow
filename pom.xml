@@ -17,7 +17,7 @@
   <!-- <version>1.0.0</version> -->
   <!-- <version>${revision}${sha1}${changelist}</version> -->
 
-  <version>rc-1.3.1-ea3e48768311af1b91b172696fc17174972767cd</version>
+  <version>rc-1.3.2-aac3607b5ce8780f967db5ec49319565c1f95131</version>
 
   <properties>
     <java.version>11</java.version>
