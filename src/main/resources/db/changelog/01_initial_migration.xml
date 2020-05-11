@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+  <changeSet id="01" author="jonathan">
+    <createTable tableName="carro" remarks="Table containing all carros">
+      <column name="id" type="bigint" autoIncrement="true">
+        <constraints nullable="false" unique="true" primaryKey="true" />
+      </column>
+      <column name="nome" type="varchar(255)">
+        <constraints nullable="false" />
+      </column>
+      <column name="descricao" type="varchar(255)">
+        <constraints />
+      </column>
+      <column name="url_foto" type="varchar(255)">
+        <constraints />
+      </column>
+      <column name="url_video" type="varchar(255)">
+        <constraints />
+      </column>
+      <column name="latitude" type="varchar(255)">
+        <constraints />
+      </column>
+      <column name="longitude" type="varchar(255)">
+        <constraints />
+      </column>
+      <column name="tipo" type="varchar(255)">
+        <constraints />
+      </column>
+    </createTable>
+
+    <createTable tableName="user" remarks="Table containing all users">
+      <column name="id" type="bigint" autoIncrement="true">
+        <constraints nullable="false" unique="true" primaryKey="true" />
+      </column>
+      <column name="email" type="varchar(255)">
+        <constraints nullable="false" />
+      </column>
+      <column name="login" type="varchar(255)">
+        <constraints />
+      </column>
+      <column name="nome" type="varchar(255)">
+        <constraints />
+      </column>
+      <column name="senha" type="varchar(255)">
+        <constraints />
+      </column>
+    </createTable>
+
+
+  </changeSet>
+</databaseChangeLog>

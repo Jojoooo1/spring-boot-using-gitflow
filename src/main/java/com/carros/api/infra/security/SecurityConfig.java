@@ -44,9 +44,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         // Authorizes request to login endpoint
         .antMatchers(HttpMethod.POST, "/api/v1/login").permitAll()
         // Authorizes configuration request endpoint
-        .antMatchers("/v2/api-docs", "/configuration/**", "/swagger*/**", "/webjars/**", "/actuator/**", "/error").permitAll().anyRequest()
+        .antMatchers("/v2/api-docs", "/configuration/**", "/swagger*/**", "/webjars/**", "/actuator/**",
+            "/error")
+        .permitAll()
+        // H2 console
+        .antMatchers("/h2-console/**").permitAll()
         // Protects all the rest
-        .authenticated()
+        .anyRequest().authenticated()
+        //
+        .and().headers().frameOptions().sameOrigin() // Allow pages to be loaded in frames from the same origin; needed for H2-Console
+        //                                              
         // Disable CSRF
         .and().csrf().disable()
         // Sets CORS config
@@ -62,7 +69,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
   @Override
   protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-
     BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
     auth.userDetailsService(userDetailsService).passwordEncoder(encoder);
   }
