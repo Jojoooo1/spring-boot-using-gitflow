@@ -5,16 +5,34 @@ spring:
     name: carros
   profiles:
     active: '@spring.profile.active@'
+  cloud:
+    kubernetes:
+      reload:
+        enabled: true
+      config:
+        sources:
+            - name: carros 
+              namespace: java-demo
+  h2:
+    console:
+      enabled: false
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL55Dialect
+        show_sql: true
+        format_sql: true
   liquibase:
-    change-log: classpath:/db/db.changelog-master.xml
+      change-log: classpath:/db/db.changelog-master.xml
 
-# TODO restrict access to health endpoints with a token
 management:
-  # Starting at Spring Boot 2,only health and info are exposed
+  # TODO restrict access to health endpoints with a token
   endpoints:
     web:
       exposure:
-        include: info, health, prometheus
+        include: info, health, prometheus  # Starting at Spring Boot 2,only health and info are exposed
   endpoint:
     health:
       show-details: always
@@ -27,25 +45,17 @@ spring:
   h2:
     console:
       enabled: true
+  datasource:
+    url: jdbc:h2:mem:database
+    driver-class-name: org.h2.Driver
+    username: sa # default username
+    password: 
 ---
 spring:
   profiles: local-k8s
-  cloud:
-    kubernetes:
-      reload:
-        enabled: true
-      config:
-        sources:
-            - name: carros 
-              namespace: java-demo
 ---
 spring:
   profiles: staging
-  cloud:
-    kubernetes:
-      reload:
-        enabled: true
-      config:
-        sources:
-          - name: carros 
-            namespace: java-demo
+---
+spring:
+  profiles: production
