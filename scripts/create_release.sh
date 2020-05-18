@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -e # exit on first error
+set -e # exit on first error (used for return)
 
 # Make sure we are on branch develop
 echo
