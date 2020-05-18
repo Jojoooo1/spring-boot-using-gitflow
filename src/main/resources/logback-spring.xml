@@ -7,31 +7,28 @@
 
 
 <configuration>
-  <springProfile name="dev">
+  <springProfile name="dev,test,integration-test,all-test">
     <appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
       <encoder>
         <pattern>%d{dd-MM-yyyy HH:mm:ss.SSS} %magenta([%thread]) %highlight(%-5level) %logger{36}.%M - %msg%n</pattern>
       </encoder>
     </appender>
+    <!-- <logger name="org.hibernate.SQL" level="debug"/> -->
     <root level="info">
       <appender-ref ref="stdout" />
     </root>
   </springProfile>
 
-  <springProfile name="!dev">
+  <springProfile name="local-k8s,staging-k8s,prod-k8s">
     <appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
       <encoder class="net.logstash.logback.encoder.LogstashEncoder" />
     </appender>
-    <logger name="jsonLogger" additivity="false" level="DEBUG">
+
+    <logger name="jsonLogger" additivity="false" level="info">
       <appender-ref ref="stdout" />
     </logger>
-    <logger name="org.hibernate.SQL" level="INFO" additivity="false">
-      <appender-ref ref="stdout" />
-    </logger>
-    <logger name="org.hibernate" level="INFO" additivity="false">
-      <appender-ref ref="stdout" />
-    </logger>
-    <root level="INFO">
+
+    <root level="info">
       <appender-ref ref="stdout" />
     </root>
   </springProfile>

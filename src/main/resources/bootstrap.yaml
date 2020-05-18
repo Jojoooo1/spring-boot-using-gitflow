@@ -1,3 +1,4 @@
+# base config
 spring:
   main:
     banner-mode: "off"
@@ -22,20 +23,10 @@ spring:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.MySQL55Dialect
-        show_sql: true
-        format_sql: true
+        show_sql: false
+        format_sql: false
   liquibase:
       change-log: classpath:/db/db.changelog-master.xml
-
-management:
-  # TODO restrict access to health endpoints with a token
-  endpoints:
-    web:
-      exposure:
-        include: info, health, prometheus  # Starting at Spring Boot 2,only health and info are exposed
-  endpoint:
-    health:
-      show-details: always
 ---
 spring:
   profiles: dev

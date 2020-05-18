@@ -9,3 +9,10 @@ management:
     health:
       show-details: always
 
+# logging:
+#   level:
+#     root: INFO
+#   org: 
+#     springframework:
+#       web: INFO
+#       test: INFO
