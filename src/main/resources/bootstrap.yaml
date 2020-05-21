@@ -27,6 +27,11 @@ spring:
         format_sql: false
   liquibase:
       change-log: classpath:/db/db.changelog-master.xml
+# Provides a grace period during which existing requests will be allowed to complete but no new requests will be permitted. 
+# Gives a chance for each task to take measures to ensure the shutdown is safe
+server:
+  shutdown: graceful
+  
 ---
 spring:
   profiles: dev
