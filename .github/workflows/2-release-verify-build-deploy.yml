@@ -55,6 +55,7 @@ jobs:
           TAG_LIST=(`echo $RELEASE_VERSION | tr '.' ' '`)
           echo "${TAG_LIST[*]}" 
           # Exit if invalid semver
+          # Github bug one line if not working: [[ "${#TAG_LIST[@]}" -ne 3 ]] && echo "$RELEASE_VERSION is not a valid semantic version" && exit 1
           if [[ "${#TAG_LIST[@]}" -ne 3 ]]; then
             echo "$RELEASE_VERSION is not a valid semantic version"
             exit 1
@@ -128,7 +129,11 @@ jobs:
         run: |
           TAG_LIST=(`echo $RELEASE_VERSION | tr '.' ' '`)
           # Exit if invalid semver
-          [[ "${#TAG_LIST[@]}" -ne 3 ]] && echo "$RELEASE_VERSION is not a valid semantic version" && exit 1
+          # Github bug one line if not working: [[ "${#TAG_LIST[@]}" -ne 3 ]] && echo "$RELEASE_VERSION is not a valid semantic version" && exit 1
+          if [[ "${#TAG_LIST[@]}" -ne 3 ]]; then
+            echo "$RELEASE_VERSION is not a valid semantic version"
+            exit 1
+          fi
           
       - run: echo "::set-env name=RELEASE_NAME::${RELEASE_VERSION}" # new run because can not use $RELEASE_VERSION in same run
       - name: "echo ENV_VARIABLE"
