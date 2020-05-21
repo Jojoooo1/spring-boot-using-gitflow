@@ -1,3 +1,4 @@
+# base config
 spring:
   main:
     banner-mode: "off"
@@ -5,19 +6,32 @@ spring:
     name: carros
   profiles:
     active: '@spring.profile.active@'
+  cloud:
+    kubernetes:
+      reload:
+        enabled: true
+      config:
+        sources:
+            - name: carros 
+              namespace: java-demo
+  h2:
+    console:
+      enabled: false
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL55Dialect
+        show_sql: false
+        format_sql: false
   liquibase:
-    change-log: classpath:/db/db.changelog-master.xml
-
-# TODO restrict access to health endpoints with a token
-management:
-  # Starting at Spring Boot 2,only health and info are exposed
-  endpoints:
-    web:
-      exposure:
-        include: info, health, prometheus
-  endpoint:
-    health:
-      show-details: always
+      change-log: classpath:/db/db.changelog-master.xml
+# Provides a grace period during which existing requests will be allowed to complete but no new requests will be permitted. 
+# Gives a chance for each task to take measures to ensure the shutdown is safe
+server:
+  shutdown: graceful
+  
 ---
 spring:
   profiles: dev
@@ -27,25 +41,17 @@ spring:
   h2:
     console:
       enabled: true
+  datasource:
+    url: jdbc:h2:mem:database
+    driver-class-name: org.h2.Driver
+    username: sa # default username
+    password: 
 ---
 spring:
   profiles: local-k8s
-  cloud:
-    kubernetes:
-      reload:
-        enabled: true
-      config:
-        sources:
-            - name: carros 
-              namespace: java-demo
 ---
 spring:
   profiles: staging
-  cloud:
-    kubernetes:
-      reload:
-        enabled: true
-      config:
-        sources:
-          - name: carros 
-            namespace: java-demo
+---
+spring:
+  profiles: production

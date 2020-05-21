@@ -42,16 +42,21 @@ spec:
           #
           livenessProbe:
             httpGet:
-              path: /actuator/health
-              port: 8080
+              path: /actuator/health/liveness
+              port: container-port # can also use 8080
             initialDelaySeconds: 10
             periodSeconds: 3
           readinessProbe:
             initialDelaySeconds: 20
             periodSeconds: 10
             httpGet:
-              path: /actuator/info
+              path: /actuator/health/readiness
               port: container-port
+          # Graceful Shutdown
+          lifecycle:
+            preStop:
+              exec:
+                command: ["sh", "-c", "sleep 10"]
           # Indicates that the Pod has successfully initialized. 
           # No other probes are executed until this completes successfully.
           # startupProbe:
@@ -66,6 +71,7 @@ spec:
           #   requests:
           #     memory: "512Mi"
           #     cpu: "1"
+          # Needs to be burstable because Spring needs lots of resources at creation
           #   limits:
           #     memory: "1024Mi"
           #     cpu: "1"

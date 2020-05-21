@@ -50,6 +50,9 @@ public class CarrosController {
   // @Secured({ "ROLE_ADMIN" })
   public ResponseEntity<Object> post(@RequestBody Carro carro) {
     CarroDTO c = service.add(carro);
+    // import static net.logstash.logback.argument.StructuredArguments.kv;
+    // Logs structured args
+    // log.info("Order saved", kv("orderId", orderId), kv("status", status));
     URI location = getUri(c.getId());
     return ResponseEntity.created(location).build();
   }

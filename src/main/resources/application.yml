@@ -1,0 +1,18 @@
+# TODO restrict access to health endpoints with a token
+management:
+  # Starting at Spring Boot 2,only health and info are exposed
+  endpoints:
+    web:
+      exposure:
+        include: info, health, prometheus
+  endpoint:
+    health:
+      show-details: always
+
+# logging:
+#   level:
+#     root: INFO
+#   org: 
+#     springframework:
+#       web: INFO
+#       test: INFO
