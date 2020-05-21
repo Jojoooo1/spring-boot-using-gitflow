@@ -1,11 +1,9 @@
-
+#!/bin/bash
+set -e # exit on first error (used for return)
 
 current_dir=$PWD
 
-if [[ ! -x "$(command -v minikube)" ]]; then
-  echo "minikube not found"
-  exit 1
-fi
+[[ ! -x "$(command -v minikube)" ]] && echo "minikube not found" && exit 1
 
 # minikube delete
 # minikube start

@@ -7,7 +7,7 @@
 
 
 <configuration>
-  <springProfile name="dev,test,integration-test,all-test">
+  <springProfile name="dev,local-k8s">
     <appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
       <encoder>
         <pattern>%d{dd-MM-yyyy HH:mm:ss.SSS} %magenta([%thread]) %highlight(%-5level) %logger{36}.%M - %msg%n</pattern>
@@ -19,7 +19,7 @@
     </root>
   </springProfile>
 
-  <springProfile name="local-k8s,staging-k8s,prod-k8s">
+  <springProfile name="dev-k8s,staging-k8s,production-k8s">
     <appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
       <encoder class="net.logstash.logback.encoder.LogstashEncoder" />
     </appender>

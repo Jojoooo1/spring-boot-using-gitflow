@@ -1,4 +1,6 @@
 #!/bin/bash
+set -e # exit on first error (used for return)
+
 # Push project to master
 git add .
 git commit -m "first commit"

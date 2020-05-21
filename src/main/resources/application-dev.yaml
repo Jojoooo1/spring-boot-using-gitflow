@@ -1,0 +1,10 @@
+spring:
+  # Could not disable h2 console il boostrap.yaml that is why I created application-dev
+  h2:
+    console:
+      enabled: true
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:database
+    username: sa # default username
+    password: 

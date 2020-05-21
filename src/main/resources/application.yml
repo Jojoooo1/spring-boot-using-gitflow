@@ -9,6 +9,11 @@ management:
     health:
       show-details: always
 
+spring:
+  h2:
+    console:
+      enabled: false
+
 # logging:
 #   level:
 #     root: INFO
