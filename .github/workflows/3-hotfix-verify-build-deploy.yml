@@ -1,4 +1,4 @@
-name: CI for building and deploying image from hotfix branch
+name: "Hotfix branch: builds and deploys image"
 
 on:
   pull_request:
@@ -35,8 +35,8 @@ jobs:
           restore-keys: ${{ runner.os }}-m2
 
       # ## Unit & Integration Test ##
-      # - name: Run Unit & Integration Test
-      #   run: mvn clean verify -P all-test
+      - name: Run Unit & Integration Test
+        run: mvn clean verify -P all-test
 
       # TODO: on push failure send notification
       # Can use Sonar

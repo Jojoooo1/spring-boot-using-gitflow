@@ -1,4 +1,4 @@
-name: CI for testing release from develop branch
+name: "Develop branch: Runs unit & integration tests"
 
 # Every time a pull request is open and a merge is executed in develop this CI will be triggered
 
@@ -32,3 +32,34 @@ jobs:
       - name: Run Unit & Integration Test
         run: mvn clean verify -P all-test
       # TODO: on push failure send notification
+
+
+# name: "Code Scanning - Action"
+
+# on:
+#   push:
+#   # schedule:
+#   #   - cron: '0 0 * * 0'
+
+# jobs:
+#   CodeQL-Build:
+
+#     # CodeQL runs on ubuntu-latest, windows-latest, and macos-latest
+#     runs-on: ubuntu-latest
+
+#     steps:
+#       - name: Checkout repository
+#         uses: actions/checkout@v2
+
+#       # Initializes the CodeQL tools for scanning.
+#       - name: Initialize CodeQL
+#         uses: github/codeql-action/init@v1
+#         with:
+#           languages: java
+
+
+#       - name: Run Unit & Integration Test
+#         run: mvn clean verify
+
+#       - name: Perform CodeQL Analysis
+#         uses: github/codeql-action/analyze@v1
