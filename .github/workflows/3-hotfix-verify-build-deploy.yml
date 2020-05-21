@@ -53,7 +53,10 @@ jobs:
           LATEST_TAG=$(git describe --tags $(git rev-list --tags --max-count=1))
           TAG_LIST=(`echo $LATEST_TAG | tr '.' ' '`)
           # Exit if tag has invalid pattern
-          [[ "${#TAG_LIST[@]}" -ne 3 ]] && echo "$LATEST_TAG is not a valid semantic version" && exit 1
+          if [[ "${#TAG_LIST[@]}" -ne 3 ]]; then
+            echo "$LATEST_TAG is not a valid semantic version"
+            exit 1
+          fi
           #
           V_MAJOR=${TAG_LIST[0]}
           V_MINOR=${TAG_LIST[1]}
@@ -127,7 +130,11 @@ jobs:
           LATEST_TAG=$(git describe --tags $(git rev-list --tags --max-count=1))
           TAG_LIST=(`echo $LATEST_TAG | tr '.' ' '`)
           # Exit if tag has invalid pattern
-          [[ "${#TAG_LIST[@]}" -ne 3 ]] && echo "$LATEST_TAG is not a valid semantic version" && exit 1
+          # Github bug one line if not working: [[ "${#TAG_LIST[@]}" -ne 3 ]] && echo "$LATEST_TAG is not a valid semantic version" && exit 1
+          if [[ "${#TAG_LIST[@]}" -ne 3 ]]; then
+            echo "$LATEST_TAG is not a valid semantic version"
+            exit 1
+          fi
           #
           V_MAJOR=${TAG_LIST[0]}
           V_MINOR=${TAG_LIST[1]}
