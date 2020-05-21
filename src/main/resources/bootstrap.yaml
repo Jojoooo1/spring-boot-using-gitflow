@@ -14,15 +14,17 @@ spring:
         sources:
             - name: carros 
               namespace: java-demo
-  h2:
-    console:
-      enabled: false
+  # Warning: Do not removed => Application fails if mysql database not found (prevents from starting H2) 
+  # Will fails if configmap not found
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
+    database-platform: org.hibernate.dialect.MySQLDialect
     hibernate:
       ddl-auto: validate
     properties:
       hibernate:
-        dialect: org.hibernate.dialect.MySQL55Dialect
+        dialect: org.hibernate.dialect.MySQLDialect
         show_sql: false
         format_sql: false
   liquibase:
@@ -31,27 +33,26 @@ spring:
 # Gives a chance for each task to take measures to ensure the shutdown is safe
 server:
   shutdown: graceful
-  
+
 ---
 spring:
   profiles: dev
+  # kubernetes needs to be disabled in bootstrap.yaml
   cloud: 
     kubernetes:
       enabled: false
-  h2:
-    console:
-      enabled: true
-  datasource:
-    url: jdbc:h2:mem:database
-    driver-class-name: org.h2.Driver
-    username: sa # default username
-    password: 
+---
+spring:
+  profiles: skaffold
 ---
 spring:
   profiles: local-k8s
 ---
 spring:
-  profiles: staging
+  profiles: dev-k8s
 ---
 spring:
-  profiles: production
+  profiles: staging-k8s
+---
+spring:
+  profiles: production-k8s
