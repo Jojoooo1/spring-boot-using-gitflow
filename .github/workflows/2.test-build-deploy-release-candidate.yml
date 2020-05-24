@@ -123,6 +123,6 @@ jobs:
           echo $SHA_REF
           echo ${{ GITHUB_TOKEN }}
           curl -X POST "https://github.com/api/v3/repos/Jojoooo1/spring-boot-using-gitflow/statuses/$SHA_REF" \
-            -H 'Authorization: token ${{ GITHUB_TOKEN }}' \
+            -H 'Authorization: token ${{ secrets.GITHUB_TOKEN }}' \
             -H 'Content-Type: application/json' \
             --data '{"state": "success", "context": "test-build-deploy-release-candidate"}'
