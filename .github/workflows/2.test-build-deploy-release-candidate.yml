@@ -110,11 +110,6 @@ jobs:
 
       ## Commit maven version update ##
       ## If protected can use force push with admin right and skip-ci
-      # TODO: try skip checks true
-      # git commit -m "Update README.
-      # >
-      # >
-      # skip-checks: true
       - name: "Commit changes to '${{ github.head_ref }}'"
         run: |
           git config --global user.name $GITHUB_USERNAME
