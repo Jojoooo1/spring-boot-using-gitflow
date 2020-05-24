@@ -1,4 +1,4 @@
-name: "Release branch: builds and deploys image"
+name: "Release: test, build and deploy master"
 
 on:
   pull_request:

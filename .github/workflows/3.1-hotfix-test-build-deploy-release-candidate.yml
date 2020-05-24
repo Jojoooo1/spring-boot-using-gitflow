@@ -1,4 +1,4 @@
-name: "Hotfix branch: builds and deploys image"
+name: "Hotfix: test, build and deploy release candidate"
 
 on:
   pull_request:
