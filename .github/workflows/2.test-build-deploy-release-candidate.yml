@@ -123,5 +123,5 @@ jobs:
           SHA_REF=$(git rev-parse HEAD)
 
           curl -X POST -H "Authorization: token ${{ secrets.CREATE_STATUS_TOKEN }}" -H "Accept: application/vnd.github.v3+json" \
-            --data '{"state": "success", "context": "test-build-deploy-release-candidate", ""description": "Test, build and deploy release candidate"}' \
+            --data '{"state": "success", "context": "test-build-deploy-release-candidate", "description": "Test, build and deploy release candidate"}' \
             "https://api.github.com/repos/Jojoooo1/spring-boot-using-gitflow/statuses/$SHA_REF"
