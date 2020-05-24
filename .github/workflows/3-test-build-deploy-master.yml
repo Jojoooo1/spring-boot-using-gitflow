@@ -100,19 +100,7 @@ jobs:
       ## Can add Static Analysis of vulnerabilities for Containers (clair)
 
       ## Commit maven version update ##
-      ## If protected can use force push with admin right and skip-ci
-      - name: "Commit changes to 'master'"
-        run: |
-          git config --global user.name $GITHUB_USERNAME
-          git config --global user.email "$GITHUB_USERNAME@users.noreply.github.com"
-          
-          # Sync with remote repo to checkout master
-          git fetch
-          git checkout master
-
-          git add .
-          git commit -m "version updated to '$RELEASE_NAME' in pom.xml"          
-          git push --force origin master
+      # Do not commit new version to master in order to prevent any direct commit to master
 
       - name: Create & push tag
         run: |
