@@ -123,4 +123,4 @@ jobs:
           git add .
           git commit -m "version updated to $RELEASE_NAME in pom.xml."
           #
-          git push origin -n $GITHUB_HEAD_REF
+          git push origin $GITHUB_HEAD_REF
