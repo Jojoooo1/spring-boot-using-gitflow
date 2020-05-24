@@ -120,7 +120,6 @@ jobs:
           git config --global user.name $GITHUB_USERNAME
           git config --global user.email "$GITHUB_USERNAME@users.noreply.github.com"
           
-          git diff
           git add .
           git commit \
             -m "version updated to '$RELEASE_NAME' in pom.xml"

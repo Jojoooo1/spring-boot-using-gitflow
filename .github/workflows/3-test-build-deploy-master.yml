@@ -110,7 +110,6 @@ jobs:
           git fetch
           git checkout master
 
-          git diff
           git add .
           git commit \
             -m "version updated to '$RELEASE_NAME' in pom.xml"
