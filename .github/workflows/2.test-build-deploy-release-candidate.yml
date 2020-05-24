@@ -119,3 +119,10 @@ jobs:
           git commit -m "version updated to $RELEASE_NAME in pom.xml."
           #
           git push origin $GITHUB_HEAD_REF
+          SHA_REF=$(git rev-parse HEAD)
+          echo $SHA_REF
+          echo ${{ GITHUB_TOKEN }}
+          curl -X POST "https://github.com/api/v3/repos/Jojoooo1/spring-boot-using-gitflow/statuses/$SHA_REF" \
+            -H 'Authorization: token ${{ GITHUB_TOKEN }}' \
+            -H 'Content-Type: application/json' \
+            --data '{"state": "success", "context": "test-build-deploy-release-candidate"}'
