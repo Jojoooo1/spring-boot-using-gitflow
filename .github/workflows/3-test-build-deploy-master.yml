@@ -104,5 +104,8 @@ jobs:
 
       - name: Create & push tag
         run: |
+          git config --global user.name $GITHUB_USERNAME
+          git config --global user.email "$GITHUB_USERNAME@users.noreply.github.com"
+          
           git tag -a $RELEASE_VERSION -m "release: $RELEASE_VERSION"
           git push origin $RELEASE_VERSION
