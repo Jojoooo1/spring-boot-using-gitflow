@@ -110,7 +110,7 @@ jobs:
 
       ## Commit maven version update ##
       ## If protected can use force push with admin right and skip-ci
-      - name: "Commit changes to '${{ github.head_ref }}'"
+      - name: "Commit changes"
         run: |
           git config --global user.name $GITHUB_USERNAME
           git config --global user.email "$GITHUB_USERNAME@users.noreply.github.com"
@@ -121,6 +121,7 @@ jobs:
           git push origin $GITHUB_HEAD_REF
           SHA_REF=$(git rev-parse HEAD)
           echo $SHA_REF
+          echo "CURLIIIIIIING"
           curl -X POST "https://github.com/api/v3/repos/Jojoooo1/spring-boot-using-gitflow/statuses/$SHA_REF" \
             -H 'Authorization: token ${{ secrets.GITHUB_TOKEN }}' \
             -H 'Content-Type: application/json' \
