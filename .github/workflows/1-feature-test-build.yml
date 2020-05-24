@@ -3,15 +3,17 @@ name: "Develop branch: Runs unit & integration tests"
 # Every time a pull request is open and a merge is executed in develop this CI will be triggered
 
 on:
-  # GitHub sends the pull_request event to the base repository and no pull request events occur on the forked repository.
+  # GitHub sends the pull_request event to the base repository and 
+  # no pull request events occur on the forked repository.
   pull_request:
-    branches: [develop] # d. (opened, synchronize, or reopened)
+    types: [opened, synchronize, reopened] # d.
+    branches: [develop]
 
   push:
-    branches: [develop] # 
+    branches: [develop]
 
 jobs:
-  feature-verify:
+  feature-test-build:
     if: "! contains(toJSON(github.event.commits.*.message), '[skip-ci]')"
     runs-on: ubuntu-latest
     steps:
