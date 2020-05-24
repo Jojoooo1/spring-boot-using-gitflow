@@ -43,16 +43,4 @@ spring:
       enabled: false
 ---
 spring:
-  profiles: skaffold
----
-spring:
-  profiles: local-k8s
----
-spring:
-  profiles: dev-k8s
----
-spring:
-  profiles: staging-k8s
----
-spring:
-  profiles: production-k8s
+  profiles: k8s

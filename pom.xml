@@ -89,28 +89,12 @@
         <activeByDefault>true</activeByDefault>
       </activation>
     </profile>
-    <!-- Profile: Kubernetes Local -->
+    <!-- Profile: Kubernetes -->
     <profile>
-      <id>local-k8s</id>
+      <id>k8s</id>
       <properties>
-        <build.profile.id>local-k8s</build.profile.id>
-        <spring.profile.active>local-k8s</spring.profile.active>
-      </properties>
-    </profile>
-    <!-- Profile: Kubernetes Staging -->
-    <profile>
-      <id>staging-k8s</id>
-      <properties>
-        <build.profile.id>staging-k8s</build.profile.id>
-        <spring.profile.active>staging-k8s</spring.profile.active>
-      </properties>
-    </profile>
-    <!-- Profile: Production -->
-    <profile>
-      <id>prod-k8s</id>
-      <properties>
-        <build.profile.id>prod-k8s</build.profile.id>
-        <spring.profile.active>prod-k8s</spring.profile.active>
+        <build.profile.id>k8s</build.profile.id>
+        <spring.profile.active>k8s</spring.profile.active>
       </properties>
     </profile>
   </profiles>
@@ -578,7 +562,8 @@
             </tags>
           </to> -->
           <container>
-            <creationTime>${maven.build.timestamp}</creationTime>
+            <!-- Linux distribution: User with the least permissions on the system -->
+            <user>nobody:nogroup</user>
             <ports>
               <port>${jib.container.port}</port>
             </ports>
@@ -587,6 +572,7 @@
               <jvmFlag>-Xms128m</jvmFlag> Initial heap size 
               <jvmFlag>-Xmx256m</jvmFlag> Max heap size
             </jvmFlags> -->
+            <creationTime>${maven.build.timestamp}</creationTime>
           </container>
         </configuration>
       </plugin>
