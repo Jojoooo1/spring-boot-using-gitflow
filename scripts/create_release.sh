@@ -19,6 +19,7 @@ echo "################################"
 echo "##  Starting release creation ##"
 echo "################################"
 echo
+# TODO Pre create release version
 read -r -p "Enter the release version you want to create (latest: $LATEST_TAG):  " NEW_RELEASE
 echo
 read -r -p "Are you sure you want to create the release \"$NEW_RELEASE\" [Y/n]:  " RESPONSE

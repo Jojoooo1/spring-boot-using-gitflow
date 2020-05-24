@@ -18,7 +18,7 @@ profiles:
           # context: . # context where the image is being built
           jib:
             args:
-              - -P local-k8s #
+              - -P k8s #
             type: maven
       tagPolicy:
         gitCommit: {} # first look at tag, then use short commit
