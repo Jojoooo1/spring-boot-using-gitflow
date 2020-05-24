@@ -118,8 +118,8 @@ jobs:
           git commit -m "version updated to $RELEASE_NAME in pom.xml."
           git push origin $GITHUB_HEAD_REF
           SHA_REF=$(git rev-parse HEAD)
-          
+
           # Sets status check to success in order to be able to merge after last commit
           curl -X POST -H "Authorization: token ${{ secrets.CREATE_STATUS_TOKEN }}" -H "Accept: application/vnd.github.v3+json" \
-            --data '{"state": "success", "context": "test-build-deploy-release-candidate", "description": "Test, build and deploy release candidate image", "target_url": '"\"https://github.com/Jojoooo1/spring-boot-using-gitflow/runs/actions/${GITHUB_RUN_ID}\"}" \
+            --data '{"state": "success", "context": "test-build-deploy-release-candidate", "description": "Test, build and deploy release candidate image", "target_url": '"\"https://github.com/Jojoooo1/spring-boot-using-gitflow/actions/runs/${GITHUB_RUN_ID}\"}" \
             "https://api.github.com/repos/Jojoooo1/spring-boot-using-gitflow/statuses/$SHA_REF"
