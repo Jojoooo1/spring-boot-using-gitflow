@@ -1,4 +1,4 @@
-name: "Release: test, build and deploy release candidate"
+name: "Test, build and deploy release candidate"
 
 on:
   pull_request:
@@ -122,5 +122,8 @@ jobs:
           
           git add .
           git commit \
-            -m "version updated to '$RELEASE_NAME' in pom.xml"
+            -m "version updated to '$RELEASE_NAME' in pom.xml
+            >
+            >
+            skip-checks: true
           git push origin $GITHUB_HEAD_REF

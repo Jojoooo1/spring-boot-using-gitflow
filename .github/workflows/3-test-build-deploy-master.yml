@@ -1,4 +1,4 @@
-name: "Hotfix: test, build and deploy master"
+name: "Test, build and deploy master"
 
 on:
   pull_request:
