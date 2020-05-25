@@ -9,7 +9,6 @@ on:
     types: [opened, synchronize, reopened] # d.
     branches: [develop]
   # Verify again when branch is merged
-  #
   push:
     branches: [develop]
 
