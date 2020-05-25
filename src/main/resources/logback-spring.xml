@@ -47,6 +47,7 @@
     <!-- LOG everything at INFO level -->
     <root level="info">
       <appender-ref ref="stdout" />
+      <!-- TODO: add fluentd support -->
       <!-- <appender-ref ref="RollingFile" /> -->
     </root>
   </springProfile>
