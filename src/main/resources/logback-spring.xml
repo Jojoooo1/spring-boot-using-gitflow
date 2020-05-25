@@ -7,29 +7,48 @@
 
 
 <configuration>
-  <springProfile name="dev,local-k8s">
-    <appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
-      <encoder>
-        <pattern>%d{dd-MM-yyyy HH:mm:ss.SSS} %magenta([%thread]) %highlight(%-5level) %logger{36}.%M - %msg%n</pattern>
-      </encoder>
-    </appender>
-    <!-- <logger name="org.hibernate.SQL" level="debug"/> -->
+
+  <appender name="jsonConsoleAppender" class="ch.qos.logback.core.ConsoleAppender">
+    <encoder class="net.logstash.logback.encoder.LogstashEncoder" />
+  </appender>
+
+  <appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
+    <encoder>
+      <pattern>%gray(%d{ISO8601}) %highlight(%-5level) [%blue(%t)] %yellow(%C{1.}): %msg%n%throwable</pattern>
+    </encoder>
+  </appender>
+
+  <!-- <appender name="RollingFile" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <file>${LOGS}/spring-boot-logger.log</file>
+    <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+      <Pattern>%d %p %C{1.} [%t] %m%n</Pattern>
+    </encoder>
+
+    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+      <fileNamePattern>${LOGS}/archived/spring-boot-logger-%d{yyyy-MM-dd}.%i.log
+            </fileNamePattern>
+      <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+        <maxFileSize>10MB</maxFileSize>
+      </timeBasedFileNamingAndTriggeringPolicy>
+    </rollingPolicy>
+  </appender> -->
+
+  <springProfile name="!k8s">
+    <!-- to view SQL statements, change to DEBUG -->
+    <!-- <logger name="org.hibernate.SQL" level="WARN" /> -->
+
+    <!-- LOG everything at INFO level -->
     <root level="info">
       <appender-ref ref="stdout" />
     </root>
   </springProfile>
 
-  <springProfile name="dev-k8s,staging-k8s,production-k8s">
-    <appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
-      <encoder class="net.logstash.logback.encoder.LogstashEncoder" />
-    </appender>
-
-    <logger name="jsonLogger" additivity="false" level="info">
-      <appender-ref ref="stdout" />
-    </logger>
-
+  <springProfile name="k8s">
+    <!-- LOG everything at INFO level -->
     <root level="info">
       <appender-ref ref="stdout" />
+      <!-- TODO: add fluentd support -->
+      <!-- <appender-ref ref="RollingFile" /> -->
     </root>
   </springProfile>
 
