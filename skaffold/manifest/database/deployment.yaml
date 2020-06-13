@@ -3,12 +3,11 @@ kind: Deployment
 
 metadata:
   name: java-demo-database-deployment
-  namespace: java-demo
+  namespace: default
 
   labels:
     app: java-demo-database
     role: database
-    stage: local
 
 spec:
   selector:

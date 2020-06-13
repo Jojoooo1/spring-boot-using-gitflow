@@ -10,12 +10,12 @@ spring:
     kubernetes:
       reload:
         enabled: true
-      config:
-        sources:
-            - name: carros 
-              namespace: java-demo
-  # Warning: Do not removed => Application fails if mysql database not found (prevents from starting H2) 
-  # Will fails if configmap not found
+      # config: # by default will look for configmap name: carros in namespace default
+      #   sources:
+      #       - name: carros 
+      #         namespace: java-demo
+  # Prevents from starting H2 database 
+  # Will fails if configmap is not set with mysql
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
