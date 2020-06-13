@@ -7,7 +7,7 @@ metadata:
   namespace: default
   
   labels:
-    app: spring-app # will be used by kialis
+    app: spring-app
     role: backend
 
 spec:
@@ -30,7 +30,8 @@ spec:
       # restartPolicy: Always # d.
       containers:
         - name: spring-app-backend
-          image: docker.io/jojoooo1/carros:latest
+          image: jojoooo1/carros # TO CHANGE FOR PROD, using image defined in skaffold
+          
           # imagePullPolicy: Always # d.
           env:
             - name: JAVA_TOOL_OPTIONS # used by distroless image

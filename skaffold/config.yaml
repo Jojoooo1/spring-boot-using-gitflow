@@ -29,7 +29,7 @@ profiles:
       kubectl: # deploy using kubectl
         manifests:
           # - "manifest/database/*.yaml"
-          - "./skaffold/manifest/backend/*.yaml"
+          - "./skaffold/manifest/*.yaml"
           
     # Sets by default already
     # portForward:
