@@ -1,4 +1,4 @@
-name: "Develop branch: Runs unit & integration tests"
+name: "Build & Test"
 
 # Every time a pull request is open and a merge is executed in develop this CI will be triggered
 
@@ -8,6 +8,7 @@ on:
   pull_request:
     types: [opened, synchronize, reopened] # d.
     branches: [develop]
+  #
   # Verify again when branch is merged
   push:
     branches: [develop]

@@ -1,4 +1,4 @@
-# base config
+# base config => !IMPORTANT! Can be overwritten by configmap since it will be applied first (defined the configmap to look for in cloud.kubernetes)
 spring:
   main:
     banner-mode: "off"
@@ -10,14 +10,14 @@ spring:
     kubernetes:
       reload:
         enabled: true
-      config:
-        sources:
-            - name: carros 
-              namespace: java-demo
-  # Warning: Do not removed => Application fails if mysql database not found (prevents from starting H2) 
-  # Will fails if configmap not found
+      # config: # by default will look for configmap name: carros in namespace default
+      #   sources:
+      #       - name: carros 
+      #         namespace: spring-app
+
+  # Prevents from starting H2 database (except if driver is set in configmap)
   datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
+    driver-class-name: com.mysql.cj.jdbc.Driver # Will fails if configmap is not set with mysql
   jpa:
     database-platform: org.hibernate.dialect.MySQLDialect
     hibernate:
@@ -25,12 +25,11 @@ spring:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.MySQLDialect
-        show_sql: false
-        format_sql: false
+        show_sql: true
+        format_sql: true
   liquibase:
       change-log: classpath:/db/db.changelog-master.xml
-# Provides a grace period during which existing requests will be allowed to complete but no new requests will be permitted. 
-# Gives a chance for each task to take measures to ensure the shutdown is safe
+# Provides a grace period in order for the application to terminate gracefully all of his ongoing work (Stop accepting new request and terminate ongoing one)
 server:
   shutdown: graceful
 
