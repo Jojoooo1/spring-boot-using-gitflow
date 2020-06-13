@@ -43,6 +43,7 @@ public class CarroService {
 
     // Busca o carro no banco de dados
     Optional<Carro> optional = rep.findById(carro.getId());
+    // Can use DTO insteand of using set
     if (optional.isPresent()) {
       Carro db = optional.get();
       // Copiar as propriedades

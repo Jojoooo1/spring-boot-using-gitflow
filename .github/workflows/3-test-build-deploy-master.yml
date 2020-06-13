@@ -1,4 +1,4 @@
-name: "Test, build and deploy master image"
+name: "Build, Test & Deploy master image"
 
 on:
   pull_request:
@@ -39,14 +39,10 @@ jobs:
         if: "contains(toJSON(github.head_ref), 'release-')"
         run: |
           RELEASE_VERSION=${GITHUB_HEAD_REF##*release-}"
-          TAG_LIST=(`echo $RELEASE_VERSION | tr '.' ' '`)
+          TAG_LIST=($(echo $RELEASE_VERSION | tr '.' ' '))
           
-          # Github bug one line if not working: [[ "${#TAG_LIST[@]}" -ne 3 ]] && echo "$RELEASE_VERSION is not a valid semantic version" && exit 1
           # Exit if invalid semver
-          if [[ ${#TAG_LIST[@]} -ne 3 ]]; then
-            echo "$RELEASE_VERSION is not a valid semantic version"
-            exit 1
-          fi
+          [[ "${#TAG_LIST[@]}" -ne 3 ]] && echo "$RELEASE_VERSION is not a valid semantic version" && exit 1
           
           echo "::set-env name=RELEASE_VERSION::$RELEASE_VERSION"
           echo "::set-env name=IMAGE_REGISTRY::docker.io/${DOCKER_USERNAME}/$DOCKER_IMAGE"
@@ -56,14 +52,10 @@ jobs:
         run: |
           git fetch --prune --tags # fetch all tags
           LATEST_TAG=$(git describe --tags $(git rev-list --tags --max-count=1))
-          TAG_LIST=(`echo $LATEST_TAG | tr '.' ' '`)
+          TAG_LIST=($(echo $LATEST_TAG | tr '.' ' '))
 
-          # Github bug one line if not working: [[ "${#TAG_LIST[@]}" -ne 3 ]] && echo "$LATEST_TAG is not a valid semantic version" && exit 1
           # Exit if invalid semver
-          if [[ ${#TAG_LIST[@]} -ne 3 ]]; then
-            echo "$LATEST_TAG is not a valid semantic version"
-            exit 1
-          fi
+          [[ "${#TAG_LIST[@]}" -ne 3 ]] && echo "$LATEST_TAG is not a valid semantic version" && exit 1
           
           V_MAJOR=${TAG_LIST[0]}
           V_MINOR=${TAG_LIST[1]}
