@@ -1,4 +1,4 @@
-package com.carros.api.services.carros;
+package com.carros.api.services.carros.exceptions;
 
 public class CarroRegistrationException extends RuntimeException {
 

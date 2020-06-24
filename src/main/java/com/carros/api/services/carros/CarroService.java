@@ -14,7 +14,7 @@ import java.util.stream.Collectors;
 public class CarroService {
 
   @Autowired
-  private CarroRepository rep;
+  private CarroRepositoryImpl rep;
 
   public List<CarroDTO> getAll(Pageable pageable) {
     return rep.findAll(pageable).stream().map(CarroDTO::create).collect(Collectors.toList());

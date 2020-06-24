@@ -49,6 +49,7 @@ public class CarrosController {
   @PostMapping
   // @Secured({ "ROLE_ADMIN" })
   public ResponseEntity<Object> post(@RequestBody Carro carro) {
+    // You can merge with DTO object
     CarroDTO c = service.add(carro);
     // import static net.logstash.logback.argument.StructuredArguments.kv;
     // Logs structured args
