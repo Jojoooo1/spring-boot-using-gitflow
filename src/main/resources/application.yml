@@ -16,8 +16,8 @@ spring:
 
 # logging:
 #   level:
-#     root: INFO
+#     root: info
 #   org: 
 #     springframework:
-#       web: INFO
-#       test: INFO
+#       web: info
+#       test: info

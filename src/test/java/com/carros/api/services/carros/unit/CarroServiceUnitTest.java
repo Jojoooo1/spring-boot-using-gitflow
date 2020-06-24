@@ -5,10 +5,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-import com.carros.api.services.carros.Carro;
-import com.carros.api.services.carros.CarroDTO;
-import com.carros.api.services.carros.CarroRepository;
-import com.carros.api.services.carros.CarroService;
+import com.carros.api.services.carros.*;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -37,7 +34,7 @@ class CarroServiceUnitTest {
 
   // Creates mock
   @Mock
-  private CarroRepository carroRepository;
+  private CarroRepositoryImpl carroRepository;
 
   // Creates mock and injects the dependent @Mock into it
   @InjectMocks
@@ -135,7 +132,7 @@ class CarroServiceUnitTest {
     // Call service
     CarroDTO updatedCarroDTO = carroService.update(data);
     // Verify
-    assertEquals(updatedCarroDTO, null);
+    assertEquals(null, updatedCarroDTO);
   }
 
   @Test

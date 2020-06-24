@@ -53,7 +53,7 @@ spec:
             httpGet:
               path: /actuator/health/readiness
               port: container-port # using ports.name
-          # Graceful Shutdown (Container waits 10sec before being killed in order for tx to finish)
+          # Allow enough time for requests to stop being routed to the application before it is terminated.
           lifecycle:
             preStop:
               exec:
@@ -68,3 +68,12 @@ spec:
           #   limits:
           #     memory: "1024Mi" # jib: -Xmx1024m
           #     cpu: "2"
+
+          # Security to verify
+          # securityContext:
+          #   # on Linux UID 1000 is assigned to the first non-root user created on the system 
+          #   runAsUser: 1000
+          #   runAsNonRoot: true # Prevent from running container as root user
+          #   readOnlyRootFilesystem: true # Disable writing to Root file system
+          #   allowPrivilegeEscalation: false
+            

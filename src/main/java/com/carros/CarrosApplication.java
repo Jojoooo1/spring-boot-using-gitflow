@@ -2,21 +2,18 @@ package com.carros;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import lombok.extern.slf4j.Slf4j;
 
 // import com.carros.utils.PropertyLogger;
 
-// import org.slf4j.Logger;
-// import org.slf4j.LoggerFactory;
 
+@Slf4j
 @SpringBootApplication
 public class CarrosApplication {
-
-  // private static final Logger LOGGER = LoggerFactory.getLogger(PropertyLogger.class);
-
   public static void main(String[] args) {
-    // for (String arg : args) {
-    //   LOGGER.info(arg); // Reading Command-Line arguments
-    // }
+    for (String arg : args) {
+      log.info(arg); // Reading Command-Line arguments
+    }
     SpringApplication.run(CarrosApplication.class, args);
   }
 
